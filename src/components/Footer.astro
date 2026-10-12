@@ -1,0 +1,44 @@
+---
+import { SITE } from '../config.ts';
+import { formatTimestamp } from '../lib/format.ts';
+
+interface Props {
+  generatedAt: string;
+  generatedBy: string;
+  analyticsEnabled: boolean;
+}
+
+const { generatedAt, generatedBy, analyticsEnabled } = Astro.props;
+---
+<footer class="foot-line page">
+  <p>
+    <span>Written by {SITE.author} ({generatedBy}) from the sources above</span>
+    <span class="sep" aria-hidden="true">·</span>
+    <span>Updated {formatTimestamp(generatedAt)}</span>
+    <span class="sep" aria-hidden="true">·</span>
+    <span>Updated daily</span>
+    <span class="sep" aria-hidden="true">·</span>
+    <span>Not financial advice</span>
+    {analyticsEnabled && (
+      <>
+        <span class="sep" aria-hidden="true">·</span>
+        <button class="btn-link" type="button" data-consent-open>Cookie settings</button>
+      </>
+    )}
+  </p>
+</footer>
+
+<style>
+  .foot-line {
+    padding-block: var(--space-lg) var(--space-xl);
+    border-top: var(--rule) solid var(--color-rule);
+    font-size: var(--text-sm);
+    color: var(--color-muted);
+  }
+
+  .foot-line p {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2xs) var(--space-xs);
+  }
+</style>

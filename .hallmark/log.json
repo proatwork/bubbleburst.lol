@@ -1,0 +1,22 @@
+[
+  {
+    "date": "2026-10-13",
+    "macrostructure": "Stat-Led",
+    "theme": "custom",
+    "theme_axes": "light / roman-serif / chromatic-green",
+    "vibe": "warm paper, moss, clay, broadsheet",
+    "enrichment": "Tier-A CSS band meter",
+    "nav": "N9 Edge-aligned minimal",
+    "footer": "Ft2 Inline single line",
+    "brief": "Bubble Burst \u00b7 organic CSS restyle, same layout"
+  },
+  {
+    "date": "2026-10-13",
+    "macrostructure": "Stat-Led",
+    "theme": "Cobalt (fonts: Newsreader + IBM Plex Sans + IBM Plex Mono, user override)",
+    "enrichment": "Tier-A SVG gauge",
+    "nav": "N9 Edge-aligned minimal",
+    "footer": "Ft2 Inline single line",
+    "brief": "Bubble Burst \u00b7 daily AI bubble status page, one score + sourced analysis"
+  }
+]

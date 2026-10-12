@@ -1,0 +1,32 @@
+---
+import { renderWithCitations } from '../lib/cite.ts';
+
+interface Props {
+  paragraphs: string[];
+  sourceCount: number;
+}
+
+const { paragraphs, sourceCount } = Astro.props;
+---
+<section class="analysis" aria-labelledby="analysis-heading">
+  <h2 id="analysis-heading">Analysis</h2>
+  <div class="prose">
+    {paragraphs.map((paragraph) => <p set:html={renderWithCitations(paragraph, sourceCount)} />)}
+  </div>
+</section>
+
+<style>
+  .analysis {
+    display: grid;
+    gap: var(--space-md);
+    align-content: start;
+  }
+
+  .prose {
+    display: grid;
+    gap: var(--space-md);
+    max-width: 62ch;
+    line-height: 1.5;
+    text-wrap: pretty;
+  }
+</style>

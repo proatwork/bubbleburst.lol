@@ -1,0 +1,126 @@
+---
+/** Analytics consent bar. The page renders it only when GA4 is configured and the banner is enabled. */
+import { SITE } from '../config.ts';
+
+const text =
+  SITE.consentMode === 'basic'
+    ? 'This page counts visits with Google Analytics. Nothing is sent to Google until you allow it.'
+    : 'This page counts visits with Google Analytics. Allow the analytics cookie, or decline and only anonymous, cookieless counts are kept.';
+---
+<div class="consent" role="region" aria-label="Analytics consent" data-consent-bar hidden>
+  <p class="text">{text}</p>
+  <div class="actions">
+    <button class="btn btn-primary" type="button" data-consent-choice="granted">Allow analytics</button>
+    <button class="btn" type="button" data-consent-choice="denied">Decline</button>
+  </div>
+</div>
+
+<style>
+  .consent {
+    position: fixed;
+    inset-inline: var(--space-md);
+    bottom: max(var(--space-md), env(safe-area-inset-bottom));
+    z-index: var(--z-toast);
+    margin-inline: auto;
+    max-width: 40rem;
+    display: grid;
+    gap: var(--space-sm);
+    padding: var(--space-md);
+    border: var(--rule) solid var(--color-rule-2);
+    border-radius: var(--radius-lg);
+    background: var(--color-paper-2);
+    color: var(--color-ink-2);
+    box-shadow: var(--shadow-whisper);
+    font-size: var(--text-sm);
+    animation: consent-in var(--dur-long) var(--ease-out) both;
+  }
+
+  .consent[hidden] {
+    display: none;
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+  }
+
+  @keyframes consent-in {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+  }
+
+  @media (min-width: 40rem) {
+    .consent {
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+    }
+  }
+</style>
+
+<script>
+  import { STORAGE_KEYS } from '../lib/storage-keys.ts';
+
+  type Choice = 'granted' | 'denied';
+
+  declare global {
+    interface Window {
+      gtag?: (...args: unknown[]) => void;
+      bbLoadAnalytics?: () => void;
+    }
+  }
+
+  const bar = document.querySelector<HTMLElement>('[data-consent-bar]');
+
+  function storedChoice(): Choice | null {
+    try {
+      const value = localStorage.getItem(STORAGE_KEYS.consent);
+      return value === 'granted' || value === 'denied' ? value : null;
+    } catch {
+      return null;
+    }
+  }
+
+  /** Withdrawal means the GA cookies go too. They may sit on the host or on any parent domain. */
+  function expireAnalyticsCookies(): void {
+    const names = document.cookie
+      .split(';')
+      .map((c) => c.trim().split('=')[0])
+      .filter((name) => name === '_ga' || name.startsWith('_ga_'));
+    const parts = location.hostname.split('.');
+    const domains = ['', ...parts.map((_, i) => parts.slice(i).join('.'))];
+    const expiry = 'expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
+    for (const name of names) {
+      for (const domain of domains) {
+        document.cookie = `${name}=; ${expiry}${domain ? `; domain=${domain}` : ''}`;
+      }
+    }
+  }
+
+  function applyChoice(choice: Choice): void {
+    try {
+      localStorage.setItem(STORAGE_KEYS.consent, choice);
+    } catch {
+      /* storage blocked: the choice applies to this page view only */
+    }
+    window.gtag?.('consent', 'update', { analytics_storage: choice });
+    if (choice === 'granted') window.bbLoadAnalytics?.();
+    else expireAnalyticsCookies();
+    if (bar) bar.hidden = true;
+  }
+
+  if (bar) {
+    if (storedChoice() === null) bar.hidden = false;
+
+    for (const button of bar.querySelectorAll<HTMLButtonElement>('[data-consent-choice]')) {
+      button.addEventListener('click', () => applyChoice(button.dataset.consentChoice === 'granted' ? 'granted' : 'denied'));
+    }
+
+    document.querySelector<HTMLButtonElement>('[data-consent-open]')?.addEventListener('click', () => {
+      bar.hidden = false;
+      bar.querySelector<HTMLButtonElement>('[data-consent-choice]')?.focus();
+    });
+  }
+</script>

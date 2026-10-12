@@ -1,0 +1,112 @@
+---
+import type { Signal } from '../lib/schema.ts';
+import { renderCitationLinks, renderText } from '../lib/cite.ts';
+
+interface Props {
+  signals: Signal[];
+  sourceCount: number;
+}
+
+const { signals, sourceCount } = Astro.props;
+
+const ARROWS: Record<NonNullable<Signal['trend']>, { d: string; word: string }> = {
+  up: { d: 'M6 12V2M2 6l4-4 4 4', word: 'rising' },
+  down: { d: 'M6 2v10M2 8l4 4 4-4', word: 'falling' },
+  flat: { d: 'M1 7h10M8 4l3 3-3 3', word: 'flat' },
+};
+---
+<section class="signals" aria-label="Key signals">
+  <ul class="strip">
+    {signals.map((signal) => (
+      <li class="tile">
+        <span class="label">{signal.label}</span>
+        <span class="value">
+          {signal.value}
+          {signal.trend && (
+            <span class="trend" data-trend={signal.trend}>
+              <svg viewBox="0 0 12 14" width="12" height="14" aria-hidden="true" focusable="false">
+                <path d={ARROWS[signal.trend].d} fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              <span class="visually-hidden">{ARROWS[signal.trend].word}</span>
+            </span>
+          )}
+        </span>
+        <span class="note" set:html={`${renderText(signal.note)}${renderCitationLinks(signal.sources, sourceCount)}`} />
+      </li>
+    ))}
+  </ul>
+</section>
+
+<style>
+  .strip {
+    list-style: none;
+    margin: 0;
+    padding: var(--space-xs) var(--space-lg);
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    background: var(--color-paper-2);
+    border-radius: var(--radius-lg);
+  }
+
+  .tile {
+    display: grid;
+    align-content: start;
+    gap: var(--space-2xs);
+    padding: var(--space-md) var(--space-md) var(--space-md) 0;
+    min-width: 0;
+  }
+
+  .tile:nth-child(even) {
+    border-inline-start: var(--rule) solid var(--color-rule);
+    padding-inline-start: var(--space-md);
+  }
+
+  .tile:nth-child(n + 3) {
+    border-top: var(--rule) solid var(--color-rule);
+  }
+
+  .value {
+    display: inline-flex;
+    align-items: baseline;
+    gap: var(--space-xs);
+    font-family: var(--font-body);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    line-height: 1.1;
+    font-variant-numeric: lining-nums;
+    color: var(--color-ink);
+  }
+
+  .trend {
+    display: inline-flex;
+    color: var(--color-muted);
+    transform: translateY(1px);
+  }
+
+  .note {
+    font-size: var(--text-sm);
+    color: var(--color-muted);
+    text-wrap: pretty;
+  }
+
+  @media (min-width: 60rem) {
+    .strip {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .tile:nth-child(n + 3) {
+      border-top: 0;
+    }
+
+    .tile:nth-child(even) {
+      border-inline-start: 0;
+      padding-inline-start: 0;
+    }
+
+    .tile + .tile {
+      border-inline-start: var(--rule) solid var(--color-rule);
+      padding-inline-start: var(--space-lg);
+    }
+  }
+</style>

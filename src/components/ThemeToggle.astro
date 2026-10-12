@@ -1,0 +1,136 @@
+---
+/** Three-state theme switch: auto (follows the OS) → light → dark. State lives on <html data-theme>. */
+---
+<button class="theme-toggle" type="button" data-theme-toggle aria-label="Theme: automatic, click to switch" title="Switch theme">
+  <svg class="icon icon-auto" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
+    <circle cx="8" cy="8" r="6.25" fill="none" stroke="currentColor" stroke-width="1.5" />
+    <path d="M8 1.75v12.5A6.25 6.25 0 0 0 8 1.75Z" fill="currentColor" />
+  </svg>
+  <svg class="icon icon-light" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
+    <circle cx="8" cy="8" r="3" fill="none" stroke="currentColor" stroke-width="1.5" />
+    <path d="M8 1v2M8 13v2M1 8h2M13 8h2M3.05 3.05l1.4 1.4M11.55 11.55l1.4 1.4M3.05 12.95l1.4-1.4M11.55 4.45l1.4-1.4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+  </svg>
+  <svg class="icon icon-dark" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
+    <path d="M13.5 9.5A5.75 5.75 0 0 1 6.5 2.5a5.75 5.75 0 1 0 7 7Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+  </svg>
+  <span class="text" data-theme-label>Auto</span>
+</button>
+
+<style>
+  .theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    min-height: 2.25rem;
+    padding: var(--space-2xs) var(--space-sm);
+    border: var(--rule) solid var(--color-rule-2);
+    border-radius: var(--radius-pill);
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    cursor: pointer;
+    transition:
+      border-color var(--dur-short) var(--ease-out),
+      transform 100ms var(--ease-out);
+  }
+
+  .theme-toggle:hover {
+    border-color: var(--color-accent);
+    background: var(--color-paper-2);
+  }
+
+  .theme-toggle:active {
+    transform: translateY(1px);
+  }
+
+  .theme-toggle:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .icon {
+    display: none;
+    flex: none;
+  }
+
+  :global(:root:not([data-theme])) .icon-auto,
+  :global(:root[data-theme='light']) .icon-light,
+  :global(:root[data-theme='dark']) .icon-dark {
+    display: block;
+  }
+
+  @media (pointer: coarse) {
+    .theme-toggle {
+      min-height: 2.75rem;
+    }
+  }
+</style>
+
+<script>
+  import { STORAGE_KEYS } from '../lib/storage-keys.ts';
+
+  type Mode = 'auto' | 'light' | 'dark';
+
+  const ORDER: readonly Mode[] = ['auto', 'light', 'dark'];
+  const LABELS: Record<Mode, string> = { auto: 'Auto', light: 'Light', dark: 'Dark' };
+  const DESCRIPTIONS: Record<Mode, string> = {
+    auto: 'automatic, follows your system',
+    light: 'light',
+    dark: 'dark',
+  };
+
+  const root = document.documentElement;
+  const button = document.querySelector<HTMLButtonElement>('[data-theme-toggle]');
+  const label = document.querySelector<HTMLElement>('[data-theme-label]');
+  const themeColorMetas = Array.from(document.querySelectorAll<HTMLMetaElement>('meta[name="theme-color"]'));
+
+  function currentMode(): Mode {
+    const value = root.dataset.theme;
+    return value === 'light' || value === 'dark' ? value : 'auto';
+  }
+
+  function persist(mode: Mode): void {
+    try {
+      if (mode === 'auto') localStorage.removeItem(STORAGE_KEYS.theme);
+      else localStorage.setItem(STORAGE_KEYS.theme, mode);
+    } catch {
+      /* storage unavailable (private mode, blocked): the choice simply does not persist */
+    }
+  }
+
+  function syncThemeColor(mode: Mode): void {
+    for (const meta of themeColorMetas) {
+      if (!meta.dataset.original) meta.dataset.original = meta.content;
+      if (!meta.dataset.originalMedia) meta.dataset.originalMedia = meta.media ?? '';
+      if (mode === 'auto') {
+        meta.content = meta.dataset.original;
+        meta.media = meta.dataset.originalMedia;
+      } else {
+        meta.media = '';
+        meta.content = getComputedStyle(document.body).backgroundColor;
+      }
+    }
+  }
+
+  function apply(mode: Mode): void {
+    if (mode === 'auto') delete root.dataset.theme;
+    else root.dataset.theme = mode;
+    if (label) label.textContent = LABELS[mode];
+    button?.setAttribute('aria-label', `Theme: ${DESCRIPTIONS[mode]}, click to switch`);
+    syncThemeColor(mode);
+  }
+
+  button?.addEventListener('click', () => {
+    const next = ORDER[(ORDER.indexOf(currentMode()) + 1) % ORDER.length];
+    apply(next);
+    persist(next);
+  });
+
+  apply(currentMode());
+</script>

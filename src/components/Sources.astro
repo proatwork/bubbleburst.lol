@@ -1,0 +1,74 @@
+---
+import type { Source } from '../lib/schema.ts';
+import { smarten, sourceAnchorId } from '../lib/cite.ts';
+import { formatShortDate } from '../lib/format.ts';
+
+interface Props {
+  sources: Source[];
+}
+
+const { sources } = Astro.props;
+---
+<section class="sources" aria-labelledby="sources-heading">
+  <h2 id="sources-heading">Sources</h2>
+  <ol class="list">
+    {sources.map((source, i) => (
+      <li id={sourceAnchorId(i + 1)}>
+        <a href={source.url} rel="noopener noreferrer" target="_blank">{smarten(source.title)}<span class="visually-hidden"> (opens in a new tab)</span></a>
+        <span class="meta">{source.publisher} · {formatShortDate(source.date)}</span>
+      </li>
+    ))}
+  </ol>
+</section>
+
+<style>
+  .sources {
+    display: grid;
+    gap: var(--space-md);
+    align-content: start;
+  }
+
+  .list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: source;
+    display: grid;
+    gap: var(--space-xs);
+    font-size: var(--text-sm);
+  }
+
+  .list li {
+    counter-increment: source;
+    display: grid;
+    grid-template-columns: 2ch minmax(0, 1fr);
+    column-gap: var(--space-sm);
+    row-gap: var(--space-3xs);
+    padding: var(--space-2xs) var(--space-xs);
+    margin-inline: calc(-1 * var(--space-xs));
+    border-radius: var(--radius-md);
+    scroll-margin-top: var(--space-xl);
+    transition: background-color var(--dur-short) var(--ease-out);
+  }
+
+  .list li::before {
+    content: counter(source);
+    grid-row: 1 / span 2;
+    font-family: var(--font-mono);
+    font-weight: 500;
+    color: var(--color-accent);
+  }
+
+  .list li:target {
+    background: var(--color-paper-2);
+  }
+
+  .list a {
+    color: var(--color-ink);
+    overflow-wrap: anywhere;
+  }
+
+  .meta {
+    color: var(--color-muted);
+  }
+</style>

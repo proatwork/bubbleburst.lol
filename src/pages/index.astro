@@ -1,0 +1,157 @@
+---
+import '@fontsource-variable/newsreader/standard.css';
+import '@fontsource-variable/ibm-plex-sans';
+import '@fontsource/ibm-plex-mono/400.css';
+import '@fontsource/ibm-plex-mono/500.css';
+import '../styles/tokens.css';
+import '../styles/global.css';
+
+import raw from '../../content/status.json';
+import { SITE, STORAGE_KEYS } from '../config.ts';
+import { bandFor, deltaFor } from '../lib/bands.ts';
+import { renderWithCitations, smarten } from '../lib/cite.ts';
+import { formatLongDate } from '../lib/format.ts';
+import { parseStatus } from '../lib/status.ts';
+import Header from '../components/Header.astro';
+import Meter from '../components/Meter.astro';
+import Signals from '../components/Signals.astro';
+import Analysis from '../components/Analysis.astro';
+import Sources from '../components/Sources.astro';
+import Footer from '../components/Footer.astro';
+import Analytics from '../components/Analytics.astro';
+import ConsentBar from '../components/ConsentBar.astro';
+
+// Build fails here if content/status.json is invalid. That is the point.
+const status = parseStatus(raw);
+const band = bandFor(status.pressure);
+const delta = deltaFor(status.pressure, status.previousPressure);
+const sourceCount = status.sources.length;
+
+const headline = smarten(status.headline);
+const description = smarten(status.summary).replace(/\s*\[\d+\]/g, '');
+const title = `${SITE.question} ${status.pressure}/100, ${band.label} · ${SITE.name}`;
+const canonical = SITE.url ? `${SITE.url}/` : undefined;
+const analyticsEnabled = Boolean(SITE.gaMeasurementId);
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: title,
+  headline,
+  description,
+  ...(canonical ? { url: canonical } : {}),
+  dateModified: status.generatedAt,
+  inLanguage: 'en',
+  isPartOf: { '@type': 'WebSite', name: SITE.name, ...(canonical ? { url: canonical } : {}) },
+  citation: status.sources.map((source) => ({
+    '@type': 'CreativeWork',
+    name: source.title,
+    url: source.url,
+    publisher: { '@type': 'Organization', name: source.publisher },
+    datePublished: source.date,
+  })),
+};
+const jsonLdText = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
+const themeKey = STORAGE_KEYS.theme;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {canonical && <link rel="canonical" href={canonical} />}
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f3ea" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#130e0a" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    {canonical && <meta property="og:url" content={canonical} />}
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <script type="application/ld+json" set:html={jsonLdText} />
+    <script define:vars={{ themeKey }}>
+      document.documentElement.dataset.js = '';
+      try {
+        var theme = localStorage.getItem(themeKey);
+        if (theme === 'light' || theme === 'dark') document.documentElement.dataset.theme = theme;
+      } catch (error) {
+        /* storage blocked: stay on automatic */
+      }
+    </script>
+    <Analytics />
+  </head>
+  <body>
+    <Header date={status.date} />
+    <main class="page">
+      <section class="hero" aria-labelledby="headline">
+        <Meter pressure={status.pressure} band={band} delta={delta} />
+        <div class="lede">
+          <p class="label dateline">Status for {formatLongDate(status.date)}</p>
+          <h1 id="headline" class:list={{ 'is-long': headline.length > 50 }}>{headline}</h1>
+          <p class="summary" set:html={renderWithCitations(status.summary, sourceCount)} />
+        </div>
+      </section>
+      <Signals signals={status.signals} sourceCount={sourceCount} />
+      <div class="columns">
+        <Analysis paragraphs={status.analysis} sourceCount={sourceCount} />
+        <Sources sources={status.sources} />
+      </div>
+    </main>
+    <Footer generatedAt={status.generatedAt} generatedBy={status.generatedBy} analyticsEnabled={analyticsEnabled} />
+    {analyticsEnabled && SITE.consentBanner && <ConsentBar />}
+  </body>
+</html>
+
+<style>
+  .hero {
+    display: grid;
+    gap: var(--space-lg);
+    padding-block: var(--space-lg) var(--space-xl);
+  }
+
+  .lede {
+    display: grid;
+    gap: var(--space-md);
+    align-content: center;
+    min-width: 0;
+  }
+
+  .dateline {
+    color: var(--color-muted);
+  }
+
+  .summary {
+    max-width: 52ch;
+    font-size: var(--text-md);
+    line-height: 1.45;
+    color: var(--color-ink-2);
+    text-wrap: pretty;
+  }
+
+  .columns {
+    display: grid;
+    gap: var(--space-xl);
+    padding-block: var(--space-lg) var(--space-xl);
+  }
+
+  @media (min-width: 60rem) {
+    .hero {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      gap: var(--space-2xl);
+      align-items: center;
+      padding-block: var(--space-lg) var(--space-xl);
+    }
+
+    .columns {
+      grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+      gap: var(--space-2xl);
+      padding-block: var(--space-xl) var(--space-2xl);
+    }
+  }
+</style>

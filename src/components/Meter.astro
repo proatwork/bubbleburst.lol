@@ -1,0 +1,281 @@
+---
+import { BANDS, type Band, type Delta } from '../lib/bands.ts';
+import { formatSigned } from '../lib/format.ts';
+
+interface Props {
+  pressure: number;
+  band: Band;
+  delta: Delta | null;
+}
+
+const { pressure, band, delta } = Astro.props;
+
+/** The four ranged bands make up the track; Burst (100) is the dot at its end. */
+const rangedBands = BANDS.filter((b) => b.id !== 'burst');
+const dividers = rangedBands.slice(1).map((b) => b.min);
+const DELTA_WORD: Record<Delta['direction'], string> = { up: 'up', down: 'down', flat: 'unchanged' };
+---
+<figure class="meter" data-band={band.id} style={`--pressure: ${pressure}`} aria-labelledby="meter-caption">
+  <p class="readout">
+    <span class="figure" data-count-to={pressure}>{pressure}</span>
+    <span class="of">/100</span>
+  </p>
+  <div class="scale" aria-hidden="true">
+    <div class="rail">
+      <div class="track">
+        <div class="fill"></div>
+        {dividers.map((at) => <i class="gap" style={`--at: ${at}`}></i>)}
+      </div>
+      <i class="tick"></i>
+      <span class="burst"></span>
+    </div>
+    <ol class="bands">
+      {rangedBands.map((b) => (
+        <li style={`--span: ${b.max - b.min + 1}`} data-active={b.id === band.id ? '' : undefined}>{b.label}</li>
+      ))}
+    </ol>
+  </div>
+  <figcaption id="meter-caption">
+    <span class="band"><span class="dot" aria-hidden="true"></span>{band.label}</span>
+    <span class="meaning">{band.meaning}</span>
+    <span class="delta label">
+      {delta
+        ? `${formatSigned(delta.value)} · ${DELTA_WORD[delta.direction]} since the previous reading`
+        : 'First reading · bubble pressure, 0 to 100'}
+    </span>
+  </figcaption>
+</figure>
+
+<style>
+  .meter {
+    --status: var(--color-status-calm);
+    --track-height: 12px;
+    --burst-size: 10px;
+    margin: 0;
+    display: grid;
+    gap: var(--space-md);
+    min-width: 0;
+  }
+
+  .meter[data-band='inflating'] { --status: var(--color-status-inflating); }
+  .meter[data-band='stretched'] { --status: var(--color-status-stretched); }
+  .meter[data-band='critical'] { --status: var(--color-status-critical); }
+  .meter[data-band='burst'] { --status: var(--color-status-burst); }
+
+  .readout {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-xs);
+    margin: 0;
+    line-height: 1;
+  }
+
+  .figure {
+    font-family: var(--font-body);
+    font-size: var(--text-figure);
+    font-weight: 600;
+    letter-spacing: -0.04em;
+    font-variant-numeric: lining-nums;
+    color: var(--color-ink);
+    min-inline-size: 2ch;
+  }
+
+  /* Hidden only while JS is about to count it up; a timed fallback reveals it regardless. */
+  :global(:root[data-js]) .figure:not([data-ready]) {
+    visibility: hidden;
+    animation: show-anyway 1ms 1.5s forwards;
+  }
+
+  @keyframes show-anyway {
+    to {
+      visibility: visible;
+    }
+  }
+
+  .of {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--color-muted);
+  }
+
+  .scale {
+    display: grid;
+    gap: var(--space-xs);
+  }
+
+  .rail {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    padding-block: 4px;
+  }
+
+  .track {
+    position: relative;
+    flex: 1 1 auto;
+    height: var(--track-height);
+    border-radius: var(--radius-pill);
+    background: var(--color-paper-2);
+    overflow: clip;
+  }
+
+  /* One gradient across all four bands, revealed up to the score. */
+  .fill {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to right,
+      var(--color-status-calm) 0 25%,
+      var(--color-status-inflating) 25% 50%,
+      var(--color-status-stretched) 50% 75%,
+      var(--color-status-critical) 75% 100%
+    );
+    clip-path: inset(0 calc(100% - var(--pressure) * 1%) 0 0);
+    animation: reveal var(--dur-draw) var(--ease-out) both;
+  }
+
+  @keyframes reveal {
+    from {
+      clip-path: inset(0 100% 0 0);
+    }
+  }
+
+  .gap {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    inset-inline-start: calc(var(--at) * 1%);
+    transform: translateX(-1px);
+    background: var(--color-paper);
+  }
+
+  .tick {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    /* The track is the rail minus the burst dot and its gap. */
+    inset-inline-start: calc(var(--pressure) * 1% - var(--pressure) * (var(--burst-size) + var(--space-xs)) / 100);
+    transform: translateX(-1px);
+    background: var(--color-ink);
+    border-radius: 1px;
+  }
+
+  .burst {
+    flex: none;
+    width: var(--burst-size);
+    height: var(--burst-size);
+    border-radius: 50%;
+    border: 2px solid var(--color-ink);
+    background: transparent;
+  }
+
+  .meter[data-band='burst'] .burst {
+    background: var(--color-ink);
+  }
+
+  .bands {
+    list-style: none;
+    margin: 0;
+    padding: 0 calc(var(--burst-size) + var(--space-xs)) 0 0;
+    display: flex;
+  }
+
+  .bands li {
+    flex: var(--span) 1 0;
+    min-width: 0;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    white-space: nowrap;
+    overflow: clip;
+    text-overflow: ellipsis;
+  }
+
+  .bands li[data-active] {
+    color: var(--color-ink);
+  }
+
+  figcaption {
+    display: grid;
+    gap: var(--space-2xs);
+  }
+
+  .band {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-family: var(--font-body);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    line-height: 1.1;
+    color: var(--color-ink);
+  }
+
+  .dot {
+    width: 0.55em;
+    height: 0.55em;
+    border-radius: 50%;
+    background: var(--status);
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--status) 22%, var(--color-paper));
+  }
+
+  .meaning {
+    max-width: 34ch;
+    font-size: var(--text-sm);
+    color: var(--color-muted);
+    text-wrap: pretty;
+  }
+
+  .delta {
+    margin-top: var(--space-2xs);
+  }
+
+  @media (max-width: 20rem) {
+    .bands li:not([data-active]) {
+      visibility: hidden;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fill {
+      animation: none;
+    }
+
+    :global(:root[data-js]) .figure:not([data-ready]) {
+      visibility: visible;
+      animation: none;
+    }
+  }
+</style>
+
+<script>
+  const figure = document.querySelector<HTMLElement>('[data-count-to]');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (figure) {
+    const target = Number(figure.dataset.countTo);
+    const DURATION = 800;
+    const easeOut = (t: number) => 1 - Math.pow(1 - t, 3);
+
+    if (reduceMotion || !Number.isFinite(target)) {
+      figure.dataset.ready = '';
+    } else {
+      figure.textContent = '0';
+      figure.dataset.ready = '';
+      const start = performance.now();
+      const step = (now: number) => {
+        const t = Math.min(1, (now - start) / DURATION);
+        figure.textContent = String(Math.round(easeOut(t) * target));
+        if (t < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    }
+  }
+</script>

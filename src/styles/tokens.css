@@ -1,0 +1,119 @@
+/* Hallmark · genre: modern-minimal → organic restyle · macrostructure: Stat-Led · theme: custom (vibe: "warm paper, moss, clay, broadsheet" · paper oklch(96.5% 0.013 85) · accent oklch(48% 0.11 145) moss · Newsreader + IBM Plex Sans) · enrichment: Tier-A CSS band meter · nav: N9 Edge-aligned · footer: Ft2 Inline single line
+ * axes: paper-band light / display-style roman-serif / accent-hue chromatic-green · previous: Cobalt (light / grotesk-sans / cool) — differs on display style and accent hue
+ * H4 Stat-Led knobs: number style=proportional display, qualifier position=inline-right, secondary stats=row of four
+ * tone: warm, editorial, calm · audience: general public checking a daily verdict · use: read the status in ten seconds
+ * Hallmark · pre-emit critique: P4 H4 E4 S4 R4 V4 */
+
+:root {
+  color-scheme: light dark;
+
+  /* Paper and ink: warm cream by day, warm charcoal by night. light-dark() needs color-scheme on :root; see the @supports block at the end for old browsers. */
+  --color-paper: light-dark(oklch(96.5% 0.013 85), oklch(17% 0.012 60));
+  --color-paper-2: light-dark(oklch(93.5% 0.018 85), oklch(21% 0.014 60));
+  --color-rule: light-dark(oklch(86% 0.02 85), oklch(30% 0.014 60));
+  --color-rule-2: light-dark(oklch(78% 0.025 80), oklch(38% 0.014 60));
+  --color-muted: light-dark(oklch(48% 0.025 70), oklch(70% 0.02 75));
+  --color-ink-2: light-dark(oklch(32% 0.03 60), oklch(84% 0.015 80));
+  --color-ink: light-dark(oklch(22% 0.03 55), oklch(95% 0.012 85));
+
+  /* The one signal accent: moss. */
+  --color-accent: light-dark(oklch(48% 0.11 145), oklch(74% 0.12 145));
+  --color-accent-ink: light-dark(oklch(96.5% 0.013 85), oklch(17% 0.012 60));
+  --color-focus: var(--color-accent);
+
+  /* Status palette for the pressure bands, earth-toned. Only one shows at a time, always beside its label. */
+  --color-status-calm: var(--color-accent);
+  --color-status-inflating: oklch(76% 0.15 80);
+  --color-status-stretched: oklch(64% 0.15 42);
+  --color-status-critical: oklch(54% 0.17 28);
+  --color-status-burst: var(--color-ink);
+
+  /* Type. Newsreader (editorial serif) for display, IBM Plex Sans for body and data, IBM Plex Mono for labels. */
+  --font-display: 'Newsreader Variable', 'Newsreader', Georgia, 'Times New Roman', serif;
+  --font-body: 'IBM Plex Sans Variable', 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --weight-body: 400;
+  --weight-display: 500;
+  --tracking-display: -0.012em;
+
+  --text-xs: 0.7rem;
+  --text-sm: 0.8125rem;
+  --text-base: 1rem;
+  --text-md: 1.25rem;
+  --text-lg: 1.5625rem;
+  --text-xl: 1.9531rem;
+  --text-display-s: clamp(1.75rem, 2.2vw + 1rem, 2.75rem);
+  --text-display: clamp(2.4rem, 3.4vw + 1rem, 4rem);
+  --text-figure: clamp(4rem, 5.5vw + 1rem, 5.75rem);
+
+  /* Space, 4pt scale. */
+  --space-3xs: 0.125rem;
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2.5rem;
+  --space-2xl: 4rem;
+  --space-3xl: 6rem;
+
+  --page-max: 74rem;
+  --page-gutter: clamp(1rem, 4vw, 2.5rem);
+
+  --rule: 1px;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in: cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-micro: 120ms;
+  --dur-short: 220ms;
+  --dur-long: 420ms;
+  --dur-draw: 900ms;
+
+  --shadow-whisper: 0 1px 2px oklch(30% 0.03 60 / 0.1), 0 8px 24px oklch(30% 0.03 60 / 0.08);
+  --grain-opacity: 0.07;
+  --grain-filter: none;
+
+  --z-base: 1;
+  --z-raised: 10;
+  --z-sticky: 200;
+  --z-toast: 500;
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --weight-body: 370;
+  --grain-opacity: 0.09;
+  --grain-filter: invert(1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --weight-body: 370;
+    --grain-opacity: 0.09;
+    --grain-filter: invert(1);
+  }
+}
+
+/* Browsers without light-dark() (Safari < 17.5, Chrome < 123, Firefox < 120) get the light palette. */
+@supports not (color: light-dark(#000, #fff)) {
+  :root {
+    --color-paper: #f7f3ea;
+    --color-paper-2: #efe9dc;
+    --color-rule: #d7d0c3;
+    --color-rule-2: #c0b6a6;
+    --color-muted: #675b4f;
+    --color-ink-2: #3e2f23;
+    --color-ink: #25170d;
+    --color-accent: #2f6d34;
+    --color-accent-ink: #f7f3ea;
+  }
+}

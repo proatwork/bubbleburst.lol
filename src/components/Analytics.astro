@@ -1,0 +1,48 @@
+---
+/**
+ * GA4 with Consent Mode v2. Nothing renders unless PUBLIC_GA_MEASUREMENT_ID is set.
+ * All storage defaults to denied. In 'advanced' mode gtag.js loads immediately and sends cookieless
+ * pings until consent; in 'basic' mode the loader is injected only after the visitor clicks Allow.
+ */
+import { SITE, STORAGE_KEYS } from '../config.ts';
+
+const id = SITE.gaMeasurementId;
+const consentKey = STORAGE_KEYS.consent;
+const basicMode = SITE.consentMode === 'basic';
+const loaderSrc = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(id)}`;
+---
+{id && (
+  <>
+    <script define:vars={{ id, consentKey, basicMode, loaderSrc }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { window.dataLayer.push(arguments); }
+      window.gtag = gtag;
+      gtag('consent', 'default', {
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        analytics_storage: 'denied',
+        wait_for_update: 500,
+      });
+      var loaded = false;
+      window.bbLoadAnalytics = function () {
+        if (loaded) return;
+        loaded = true;
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = loaderSrc;
+        document.head.appendChild(s);
+      };
+      var granted = false;
+      try {
+        granted = localStorage.getItem(consentKey) === 'granted';
+      } catch (error) {
+        /* storage blocked: stay on the denied default */
+      }
+      if (granted) gtag('consent', 'update', { analytics_storage: 'granted' });
+      gtag('js', new Date());
+      gtag('config', id);
+      if (!basicMode || granted) window.bbLoadAnalytics();
+    </script>
+  </>
+)}
