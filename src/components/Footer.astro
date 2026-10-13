@@ -5,10 +5,10 @@ import { formatTimestamp } from '../lib/format.ts';
 interface Props {
   updatedAt: string;
   generatedBy: string;
-  analyticsEnabled: boolean;
+  consentUi: boolean;
 }
 
-const { updatedAt, generatedBy, analyticsEnabled } = Astro.props;
+const { updatedAt, generatedBy, consentUi } = Astro.props;
 ---
 <footer class="foot-line page">
   <p>
@@ -19,7 +19,7 @@ const { updatedAt, generatedBy, analyticsEnabled } = Astro.props;
     <span>Refreshed several times a day</span>
     <span class="sep" aria-hidden="true">·</span>
     <span>Not financial advice</span>
-    {analyticsEnabled && (
+    {consentUi && (
       <>
         <span class="sep" aria-hidden="true">·</span>
         <button class="btn-link" type="button" data-consent-open>Cookie settings</button>

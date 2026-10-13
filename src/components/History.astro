@@ -1,7 +1,7 @@
 ---
 import { BANDS, bandFor } from '../lib/bands.ts';
 import { formatShortDate, formatTimestamp } from '../lib/format.ts';
-import { daysOf, type SeriesPoint } from '../lib/history.ts';
+import { daysOf, slugFor, type SeriesPoint } from '../lib/history.ts';
 
 interface Props {
   points: SeriesPoint[];
@@ -121,7 +121,7 @@ const serialised = JSON.stringify(points.map((p) => ({ at: p.at, pressure: p.pre
       <tbody>
         {[...points].reverse().map((p) => (
           <tr>
-            <td><time datetime={p.at}>{formatTimestamp(p.at)}</time></td>
+            <td><a href={`/archive/${slugFor(p.at)}/`}><time datetime={p.at}>{formatTimestamp(p.at)}</time></a></td>
             <td class="tnum">{p.pressure}</td>
             <td>{bandFor(p.pressure).label}</td>
             <td class="tnum">{p.indicatorScore !== undefined ? p.indicatorScore.toFixed(1) : '—'}</td>

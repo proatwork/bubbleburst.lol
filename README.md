@@ -66,6 +66,8 @@ The limits live in `src/lib/limits.ts` and the bands in `src/lib/bands.ts`.
 
 ## History
 
+Every archived reading is also its own page at `/archive/<timestamp>/`, rendered with the same components as the live page and a banner linking back; the rows of the "All readings as a table" list link to them.
+
 Every run copies the previous `content/status.json` to `content/history/<updatedAt with the colons removed>.json` before writing the new one. The build reads every file in that folder plus the live file, keeps `updatedAt`, `pressure`, `composite.indicatorScore` and each indicator's `score`, de-duplicates by timestamp, and draws the "Pressure over time" chart and the per-indicator sparklines from them. A file that cannot be parsed is skipped with a warning in the build log, never a failed build, so old archives that predate a field still work.
 
 ## Pressure bands
@@ -95,7 +97,7 @@ The site is fully static, so it also works on any host that serves files.
 ## How the page behaves
 
 - **Theme.** The switch in the header cycles Auto → Light → Dark. Auto follows the operating system. A manual choice is stored in `localStorage` under `bb:theme` and applied before first paint, so there is no flash.
-- **Analytics.** GA4 runs with Consent Mode v2 and every storage type defaulted to denied. `consentMode` in `src/config.ts` picks the strictness: `advanced` (default) loads gtag.js on every visit, so until a visitor clicks "Allow analytics" Google only receives cookieless pings and can model the missing traffic; `basic` loads nothing from Google until the visitor allows it, which is the strictest reading of EU guidance but gives you no data on visitors who decline or ignore the bar. The choice is stored under `bb:consent`; declining after an earlier allow also deletes the `_ga` cookies. "Cookie settings" in the footer reopens the bar. Set `consentBanner: false` to drop the bar if you move consent to a dedicated consent management platform. The bar names no data controller and links no privacy notice because the site has none yet; add both before launch.
+- **Analytics.** GA4 loads on every visit with no consent bar, because the audience is US-only (`consentMode: 'none'` in `src/config.ts`). Before serving EU visitors switch it to `advanced` (Consent Mode v2, cookieless pings until the visitor allows cookies) or `basic` (nothing loads from Google until allowed); both bring back the consent bar and the "Cookie settings" footer link, and declining deletes the `_ga` cookies.
 - **Fonts.** Newsreader (display), IBM Plex Sans (body and figures) and IBM Plex Mono (labels), self-hosted from the `@fontsource` packages so no request goes to Google Fonts. To change them, swap the imports at the top of `src/pages/index.astro` and the `--font-*` tokens in `src/styles/tokens.css`.
 - **Times.** The HTML carries every timestamp in UTC; a few lines of script convert them to the visitor's local time zone, so the page is correct without JavaScript and friendlier with it.
 - **Meter.** Plain HTML and CSS. A track split into the four bands fills up to the score and the number counts up on load; both are skipped when the visitor prefers reduced motion. Without JavaScript the final value renders statically.

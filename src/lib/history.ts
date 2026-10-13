@@ -86,3 +86,8 @@ export function daysOf(points: readonly SeriesPoint[]): string[] {
   for (const point of points) days.add(new Date(point.time).toISOString().slice(0, 10));
   return Array.from(days).sort();
 }
+
+/** URL slug for a reading: its timestamp with the colons removed, e.g. 2026-10-13T074603Z. */
+export function slugFor(updatedAt: string): string {
+  return updatedAt.replace(/\.\d+(?=Z$|[+-]\d{2}:\d{2}$)/, '').replace(/:/g, '');
+}

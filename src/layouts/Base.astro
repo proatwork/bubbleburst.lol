@@ -1,0 +1,88 @@
+---
+import '@fontsource-variable/newsreader/standard.css';
+import '@fontsource-variable/ibm-plex-sans';
+import '@fontsource/ibm-plex-mono/400.css';
+import '@fontsource/ibm-plex-mono/500.css';
+import '../styles/tokens.css';
+import '../styles/global.css';
+
+import { SITE, STORAGE_KEYS } from '../config.ts';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Analytics from '../components/Analytics.astro';
+import ConsentBar from '../components/ConsentBar.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Site-relative path with a leading slash, used for the canonical URL. */
+  path: string;
+  jsonLd: Record<string, unknown>;
+  updatedAt: string;
+  generatedBy: string;
+}
+
+const { title, description, path, jsonLd, updatedAt, generatedBy } = Astro.props;
+const canonical = SITE.url ? `${SITE.url}${path}` : undefined;
+const analyticsEnabled = Boolean(SITE.gaMeasurementId);
+const consentUi = analyticsEnabled && SITE.consentMode !== 'none';
+const jsonLdText = JSON.stringify({ ...jsonLd, ...(canonical ? { url: canonical } : {}) }).replace(/</g, '\\u003c');
+const themeKey = STORAGE_KEYS.theme;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {canonical && <link rel="canonical" href={canonical} />}
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f3ea" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#130e0a" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    {canonical && <meta property="og:url" content={canonical} />}
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <script type="application/ld+json" set:html={jsonLdText} />
+    <script define:vars={{ themeKey }}>
+      document.documentElement.dataset.js = '';
+      try {
+        var theme = localStorage.getItem(themeKey);
+        if (theme === 'light' || theme === 'dark') document.documentElement.dataset.theme = theme;
+      } catch (error) {
+        /* storage blocked: stay on automatic */
+      }
+    </script>
+    <Analytics />
+  </head>
+  <body>
+    <slot name="top" />
+    <Header updatedAt={updatedAt} />
+    <main class="page">
+      <slot />
+    </main>
+    <Footer updatedAt={updatedAt} generatedBy={generatedBy} consentUi={consentUi} />
+    {consentUi && <ConsentBar />}
+    <script>
+      // Progressive enhancement: the HTML carries UTC; show the visitor's local time instead.
+      const LONG: Intl.DateTimeFormatOptions = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit', timeZoneName: 'short' };
+      const SHORT: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', timeZoneName: 'short' };
+      for (const el of document.querySelectorAll<HTMLTimeElement>('time[data-local]')) {
+        try {
+          const date = new Date(el.dateTime);
+          if (Number.isNaN(date.getTime())) continue;
+          el.textContent = new Intl.DateTimeFormat('en-GB', el.dataset.local === 'long' ? LONG : SHORT).format(date);
+          el.title = `${el.textContent} (your local time)`;
+        } catch {
+          /* leave the UTC text in place */
+        }
+      }
+    </script>
+  </body>
+</html>

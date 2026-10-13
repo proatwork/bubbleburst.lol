@@ -1,19 +1,31 @@
 ---
 /**
- * GA4 with Consent Mode v2. Nothing renders unless PUBLIC_GA_MEASUREMENT_ID is set.
- * All storage defaults to denied. In 'advanced' mode gtag.js loads immediately and sends cookieless
- * pings until consent; in 'basic' mode the loader is injected only after the visitor clicks Allow.
+ * GA4. Nothing renders unless PUBLIC_GA_MEASUREMENT_ID is set.
+ * consentMode 'none': plain tag, tracking on for every visit.
+ * 'advanced' / 'basic': Consent Mode v2 with storage denied until the visitor allows it (see ConsentBar).
  */
 import { SITE, STORAGE_KEYS } from '../config.ts';
 
 const id = SITE.gaMeasurementId;
 const consentKey = STORAGE_KEYS.consent;
-const basicMode = SITE.consentMode === 'basic';
+const mode = SITE.consentMode;
 const loaderSrc = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(id)}`;
 ---
-{id && (
+{id && mode === 'none' && (
   <>
-    <script define:vars={{ id, consentKey, basicMode, loaderSrc }}>
+    <script is:inline async src={loaderSrc}></script>
+    <script define:vars={{ id }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { window.dataLayer.push(arguments); }
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', id);
+    </script>
+  </>
+)}
+{id && mode !== 'none' && (
+  <>
+    <script define:vars={{ id, consentKey, basicMode: mode === 'basic', loaderSrc }}>
       window.dataLayer = window.dataLayer || [];
       function gtag() { window.dataLayer.push(arguments); }
       window.gtag = gtag;

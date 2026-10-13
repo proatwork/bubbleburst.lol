@@ -1,0 +1,110 @@
+---
+/** The body of one reading: meter and headline, composite strip, signals, basket, fundamentals, analysis and sources. */
+import type { Status } from '../lib/schema.ts';
+import type { IndicatorPoint } from '../lib/history.ts';
+import { bandFor, deltaFor } from '../lib/bands.ts';
+import { renderWithCitations, smarten } from '../lib/cite.ts';
+import { formatLongTimestamp } from '../lib/format.ts';
+import Meter from './Meter.astro';
+import Composite from './Composite.astro';
+import Signals from './Signals.astro';
+import Indicators from './Indicators.astro';
+import Analysis from './Analysis.astro';
+import Sources from './Sources.astro';
+
+interface Props {
+  reading: Status;
+  scoreHistory: Map<string, IndicatorPoint[]>;
+}
+
+const { reading, scoreHistory } = Astro.props;
+const band = bandFor(reading.pressure);
+const delta = deltaFor(reading.pressure, reading.previousPressure);
+const sourceCount = reading.sources.length;
+const headline = smarten(reading.headline);
+---
+<section class="hero" aria-labelledby="headline">
+  <Meter pressure={reading.pressure} band={band} delta={delta} />
+  <div class="lede">
+    <p class="label dateline">Status as of <time datetime={reading.updatedAt} data-local="long">{formatLongTimestamp(reading.updatedAt)}</time></p>
+    <h1 id="headline" class:list={{ 'is-long': headline.length > 50 }}>{headline}</h1>
+    <p class="summary" set:html={renderWithCitations(reading.summary, sourceCount)} />
+  </div>
+</section>
+{reading.indicators && reading.composite && (
+  <Composite composite={reading.composite} indicators={reading.indicators} pressure={reading.pressure} />
+)}
+<Signals signals={reading.signals} sourceCount={sourceCount} />
+{reading.indicators && (
+  <div class="block">
+    <Indicators indicators={reading.indicators} sources={reading.sources} sourceCount={sourceCount} history={scoreHistory} />
+  </div>
+)}
+{reading.fundamentals && (
+  <div class="block">
+    <Signals
+      signals={reading.fundamentals}
+      sourceCount={sourceCount}
+      heading="Fundamentals check"
+      caption="Not in the score, on purpose. These are the readings the bull case rests on; the pressure number ignores them so it cannot quietly average them away."
+      tone="unscored"
+    />
+  </div>
+)}
+<slot />
+<div class="columns">
+  <Analysis paragraphs={reading.analysis} sourceCount={sourceCount} />
+  <Sources sources={reading.sources} />
+</div>
+
+<style>
+  .hero {
+    display: grid;
+    gap: var(--space-lg);
+    padding-block: var(--space-lg) var(--space-xl);
+  }
+
+  .lede {
+    display: grid;
+    gap: var(--space-md);
+    align-content: center;
+    min-width: 0;
+  }
+
+  .dateline {
+    color: var(--color-muted);
+  }
+
+  .summary {
+    max-width: 52ch;
+    font-size: var(--text-md);
+    line-height: 1.45;
+    color: var(--color-ink-2);
+    text-wrap: pretty;
+  }
+
+  .block {
+    padding-block: var(--space-xl) 0;
+  }
+
+  .columns {
+    display: grid;
+    gap: var(--space-xl);
+    padding-block: var(--space-xl) var(--space-xl);
+  }
+
+  @media (min-width: 60rem) {
+    .hero {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      gap: var(--space-2xl);
+      align-items: center;
+      padding-block: var(--space-lg) var(--space-xl);
+    }
+
+    .columns {
+      grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+      gap: var(--space-2xl);
+      padding-block: var(--space-xl) var(--space-2xl);
+    }
+  }
+</style>

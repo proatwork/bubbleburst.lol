@@ -1,0 +1,90 @@
+---
+import raw from '../../../content/status.json';
+import { SITE } from '../../config.ts';
+import { bandFor } from '../../lib/bands.ts';
+import { smarten } from '../../lib/cite.ts';
+import { formatTimestamp } from '../../lib/format.ts';
+import { buildSeries, indicatorHistory, slugFor } from '../../lib/history.ts';
+import { loadReadings } from '../../lib/load-history.ts';
+import type { Status } from '../../lib/schema.ts';
+import { parseStatus } from '../../lib/status.ts';
+import Base from '../../layouts/Base.astro';
+import Reading from '../../components/Reading.astro';
+import History from '../../components/History.astro';
+
+interface Props {
+  reading: Status;
+  isLatest: boolean;
+}
+
+export function getStaticPaths() {
+  const current = parseStatus(raw);
+  return loadReadings(current).map((reading) => ({
+    params: { slug: slugFor(reading.updatedAt) },
+    props: { reading, isLatest: reading.updatedAt === current.updatedAt } satisfies Props,
+  }));
+}
+
+const { reading, isLatest } = Astro.props;
+const band = bandFor(reading.pressure);
+const path = `/archive/${slugFor(reading.updatedAt)}/`;
+
+// The chart on an archive page shows the series up to and including this reading.
+const archive = import.meta.glob('../../../content/history/*.json', { eager: true, import: 'default' }) as Record<string, unknown>;
+const series = buildSeries({ ...archive, 'content/status.json': raw });
+const cutoff = Date.parse(reading.updatedAt);
+const points = series.points.filter((p) => p.time <= cutoff);
+const scoreHistory = indicatorHistory(points);
+
+const headline = smarten(reading.headline);
+const description = smarten(reading.summary).replace(/\s*\[\d+\]/g, '');
+const title = `Archive, ${formatTimestamp(reading.updatedAt)}: ${reading.pressure}/100, ${band.label} · ${SITE.name}`;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: title,
+  headline,
+  description,
+  datePublished: reading.updatedAt,
+  dateModified: reading.updatedAt,
+  inLanguage: 'en',
+  isPartOf: { '@type': 'WebSite', name: SITE.name, ...(SITE.url ? { url: `${SITE.url}/` } : {}) },
+};
+---
+<Base title={title} description={description} path={path} jsonLd={jsonLd} updatedAt={reading.updatedAt} generatedBy={reading.generatedBy}>
+  <p class="notice">
+    <span class="label">Archived reading</span>
+    {isLatest ? (
+      <span>This is also the current status. <a href="/">Open the live page</a>.</span>
+    ) : (
+      <span>Written <time datetime={reading.updatedAt} data-local="short">{formatTimestamp(reading.updatedAt)}</time> and superseded since. <a href="/">See the current status</a>.</span>
+    )}
+  </p>
+  <Reading reading={reading} scoreHistory={scoreHistory}>
+    {points.length > 0 && (
+      <div class="block">
+        <History points={points} />
+      </div>
+    )}
+  </Reading>
+</Base>
+
+<style>
+  .notice {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space-2xs) var(--space-sm);
+    margin-top: var(--space-lg);
+    padding: var(--space-sm) var(--space-md);
+    border: var(--rule) solid var(--color-rule-2);
+    border-radius: var(--radius-md);
+    font-size: var(--text-sm);
+    color: var(--color-ink-2);
+  }
+
+  .block {
+    padding-block: var(--space-xl) 0;
+  }
+</style>

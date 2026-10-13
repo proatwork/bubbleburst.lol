@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { buildSeries, daysOf, indicatorHistory } from './history.ts';
+import { buildSeries, daysOf, indicatorHistory, slugFor } from './history.ts';
 
 const a = { updatedAt: '2026-10-13T00:50:00Z', pressure: 70 };
 const b = { updatedAt: '2026-10-13T08:59:16Z', pressure: 77, composite: { indicatorScore: 76.2, method: 'weighted-mean' }, indicators: [{ id: 'shillerCape', score: 91.4 }] };
@@ -33,4 +33,10 @@ test('indicatorHistory groups scores by id, oldest first', () => {
 test('daysOf lists the UTC days covered', () => {
   const { points } = buildSeries({ a, b, c });
   assert.deepEqual(daysOf(points), ['2026-10-13', '2026-10-14']);
+});
+
+test('slugFor strips colons and fractional seconds', () => {
+  assert.equal(slugFor('2026-10-13T07:46:03Z'), '2026-10-13T074603Z');
+  assert.equal(slugFor('2026-10-13T07:46:03.250Z'), '2026-10-13T074603Z');
+  assert.equal(slugFor('2026-10-13T10:46:03+03:00'), '2026-10-13T104603+0300');
 });
