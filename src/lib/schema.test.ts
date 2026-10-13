@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { parseStatus, StatusValidationError } from './status.ts';
-import { loadFixture } from './fixture.test-helper.ts';
+import { BASELINE_SOURCE_COUNT, loadBasketFixture, loadFixture, loadShippedStatus } from './fixture.test-helper.ts';
 
 function expectInvalid(raw: unknown, fragment: string) {
   assert.throws(
@@ -12,8 +12,18 @@ function expectInvalid(raw: unknown, fragment: string) {
 }
 
 test('the shipped content/status.json is valid', () => {
-  const status = parseStatus(loadFixture());
+  const status = parseStatus(loadShippedStatus());
   assert.equal(status.pressure >= 0 && status.pressure <= 100, true);
+});
+
+test('the static fixtures are valid and never share a URL with the shipped content', () => {
+  assert.doesNotThrow(() => parseStatus(loadFixture()));
+  assert.doesNotThrow(() => parseStatus(loadBasketFixture()));
+  const shipped = new Set(loadShippedStatus().sources.map((source) => source.url));
+  for (const source of loadBasketFixture().sources) {
+    assert.equal(new URL(source.url).hostname, 'example.com', `fixture source ${source.url} must live under example.com`);
+    assert.equal(shipped.has(source.url), false, `fixture source ${source.url} collides with the shipped content`);
+  }
 });
 
 test('pressure must be an integer from 0 to 100', () => {
@@ -91,8 +101,6 @@ test('citations in the summary are range-checked and count as citing', () => {
 
 // ---- indicator basket ----------------------------------------------------------------------
 
-import { loadBasketFixture } from './fixture.test-helper.ts';
-
 test('a status with a consistent indicator basket is valid', () => {
   const status = parseStatus(loadBasketFixture());
   assert.equal(status.indicators?.length, 3);
@@ -102,7 +110,7 @@ test('a status with a consistent indicator basket is valid', () => {
 test('a source cited only by an indicator counts as cited', () => {
   assert.doesNotThrow(() => parseStatus(loadBasketFixture()));
   const s = loadBasketFixture();
-  s.indicators![0].sources = s.indicators![1].sources; // the Shiller page is now cited by nobody
+  s.indicators![0].sources = s.indicators![1].sources; // the first indicator's page is now cited by nobody
   expectInvalid(s, 'never cited');
 });
 
@@ -134,7 +142,8 @@ test('composite is required with indicators, and indicators are required with co
   expectInvalid(s, 'composite is required');
   const t = loadBasketFixture();
   delete t.indicators;
-  t.sources.splice(7, 3); // drop the three indicator pages nobody cites any more
+  t.sources.splice(BASELINE_SOURCE_COUNT, 3); // drop the three indicator pages nobody cites any more
+  t.fundamentals![0].sources = [BASELINE_SOURCE_COUNT + 1]; // the fundamentals page moved up by three
   expectInvalid(t, 'needs an indicators list');
 });
 

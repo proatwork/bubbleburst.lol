@@ -3,24 +3,65 @@ import type { Status } from './schema.ts';
 
 const CONTENT_URL = new URL('../../content/status.json', import.meta.url);
 
-/** A deep copy of the shipped content, safe to mutate in a test. */
-export function loadFixture(): Status {
+/**
+ * A deep copy of the shipped content/status.json, safe to mutate in a test.
+ * Only the "shipped content is valid" test should read this: the routine rewrites the file
+ * every run, so nothing else in the suite may depend on what it currently holds.
+ */
+export function loadShippedStatus(): Status {
   return JSON.parse(readFileSync(CONTENT_URL, 'utf8')) as Status;
 }
 
 /**
- * The shipped content plus a small, arithmetically consistent basket: three indicators,
+ * A small, static, valid status: three signals, two paragraphs, three sources, no basket.
+ * Every source lives under example.com so a fixture URL can never collide with a real citation.
+ * Source [1] is cited by paragraph 1 and signal 1, [2] by paragraph 2 and signal 2, [3] by signal 3.
+ */
+const BASELINE: Status = {
+  updatedAt: '2026-10-12T06:00:00Z',
+  pressure: 71,
+  previousPressure: 69,
+  headline: 'AI capex keeps climbing while the market waits for earnings',
+  summary: 'Spending guidance rose again and the index is flat into the big bank prints. [1]',
+  signals: [
+    { label: 'Hyperscaler capex guidance', value: '$420bn', note: 'raised for the third quarter in a row', trend: 'up', sources: [1] },
+    { label: 'S&P 500 futures', value: '-0.1%', note: 'muted ahead of earnings season', trend: 'flat', sources: [2] },
+    { label: 'Fund-manager AI bubble worry', value: '54%', note: 'the most-cited tail risk in the monthly survey', trend: 'up', sources: [3] },
+  ],
+  analysis: [
+    'Capital spending guidance went up again this week, and the market shrugged [1].',
+    'Futures are flat into the first bank earnings, so the next move waits on results [2].',
+  ],
+  sources: [
+    { title: 'Capex guidance roundup', publisher: 'Example Wire', url: 'https://example.com/news/capex-guidance', date: '2026-10-11' },
+    { title: 'Futures muted ahead of bank earnings', publisher: 'Example Markets', url: 'https://example.com/news/futures-muted', date: '2026-10-12' },
+    { title: 'Monthly fund-manager survey', publisher: 'Example Research', url: 'https://example.com/research/fund-manager-survey', date: '2026-10-10' },
+  ],
+  generatedBy: 'test-fixture',
+};
+
+/** How many sources the baseline carries; the basket fixture appends its own after these. */
+export const BASELINE_SOURCE_COUNT = BASELINE.sources.length;
+
+/** A deep copy of the static baseline, safe to mutate in a test. */
+export function loadFixture(): Status {
+  return structuredClone(BASELINE);
+}
+
+/**
+ * The baseline plus a small, arithmetically consistent basket: three indicators,
  * a composite that matches them, one fundamentals tile, and the extra sources they cite.
+ * Indicator sources sit at [BASELINE_SOURCE_COUNT + 1 .. + 3], the fundamentals source at [+ 4].
  * Weighted mean: (91.4·1.5 + 72.0·0.5 + 87.0·0.5) / 2.5 = 86.6; fragility 91.4; trigger 72.0; confirmation 87.0.
  */
 export function loadBasketFixture(): Status {
   const status = loadFixture();
-  const base = status.sources.length;
+  const base = BASELINE_SOURCE_COUNT;
   status.sources.push(
-    { title: 'Shiller PE Ratio', publisher: 'multpl.com', url: 'https://www.multpl.com/shiller-pe', date: '2026-10-09' },
-    { title: 'ICE BofA US High Yield Index Option-Adjusted Spread (BAMLH0A0HYM2)', publisher: 'FRED, Federal Reserve Bank of St. Louis', url: 'https://fred.stlouisfed.org/data/BAMLH0A0HYM2', date: '2026-10-12' },
-    { title: 'Unemployment Rate (UNRATE)', publisher: 'FRED, Federal Reserve Bank of St. Louis', url: 'https://fred.stlouisfed.org/series/UNRATE', date: '2026-10-02' },
-    { title: 'S&P 500 Earnings Season Update', publisher: 'FactSet', url: 'https://insight.factset.com/example-forward-pe', date: '2026-10-09' },
+    { title: 'Shiller PE Ratio', publisher: 'Example Data', url: 'https://example.com/data/shiller-pe', date: '2026-10-09' },
+    { title: 'US High Yield Option-Adjusted Spread', publisher: 'Example Data', url: 'https://example.com/data/high-yield-spread', date: '2026-10-12' },
+    { title: 'Unemployment Rate', publisher: 'Example Data', url: 'https://example.com/data/unemployment-rate', date: '2026-10-02' },
+    { title: 'S&P 500 Earnings Season Update', publisher: 'Example Research', url: 'https://example.com/research/forward-pe', date: '2026-10-09' },
   );
   status.indicators = [
     {
@@ -35,7 +76,7 @@ export function loadBasketFixture(): Status {
       weight: 1.5,
       direction: 'higher',
       trend: 'up',
-      detail: 'S&P 500 cyclically adjusted P/E, multpl.com',
+      detail: 'S&P 500 cyclically adjusted P/E',
       sources: [base + 1],
     },
     {
@@ -49,7 +90,7 @@ export function loadBasketFixture(): Status {
       weight: 0.5,
       direction: 'lower',
       trend: 'flat',
-      detail: 'ICE BofA US HY option-adjusted spread, FRED',
+      detail: 'US HY option-adjusted spread',
       sources: [base + 2],
     },
     {
@@ -65,7 +106,7 @@ export function loadBasketFixture(): Status {
       trend: 'flat',
       stale: false,
       verified: true,
-      detail: 'U-3 unemployment, BLS via FRED',
+      detail: 'U-3 unemployment',
       sources: [base + 3],
     },
   ];
