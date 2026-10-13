@@ -1,0 +1,96 @@
+{
+  "updatedAt": "2026-10-13T01:05:47Z",
+  "pressure": 73,
+  "previousPressure": 73,
+  "headline": "Not yet. Tech slipped on Monday 12 October as Dalio warns of a pop.",
+  "summary": "Monday 12 October was a rotation, not a rout: the Nasdaq fell 0.44% while the Dow rose. Ray Dalio says debt-funded AI spending is a bubble approaching its bursting point as rates climb. September CPI on Wednesday 14 October is the next test.",
+  "signals": [
+    {
+      "label": "Nasdaq, Monday 12 October",
+      "value": "−0.44%",
+      "note": "to 27,246; memory and optical chip names led losses, Dow +0.38%",
+      "trend": "down",
+      "sources": [
+        1
+      ]
+    },
+    {
+      "label": "US 10-year Treasury yield",
+      "value": "5.24%",
+      "note": "cash bond market shut for the holiday; Fed range 3.75–4%",
+      "trend": "flat",
+      "sources": [
+        1,
+        7
+      ]
+    },
+    {
+      "label": "OpenAI annualized revenue",
+      "value": "$50B",
+      "note": "vs the $68B figure that included partners' revenue",
+      "trend": "down",
+      "sources": [
+        2
+      ]
+    },
+    {
+      "label": "Hyperscaler 2026 capex, JPM est.",
+      "value": "$697B",
+      "note": "five largest US hyperscalers, up $173B since the start of the year",
+      "trend": "up",
+      "sources": [
+        5
+      ]
+    }
+  ],
+  "analysis": [
+    "Monday 12 October was a rotation, not a rout. The Nasdaq fell 0.44% to 27,246 and the S&P 500 slipped 0.06% while the Dow rose 0.38% as money moved into value ahead of bank earnings. Sandisk fell over 6% and Lumentum almost 10%; the cash Treasury market was closed, the 10-year at 5.24%. [1] That follows Thursday 8 October, when Nvidia fell about 3%, Oracle nearly 6% and CoreWeave nearly 8% after OpenAI put its annualized revenue at about $50 billion, not the $68 billion figure that included partners' revenue. [2]",
+    "Ray Dalio said at a recent conference that debt-funded AI spending has built a bubble that could pop as rates rise, and that the market is \"in the part of the cycle that is before that but approaching that\". The tech sector ETF is up about 36% this year, with three stocks near 40% of it. [3] OpenAI is seeking at least $30 billion at about $1.4 trillion, up from $852 billion in March, and J.P. Morgan sees the five largest hyperscalers spending $697 billion this year, $173 billion more than in January. [4][5]",
+    "The next tests are dated. JPMorgan reports on Tuesday 13 October, September CPI lands on Wednesday 14 October with headline inflation expected at 3.6%, and TSMC reports on Thursday 15 October. [6] The Fed raised its target range to 3.75–4% on 16 September, so a hot print would push yields, and Dalio's trigger, closer. [7] Why 73: this reading is hours after the last, and Monday's drift plus Dalio's warning add little the 24-year-high yields had not already priced in. [1][3]"
+  ],
+  "sources": [
+    {
+      "title": "Stock Market Today, Oct. 12: Dow Gains as Memory Stocks Weigh on Nasdaq",
+      "publisher": "The Motley Fool",
+      "url": "https://www.fool.com/coverage/stock-market-today/2026/10/12/stock-market-today-oct-12-dow-gains-as-memory-stocks-weigh-on-nasdaq/",
+      "date": "2026-10-12"
+    },
+    {
+      "title": "OpenAI Shows $50 Billion Annualized Revenue as AI Stocks Sell Off",
+      "publisher": "TokenPost",
+      "url": "https://www.tokenpost.com/news/investing/28762",
+      "date": "2026-10-09"
+    },
+    {
+      "title": "Ray Dalio Says This Is When the Artificial Intelligence (AI) Bubble Could Pop",
+      "publisher": "The Motley Fool via AOL",
+      "url": "https://aol.com/articles/ray-dalio-says-artificial-intelligence-163502000.html",
+      "date": "2026-10-12"
+    },
+    {
+      "title": "OpenAI targets $30 billion funding at $1.4 trillion valuation, Bloomberg News reports",
+      "publisher": "Reuters via Investing.com",
+      "url": "https://www.investing.com/news/stock-market-news/openai-targets-30-billion-funding-at-14-trillion-valuation-bloomberg-news-reports-4923324",
+      "date": "2026-09-29"
+    },
+    {
+      "title": "Powering progress: Financing the infrastructure behind US data center growth",
+      "publisher": "J.P. Morgan",
+      "url": "https://www.jpmorgan.com/insights/banking/capital-markets/financing-ai-infrastructure-data-centers",
+      "date": "2026-08-10"
+    },
+    {
+      "title": "The Week Ahead: US CPI, eurozone CPI, JPMorgan earnings",
+      "publisher": "CMC Markets",
+      "url": "https://www.cmcmarkets.com/en-gb/news-and-analysis/the-week-ahead-us-cpi-eurozone-cpi-jpmorgan-earnings",
+      "date": "2026-10-09"
+    },
+    {
+      "title": "Federal Reserve issues FOMC statement",
+      "publisher": "Federal Reserve",
+      "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm",
+      "date": "2026-09-16"
+    }
+  ],
+  "generatedBy": "claude-fable-5-1"
+}
