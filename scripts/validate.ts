@@ -21,7 +21,7 @@ async function main(): Promise<number> {
     const status = parseStatus(raw);
     const band = bandFor(status.pressure);
     console.log(`OK  ${CONTENT_PATH}`);
-    console.log(`    date        ${status.date}`);
+    console.log(`    updatedAt   ${status.updatedAt}`);
     console.log(`    pressure    ${status.pressure}/100 (${band.label})`);
     console.log(`    headline    ${status.headline}`);
     console.log(`    signals     ${status.signals.length}`);

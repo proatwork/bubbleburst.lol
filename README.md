@@ -4,7 +4,7 @@ One static page that answers "will the AI bubble burst?" every day: a pressure s
 
 ## Requirements
 
-- Node 22.18 or newer (type-stripped TypeScript is needed by `npm test` and `npm run validate`; the project is verified on Node 26)
+- Node 22.12 or newer (the project is verified on Node 26)
 - npm
 
 ## Commands
@@ -31,7 +31,7 @@ Set these in `.env` locally (copy `.env.example`) and in the Cloudflare Pages pr
 
 ## Updating the copy
 
-Edit `content/status.json`. Nothing else needs to change. Then:
+Edit `content/status.json`. Nothing else needs to change. The page can be updated any number of times a day; each update replaces the file and the previous one goes to `content/history/`. Then:
 
 ```bash
 npm run validate && npm run build
@@ -41,7 +41,7 @@ Field by field:
 
 | Field | Rules |
 | --- | --- |
-| `date` | `YYYY-MM-DD`, the day this status is for |
+| `updatedAt` | ISO 8601 timestamp with a timezone, e.g. `2026-10-13T08:45:00Z`: the moment this status reflects. Shown on the page in the visitor's local time. Must not be in the future |
 | `pressure` | Integer 0–100. Drives the gauge, the band label and the page title |
 | `previousPressure` | Optional integer 0–100. When present the gauge shows the change since the previous reading |
 | `headline` | ≤ 70 characters. The one-line answer to "will it burst?" |
@@ -50,7 +50,6 @@ Field by field:
 | `analysis` | 2–3 paragraphs, each ≤ 520 characters. **Every paragraph must contain at least one `[n]` citation** |
 | `sources` | 3–10 items with `title`, `publisher`, `url` (https only, unique) and `date`. **Every source must be cited at least once** |
 | `generatedBy` | Model or author identifier shown in the footer |
-| `generatedAt` | ISO 8601 timestamp with timezone, e.g. `2026-10-13T06:00:00Z`. Must not be more than 36 hours before the start of `date` in UTC |
 
 Citations are written inline as `[3]` and refer to the 3rd entry in `sources` (1-based). The build turns them into superscript links. A citation that points past the end of the list, a paragraph without a citation, or a source nobody cites all fail validation. Unknown keys fail too, so a typo can never ship silently.
 
@@ -87,13 +86,14 @@ The site is fully static, so it also works on any host that serves files.
 - **Theme.** The switch in the header cycles Auto → Light → Dark. Auto follows the operating system. A manual choice is stored in `localStorage` under `bb:theme` and applied before first paint, so there is no flash.
 - **Analytics.** GA4 runs with Consent Mode v2 and every storage type defaulted to denied. `consentMode` in `src/config.ts` picks the strictness: `advanced` (default) loads gtag.js on every visit, so until a visitor clicks "Allow analytics" Google only receives cookieless pings and can model the missing traffic; `basic` loads nothing from Google until the visitor allows it, which is the strictest reading of EU guidance but gives you no data on visitors who decline or ignore the bar. The choice is stored under `bb:consent`; declining after an earlier allow also deletes the `_ga` cookies. "Cookie settings" in the footer reopens the bar. Set `consentBanner: false` to drop the bar if you move consent to a dedicated consent management platform. The bar names no data controller and links no privacy notice because the site has none yet; add both before launch.
 - **Fonts.** Newsreader (display), IBM Plex Sans (body and figures) and IBM Plex Mono (labels), self-hosted from the `@fontsource` packages so no request goes to Google Fonts. To change them, swap the imports at the top of `src/pages/index.astro` and the `--font-*` tokens in `src/styles/tokens.css`.
+- **Times.** The HTML carries every timestamp in UTC; a few lines of script convert them to the visitor's local time zone, so the page is correct without JavaScript and friendlier with it.
 - **Meter.** Plain HTML and CSS. A track split into the four bands fills up to the score and the number counts up on load; both are skipped when the visitor prefers reduced motion. Without JavaScript the final value renders statically.
 
 ## Repository layout
 
 ```
 content/status.json      the daily copy and sources (the only file the routine edits)
-content/history/         optional archive of past days
+content/history/         archive of previous readings, one file per update, named by timestamp
 src/pages/index.astro    the page: head tags, layout, build-time validation
 src/components/          Header, Meter, Signals, Analysis, Sources, Footer, ThemeToggle, Analytics, ConsentBar
 src/lib/                 schema, bands, citation rendering, formatting, and their tests

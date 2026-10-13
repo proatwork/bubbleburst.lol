@@ -5,15 +5,15 @@
   "description": "Daily AI bubble status: one page, one score, sourced analysis.",
   "type": "module",
   "engines": {
-    "node": ">=22.18.0"
+    "node": ">=22.12.0"
   },
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "validate": "node scripts/validate.ts",
-    "test": "node --test src/lib/*.test.ts",
+    "validate": "node --import tsx scripts/validate.ts",
+    "test": "node --import tsx --test src/lib/*.test.ts",
     "deploy": "astro build && npx --yes wrangler@4 pages deploy dist --project-name bubble-burst"
   },
   "dependencies": {
@@ -26,6 +26,7 @@
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
     "@types/node": "^24.19.2",
+    "tsx": "^4.23.15",
     "typescript": "^5.9.0"
   }
 }

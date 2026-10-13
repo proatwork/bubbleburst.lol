@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-13",
+  "updatedAt": "2026-10-13T00:50:26Z",
   "pressure": 72,
   "headline": "Not yet. But the market just flinched.",
   "summary": "Record highs last Tuesday, a 3–8% rout in AI names on Thursday over a roughly $20 billion revenue shortfall at OpenAI, then a full rebound by Friday. Spending and valuations keep climbing while rates rise. Stretched, not broken. [2]",
@@ -99,6 +99,5 @@
       "date": "2026-09-16"
     }
   ],
-  "generatedBy": "claude-fable-5-1",
-  "generatedAt": "2026-10-12T22:38:03Z"
+  "generatedBy": "claude-fable-5-1"
 }

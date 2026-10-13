@@ -1,18 +1,18 @@
 ---
 import { SITE } from '../config.ts';
-import { formatShortDate } from '../lib/format.ts';
+import { formatTimestamp } from '../lib/format.ts';
 import ThemeToggle from './ThemeToggle.astro';
 
 interface Props {
-  date: string;
+  updatedAt: string;
 }
 
-const { date } = Astro.props;
+const { updatedAt } = Astro.props;
 ---
 <header class="nav-edge page">
   <div class="brand">
     <a class="wordmark" href="/">{SITE.name}</a>
-    <span class="label stamp">AI bubble status · {formatShortDate(date)}</span>
+    <span class="label stamp">AI bubble status · <time datetime={updatedAt} data-local="short">{formatTimestamp(updatedAt)}</time></span>
   </div>
   <ThemeToggle />
 </header>

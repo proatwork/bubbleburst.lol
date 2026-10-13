@@ -58,9 +58,16 @@ export const SourceSchema = z
 
 const pressure = z.number().int().min(PRESSURE_MIN).max(PRESSURE_MAX);
 
+const MAX_FUTURE_MS = 60 * 60 * 1000;
+
+const updatedAt = isoDateTime.refine(
+  (v) => Date.parse(v) <= Date.now() + MAX_FUTURE_MS,
+  'updatedAt is in the future; use the current UTC time',
+);
+
 export const StatusSchema = z
   .strictObject({
-    date: isoDate,
+    updatedAt,
     pressure,
     previousPressure: pressure.optional(),
     headline: text(LIMITS.headlineMax),
@@ -69,7 +76,6 @@ export const StatusSchema = z
     analysis: z.array(text(LIMITS.paragraphMax)).min(LIMITS.analysisMin).max(LIMITS.analysisMax),
     sources: z.array(SourceSchema).min(LIMITS.sourcesMin).max(LIMITS.sourcesMax),
     generatedBy: text(LIMITS.generatedByMax),
-    generatedAt: isoDateTime,
   })
   .superRefine((status, ctx) => {
     const sourceCount = status.sources.length;
@@ -110,10 +116,6 @@ export const StatusSchema = z
       }
       urls.add(source.url);
     });
-
-    if (Date.parse(status.generatedAt) < Date.parse(`${status.date}T00:00:00Z`) - 36 * 60 * 60 * 1000) {
-      ctx.addIssue({ code: 'custom', path: ['generatedAt'], message: 'generatedAt is more than 36 hours before the start of the status date (UTC)' });
-    }
   });
 
 export type Status = z.infer<typeof StatusSchema>;

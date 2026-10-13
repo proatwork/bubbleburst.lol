@@ -52,9 +52,17 @@ test('sources must use https', () => {
   expectInvalid(s, 'https');
 });
 
-test('dates must be real calendar dates', () => {
-  expectInvalid({ ...loadFixture(), date: '2026-02-30' }, 'calendar');
-  expectInvalid({ ...loadFixture(), date: '13/10/2026' }, 'YYYY-MM-DD');
+test('updatedAt must be a timezone-qualified ISO timestamp that is not in the future', () => {
+  expectInvalid({ ...loadFixture(), updatedAt: '2026-10-13' }, 'updatedAt');
+  expectInvalid({ ...loadFixture(), updatedAt: '2026-10-13T08:45:00' }, 'timezone');
+  expectInvalid({ ...loadFixture(), updatedAt: '2099-01-01T00:00:00Z' }, 'future');
+  assert.doesNotThrow(() => parseStatus({ ...loadFixture(), updatedAt: '2026-10-12T08:45:00+03:00' }));
+});
+
+test('source dates must be real calendar dates', () => {
+  const s = loadFixture();
+  s.sources[0] = { ...s.sources[0], date: '2026-02-30' };
+  expectInvalid(s, 'calendar');
 });
 
 test('unknown top-level keys are rejected so typos never ship silently', () => {

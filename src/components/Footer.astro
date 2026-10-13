@@ -3,20 +3,20 @@ import { SITE } from '../config.ts';
 import { formatTimestamp } from '../lib/format.ts';
 
 interface Props {
-  generatedAt: string;
+  updatedAt: string;
   generatedBy: string;
   analyticsEnabled: boolean;
 }
 
-const { generatedAt, generatedBy, analyticsEnabled } = Astro.props;
+const { updatedAt, generatedBy, analyticsEnabled } = Astro.props;
 ---
 <footer class="foot-line page">
   <p>
     <span>Written by {SITE.author} ({generatedBy}) from the sources above</span>
     <span class="sep" aria-hidden="true">·</span>
-    <span>Updated {formatTimestamp(generatedAt)}</span>
+    <span>Updated <time datetime={updatedAt} data-local="short">{formatTimestamp(updatedAt)}</time></span>
     <span class="sep" aria-hidden="true">·</span>
-    <span>Updated daily</span>
+    <span>Refreshed several times a day</span>
     <span class="sep" aria-hidden="true">·</span>
     <span>Not financial advice</span>
     {analyticsEnabled && (
