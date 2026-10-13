@@ -1,0 +1,396 @@
+---
+import { BANDS, bandFor } from '../lib/bands.ts';
+import { formatShortDate, formatTimestamp } from '../lib/format.ts';
+import { daysOf, type SeriesPoint } from '../lib/history.ts';
+
+interface Props {
+  points: SeriesPoint[];
+}
+
+const { points } = Astro.props;
+
+const first = points[0];
+const last = points[points.length - 1];
+const DAY = 24 * 60 * 60 * 1000;
+const t0 = first.time;
+// A series that spans less than a day is still drawn across a full day, so one morning's runs do not fill the width.
+const span = Math.max(DAY, last.time - t0);
+const days = daysOf(points);
+const withMean = points.filter((p) => p.indicatorScore !== undefined);
+const hasMean = withMean.length >= 2;
+const rangedBands = BANDS.filter((b) => b.id !== 'burst');
+
+/**
+ * The same chart is drawn at two widths and CSS shows one: SVG text does not reflow, so a 720-unit
+ * drawing squeezed onto a phone would have 5px labels. Both carry identical data.
+ */
+function layout(W: number, H: number) {
+  const PAD = { top: 14, right: W > 480 ? 64 : 40, bottom: 28, left: 30 };
+  const plot = { x: PAD.left, y: PAD.top, w: W - PAD.left - PAD.right, h: H - PAD.top - PAD.bottom };
+  const x = (time: number) => plot.x + ((time - t0) / span) * plot.w;
+  const y = (value: number) => plot.y + (1 - value / 100) * plot.h;
+  const path = (series: { time: number; value: number }[]) =>
+    series.map((p, i) => `${i === 0 ? 'M' : 'L'}${x(p.time).toFixed(1)} ${y(p.value).toFixed(1)}`).join(' ');
+  const maxTicks = W > 480 ? 8 : 4;
+  const everyNth = Math.max(1, Math.ceil(days.length / maxTicks));
+  // The first day's midnight can precede the first reading; that tick is pinned to the plot's left edge.
+  const dayTicks = days
+    .map((day, i) => ({ day, time: Math.max(t0, Date.parse(`${day}T00:00:00Z`)), show: i % everyNth === 0 }))
+    .filter((tick) => tick.time <= t0 + span);
+  return {
+    W,
+    H,
+    plot,
+    x,
+    y,
+    dayTicks,
+    pressurePath: path(points.map((p) => ({ time: p.time, value: p.pressure }))),
+    meanPath: hasMean ? path(withMean.map((p) => ({ time: p.time, value: p.indicatorScore as number }))) : null,
+  };
+}
+
+const variants = [
+  { name: 'wide', ...layout(720, 240) },
+  { name: 'narrow', ...layout(360, 220) },
+];
+
+const readings = points.length;
+const serialised = JSON.stringify(points.map((p) => ({ at: p.at, pressure: p.pressure, mean: p.indicatorScore ?? null })));
+---
+<section class="history" aria-labelledby="history-heading">
+  <div class="head">
+    <h2 id="history-heading">Pressure over time</h2>
+    <p class="caption">
+      {readings === 1 ? 'One reading so far' : `${readings} readings since ${formatShortDate(first.at)}`}. Every run adds a point; the washes behind the line are the bands on the meter above.
+    </p>
+  </div>
+
+  <figure class="chart" data-points={serialised}>
+    {variants.map((v) => (
+      <svg class={v.name} viewBox={`0 0 ${v.W} ${v.H}`} role="img" aria-labelledby="history-heading">
+        {rangedBands.map((band) => (
+          <rect class="zone" data-band={band.id} x={v.plot.x} y={v.y(band.max + 1)} width={v.plot.w} height={v.y(band.min) - v.y(band.max + 1)} />
+        ))}
+        {rangedBands.map((band) => (
+          <text class="zone-label" x={v.plot.x + v.plot.w - 4} y={v.y(band.min) - 4} text-anchor="end">{band.label}</text>
+        ))}
+
+        {[0, 25, 50, 75, 100].map((value) => (
+          <>
+            <line class="grid" x1={v.plot.x} x2={v.plot.x + v.plot.w} y1={v.y(value)} y2={v.y(value)} />
+            <text class="tick" x={v.plot.x - 6} y={v.y(value)} text-anchor="end" dominant-baseline="middle">{value}</text>
+          </>
+        ))}
+
+        {v.dayTicks.map((tick) => (
+          <>
+            <line class="grid" x1={v.x(tick.time)} x2={v.x(tick.time)} y1={v.plot.y} y2={v.plot.y + v.plot.h} />
+            {tick.show && <text class="tick" x={v.x(tick.time) + 3} y={v.H - 9} text-anchor="start">{formatShortDate(tick.day)}</text>}
+          </>
+        ))}
+
+        {v.meanPath && <path class="line mean" d={v.meanPath} />}
+        {v.meanPath && withMean.map((p) => <circle class="dot mean" cx={v.x(p.time)} cy={v.y(p.indicatorScore as number)} r="4" />)}
+
+        <path class="line pressure" d={v.pressurePath} />
+        {points.map((p) => (
+          <circle class="dot pressure" cx={v.x(p.time)} cy={v.y(p.pressure)} r="4">
+            <title>{formatTimestamp(p.at)} · {p.pressure}/100 {bandFor(p.pressure).label}{p.indicatorScore !== undefined ? ` · indicators ${Math.round(p.indicatorScore)}` : ''}</title>
+          </circle>
+        ))}
+        <text class="end-label" x={v.x(last.time) + 9} y={v.y(last.pressure)} dominant-baseline="middle">{last.pressure}</text>
+
+        <line class="crosshair" x1="0" x2="0" y1={v.plot.y} y2={v.plot.y + v.plot.h} data-hidden="" />
+      </svg>
+    ))}
+    <div class="tooltip" role="status" aria-live="polite" hidden></div>
+    {hasMean && (
+      <figcaption class="legend">
+        <span class="key"><i class="swatch pressure"></i>Published pressure</span>
+        <span class="key"><i class="swatch mean"></i>Indicator mean</span>
+      </figcaption>
+    )}
+  </figure>
+
+  <details class="table">
+    <summary>All readings as a table</summary>
+    <table>
+      <thead>
+        <tr><th scope="col">Reading (UTC)</th><th scope="col">Pressure</th><th scope="col">Band</th><th scope="col">Indicator mean</th></tr>
+      </thead>
+      <tbody>
+        {[...points].reverse().map((p) => (
+          <tr>
+            <td><time datetime={p.at}>{formatTimestamp(p.at)}</time></td>
+            <td class="tnum">{p.pressure}</td>
+            <td>{bandFor(p.pressure).label}</td>
+            <td class="tnum">{p.indicatorScore !== undefined ? p.indicatorScore.toFixed(1) : '—'}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </details>
+</section>
+
+<style>
+  .history {
+    display: grid;
+    gap: var(--space-md);
+  }
+
+  .head {
+    display: grid;
+    gap: var(--space-2xs);
+  }
+
+  .caption {
+    max-width: 64ch;
+    font-size: var(--text-sm);
+    color: var(--color-muted);
+    text-wrap: pretty;
+  }
+
+  .chart {
+    position: relative;
+    margin: 0;
+    display: grid;
+    gap: var(--space-xs);
+  }
+
+  svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    touch-action: pan-y;
+  }
+
+  svg.wide {
+    display: none;
+  }
+
+  @media (min-width: 48rem) {
+    svg.wide {
+      display: block;
+    }
+
+    svg.narrow {
+      display: none;
+    }
+  }
+
+  .zone {
+    --status: var(--color-status-calm);
+    fill: color-mix(in oklch, var(--status) 9%, transparent);
+  }
+
+  .zone[data-band='inflating'] { --status: var(--color-status-inflating); }
+  .zone[data-band='stretched'] { --status: var(--color-status-stretched); }
+  .zone[data-band='critical'] { --status: var(--color-status-critical); }
+
+  .zone-label,
+  .tick {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    fill: var(--color-muted);
+  }
+
+  .zone-label {
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    opacity: 0.75;
+  }
+
+  .grid {
+    stroke: var(--color-rule);
+    stroke-width: 1;
+    vector-effect: non-scaling-stroke;
+  }
+
+  .line {
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    vector-effect: non-scaling-stroke;
+  }
+
+  .line.pressure {
+    stroke: var(--color-ink);
+  }
+
+  .line.mean {
+    stroke: var(--color-accent);
+  }
+
+  /* Markers carry a 2px ring in the surface colour so they stay legible where lines cross. */
+  .dot {
+    stroke: var(--color-paper);
+    stroke-width: 2;
+    vector-effect: non-scaling-stroke;
+  }
+
+  .dot.pressure {
+    fill: var(--color-ink);
+  }
+
+  .dot.mean {
+    fill: var(--color-accent);
+  }
+
+  .end-label {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 600;
+    fill: var(--color-ink);
+  }
+
+  .crosshair {
+    stroke: var(--color-rule-2);
+    stroke-width: 1;
+    vector-effect: non-scaling-stroke;
+    pointer-events: none;
+  }
+
+  .crosshair[data-hidden] {
+    display: none;
+  }
+
+  .tooltip {
+    position: absolute;
+    top: 0;
+    transform: translate(-50%, -100%) translateY(-8px);
+    padding: var(--space-2xs) var(--space-xs);
+    border-radius: var(--radius-sm);
+    background: var(--color-ink);
+    color: var(--color-paper);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    white-space: nowrap;
+    pointer-events: none;
+    box-shadow: var(--shadow-whisper);
+    z-index: var(--z-raised);
+  }
+
+  .tooltip[hidden] {
+    display: none;
+  }
+
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2xs) var(--space-md);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  .key {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+  }
+
+  .swatch {
+    width: 14px;
+    height: 2px;
+    border-radius: 1px;
+    background: var(--color-ink);
+  }
+
+  .swatch.mean {
+    background: var(--color-accent);
+  }
+
+  .table {
+    font-size: var(--text-sm);
+    color: var(--color-muted);
+  }
+
+  .table summary {
+    cursor: pointer;
+    width: fit-content;
+  }
+
+  table {
+    margin-top: var(--space-xs);
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 48rem;
+  }
+
+  th,
+  td {
+    text-align: left;
+    padding: var(--space-2xs) var(--space-sm) var(--space-2xs) 0;
+    border-bottom: var(--rule) solid var(--color-rule);
+    vertical-align: top;
+  }
+
+  th {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+</style>
+
+<script>
+  type Point = { at: string; pressure: number; mean: number | null };
+
+  const figure = document.querySelector<HTMLElement>('.history .chart');
+  const tooltip = figure?.querySelector<HTMLElement>('.tooltip');
+
+  if (figure && tooltip) {
+    const points: Point[] = JSON.parse(figure.dataset.points ?? '[]');
+    const format = new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+    const bands: Array<[number, string]> = [[24, 'Calm'], [49, 'Inflating'], [74, 'Stretched'], [99, 'Critical'], [100, 'Burst']];
+    const bandOf = (p: number) => (bands.find(([max]) => p <= max) ?? bands[bands.length - 1])[1];
+
+    for (const svg of figure.querySelectorAll('svg')) {
+      const crosshair = svg.querySelector<SVGLineElement>('.crosshair');
+      const dots = Array.from(svg.querySelectorAll<SVGCircleElement>('.dot.pressure'));
+      if (!crosshair || dots.length === 0) continue;
+
+      const show = (index: number) => {
+        const dot = dots[index];
+        const point = points[index];
+        if (!dot || !point) return;
+        const cx = dot.cx.baseVal.value;
+        crosshair.setAttribute('x1', String(cx));
+        crosshair.setAttribute('x2', String(cx));
+        crosshair.removeAttribute('data-hidden');
+
+        const rect = svg.getBoundingClientRect();
+        const figureRect = figure.getBoundingClientRect();
+        tooltip.style.left = `${rect.left - figureRect.left + (cx / svg.viewBox.baseVal.width) * rect.width}px`;
+        tooltip.style.top = `${rect.top - figureRect.top + (dot.cy.baseVal.value / svg.viewBox.baseVal.height) * rect.height}px`;
+        const mean = point.mean === null ? '' : ` · indicators ${Math.round(point.mean)}`;
+        tooltip.textContent = `${format.format(new Date(point.at))} · ${point.pressure} ${bandOf(point.pressure)}${mean}`;
+        tooltip.hidden = false;
+      };
+
+      svg.addEventListener('pointermove', (event) => {
+        const rect = svg.getBoundingClientRect();
+        const vx = ((event.clientX - rect.left) / rect.width) * svg.viewBox.baseVal.width;
+        let best = 0;
+        let bestDistance = Infinity;
+        dots.forEach((dot, i) => {
+          const d = Math.abs(dot.cx.baseVal.value - vx);
+          if (d < bestDistance) {
+            bestDistance = d;
+            best = i;
+          }
+        });
+        show(best);
+      });
+      svg.addEventListener('pointerleave', () => {
+        crosshair.setAttribute('data-hidden', '');
+        tooltip.hidden = true;
+      });
+    }
+  }
+</script>

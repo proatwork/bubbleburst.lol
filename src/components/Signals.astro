@@ -1,22 +1,31 @@
 ---
 import type { Signal } from '../lib/schema.ts';
 import { renderCitationLinks, renderText } from '../lib/cite.ts';
+import { TREND_ARROWS } from '../lib/trend.ts';
 
 interface Props {
   signals: Signal[];
   sourceCount: number;
+  /** Optional section heading; the key-signals strip under the hero has none. */
+  heading?: string;
+  /** One line under the heading, e.g. what these tiles are and are not. */
+  caption?: string;
+  /** 'scored' (default) is the filled strip; 'unscored' is outlined, for tiles the score ignores on purpose. */
+  tone?: 'scored' | 'unscored';
+  ariaLabel?: string;
 }
 
-const { signals, sourceCount } = Astro.props;
-
-const ARROWS: Record<NonNullable<Signal['trend']>, { d: string; word: string }> = {
-  up: { d: 'M6 12V2M2 6l4-4 4 4', word: 'rising' },
-  down: { d: 'M6 2v10M2 8l4 4 4-4', word: 'falling' },
-  flat: { d: 'M1 7h10M8 4l3 3-3 3', word: 'flat' },
-};
+const { signals, sourceCount, heading, caption, tone = 'scored', ariaLabel = 'Key signals' } = Astro.props;
+const headingId = heading ? `${heading.toLowerCase().replace(/[^a-z0-9]+/g, '-')}-heading` : undefined;
 ---
-<section class="signals" aria-label="Key signals">
-  <ul class="strip">
+<section class="signals" data-tone={tone} aria-label={heading ? undefined : ariaLabel} aria-labelledby={headingId}>
+  {heading && (
+    <div class="head">
+      <h2 id={headingId}>{heading}</h2>
+      {caption && <p class="caption">{caption}</p>}
+    </div>
+  )}
+  <ul class="strip" data-count={signals.length}>
     {signals.map((signal) => (
       <li class="tile">
         <span class="label">{signal.label}</span>
@@ -25,9 +34,9 @@ const ARROWS: Record<NonNullable<Signal['trend']>, { d: string; word: string }> 
           {signal.trend && (
             <span class="trend" data-trend={signal.trend}>
               <svg viewBox="0 0 12 14" width="12" height="14" aria-hidden="true" focusable="false">
-                <path d={ARROWS[signal.trend].d} fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
+                <path d={TREND_ARROWS[signal.trend].d} fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
-              <span class="visually-hidden">{ARROWS[signal.trend].word}</span>
+              <span class="visually-hidden">{TREND_ARROWS[signal.trend].word}</span>
             </span>
           )}
         </span>
@@ -38,6 +47,23 @@ const ARROWS: Record<NonNullable<Signal['trend']>, { d: string; word: string }> 
 </section>
 
 <style>
+  .signals {
+    display: grid;
+    gap: var(--space-md);
+  }
+
+  .head {
+    display: grid;
+    gap: var(--space-2xs);
+  }
+
+  .caption {
+    max-width: 60ch;
+    font-size: var(--text-sm);
+    color: var(--color-muted);
+    text-wrap: pretty;
+  }
+
   .strip {
     list-style: none;
     margin: 0;
@@ -46,6 +72,11 @@ const ARROWS: Record<NonNullable<Signal['trend']>, { d: string; word: string }> 
     grid-template-columns: repeat(2, minmax(0, 1fr));
     background: var(--color-paper-2);
     border-radius: var(--radius-lg);
+  }
+
+  .signals[data-tone='unscored'] .strip {
+    background: transparent;
+    border: var(--rule) dashed var(--color-rule-2);
   }
 
   .tile {
@@ -93,6 +124,11 @@ const ARROWS: Record<NonNullable<Signal['trend']>, { d: string; word: string }> 
   @media (min-width: 60rem) {
     .strip {
       grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    /* Fewer tiles than columns: let each take a column, left-aligned, without stretching the last. */
+    .strip[data-count='1'] {
+      grid-template-columns: minmax(0, 1fr) repeat(3, minmax(0, 1fr));
     }
 
     .tile:nth-child(n + 3) {

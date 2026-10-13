@@ -88,3 +88,116 @@ test('citations in the summary are range-checked and count as citing', () => {
   onlyInSummary.summary = `${onlyInSummary.summary} [${onlyInSummary.sources.length}]`;
   assert.doesNotThrow(() => parseStatus(onlyInSummary));
 });
+
+// ---- indicator basket ----------------------------------------------------------------------
+
+import { loadBasketFixture } from './fixture.test-helper.ts';
+
+test('a status with a consistent indicator basket is valid', () => {
+  const status = parseStatus(loadBasketFixture());
+  assert.equal(status.indicators?.length, 3);
+  assert.equal(status.composite?.indicatorScore, 86.6);
+});
+
+test('a source cited only by an indicator counts as cited', () => {
+  assert.doesNotThrow(() => parseStatus(loadBasketFixture()));
+  const s = loadBasketFixture();
+  s.indicators![0].sources = s.indicators![1].sources; // the Shiller page is now cited by nobody
+  expectInvalid(s, 'never cited');
+});
+
+test('indicatorScore must match the weighted mean of the listed scores', () => {
+  const s = loadBasketFixture();
+  s.composite!.indicatorScore = 70;
+  expectInvalid(s, 'does not match the weighted mean');
+  s.composite!.indicatorScore = 87.5; // within the 1-point tolerance of 86.6
+  assert.doesNotThrow(() => parseStatus(s));
+});
+
+test('sub-scores must match their group means', () => {
+  const s = loadBasketFixture();
+  s.composite!.triggerScore = 40;
+  expectInvalid(s, 'triggerScore 40 does not match');
+});
+
+test('a sub-score for an empty group is rejected', () => {
+  const s = loadBasketFixture();
+  s.indicators!.forEach((i) => { i.group = 'fragility'; });
+  s.composite!.fragilityScore = 86.6;
+  delete s.composite!.triggerScore;
+  expectInvalid({ ...s }, 'no indicator has group "confirmation"');
+});
+
+test('composite is required with indicators, and indicators are required with composite', () => {
+  const s = loadBasketFixture();
+  delete s.composite;
+  expectInvalid(s, 'composite is required');
+  const t = loadBasketFixture();
+  delete t.indicators;
+  t.sources.splice(7, 3); // drop the three indicator pages nobody cites any more
+  expectInvalid(t, 'needs an indicators list');
+});
+
+test('indicatorCount must equal the number of indicators listed', () => {
+  const s = loadBasketFixture();
+  s.composite!.indicatorCount = 2;
+  expectInvalid(s, 'indicatorCount 2 but 3');
+});
+
+test('duplicate indicator ids are rejected', () => {
+  const s = loadBasketFixture();
+  s.indicators![1].id = s.indicators![0].id;
+  expectInvalid(s, 'Duplicate indicator id');
+});
+
+test('indicator ids are camelCase and scores are one-decimal numbers from 0 to 100', () => {
+  const s = loadBasketFixture();
+  s.indicators![0].id = 'Shiller CAPE';
+  expectInvalid(s, 'camelCase');
+  const t = loadBasketFixture();
+  t.indicators![0].score = 91.44;
+  expectInvalid(t, 'one decimal');
+  const u = loadBasketFixture();
+  u.indicators![0].score = 101;
+  expectInvalid(u, 'score');
+});
+
+test('asOf must be a real calendar date', () => {
+  const s = loadBasketFixture();
+  s.indicators![0].asOf = '2026-02-30';
+  expectInvalid(s, 'calendar date');
+});
+
+test('indicator weights stay between 0.5 and 2', () => {
+  const s = loadBasketFixture();
+  s.indicators![0].weight = 3;
+  expectInvalid(s, 'weight');
+});
+
+test('the news adjustment is a small integer', () => {
+  const s = loadBasketFixture();
+  s.composite!.newsAdjustment = 9;
+  expectInvalid(s, 'newsAdjustment');
+  s.composite!.newsAdjustment = 1.5;
+  expectInvalid(s, 'newsAdjustment');
+});
+
+test('fundamentals tiles cite real sources', () => {
+  const s = loadBasketFixture();
+  s.fundamentals![0].sources = [99];
+  expectInvalid(s, 'only');
+});
+
+test('up to 30 sources are accepted', () => {
+  const s = loadBasketFixture();
+  while (s.sources.length < 30) {
+    const n = s.sources.length + 1;
+    s.sources.push({ title: `Extra ${n}`, publisher: 'Test', url: `https://example.com/${n}`, date: '2026-10-01' });
+    s.signals[0].sources.push(n);
+  }
+  assert.doesNotThrow(() => parseStatus(s));
+  const n = s.sources.length + 1;
+  s.sources.push({ title: `Extra ${n}`, publisher: 'Test', url: `https://example.com/${n}`, date: '2026-10-01' });
+  s.signals[0].sources.push(n);
+  expectInvalid(s, 'sources');
+});

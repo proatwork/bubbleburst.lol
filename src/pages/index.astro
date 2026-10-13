@@ -11,10 +11,14 @@ import { SITE, STORAGE_KEYS } from '../config.ts';
 import { bandFor, deltaFor } from '../lib/bands.ts';
 import { renderWithCitations, smarten } from '../lib/cite.ts';
 import { formatLongTimestamp } from '../lib/format.ts';
+import { buildSeries, indicatorHistory } from '../lib/history.ts';
 import { parseStatus } from '../lib/status.ts';
 import Header from '../components/Header.astro';
 import Meter from '../components/Meter.astro';
+import Composite from '../components/Composite.astro';
 import Signals from '../components/Signals.astro';
+import Indicators from '../components/Indicators.astro';
+import History from '../components/History.astro';
 import Analysis from '../components/Analysis.astro';
 import Sources from '../components/Sources.astro';
 import Footer from '../components/Footer.astro';
@@ -26,6 +30,12 @@ const status = parseStatus(raw);
 const band = bandFor(status.pressure);
 const delta = deltaFor(status.pressure, status.previousPressure);
 const sourceCount = status.sources.length;
+
+// The history view is the archive plus the live file. A malformed archive file is skipped, never fatal.
+const archive = import.meta.glob('../../content/history/*.json', { eager: true, import: 'default' }) as Record<string, unknown>;
+const series = buildSeries({ ...archive, 'content/status.json': raw });
+for (const file of series.rejected) console.warn(`history: skipped ${file.name} (${file.reason})`);
+const scoreHistory = indicatorHistory(series.points);
 
 const headline = smarten(status.headline);
 const description = smarten(status.summary).replace(/\s*\[\d+\]/g, '');
@@ -97,7 +107,31 @@ const themeKey = STORAGE_KEYS.theme;
           <p class="summary" set:html={renderWithCitations(status.summary, sourceCount)} />
         </div>
       </section>
+      {status.indicators && status.composite && (
+        <Composite composite={status.composite} indicators={status.indicators} pressure={status.pressure} />
+      )}
       <Signals signals={status.signals} sourceCount={sourceCount} />
+      {status.indicators && (
+        <div class="block">
+          <Indicators indicators={status.indicators} sources={status.sources} sourceCount={sourceCount} history={scoreHistory} />
+        </div>
+      )}
+      {status.fundamentals && (
+        <div class="block">
+          <Signals
+            signals={status.fundamentals}
+            sourceCount={sourceCount}
+            heading="Fundamentals check"
+            caption="Not in the score, on purpose. These are the readings the bull case rests on; the pressure number ignores them so it cannot quietly average them away."
+            tone="unscored"
+          />
+        </div>
+      )}
+      {series.points.length > 0 && (
+        <div class="block">
+          <History points={series.points} />
+        </div>
+      )}
       <div class="columns">
         <Analysis paragraphs={status.analysis} sourceCount={sourceCount} />
         <Sources sources={status.sources} />
@@ -149,10 +183,14 @@ const themeKey = STORAGE_KEYS.theme;
     text-wrap: pretty;
   }
 
+  .block {
+    padding-block: var(--space-xl) 0;
+  }
+
   .columns {
     display: grid;
     gap: var(--space-xl);
-    padding-block: var(--space-lg) var(--space-xl);
+    padding-block: var(--space-xl) var(--space-xl);
   }
 
   @media (min-width: 60rem) {

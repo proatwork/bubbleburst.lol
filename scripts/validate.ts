@@ -27,6 +27,17 @@ async function main(): Promise<number> {
     console.log(`    signals     ${status.signals.length}`);
     console.log(`    paragraphs  ${status.analysis.length}`);
     console.log(`    sources     ${status.sources.length}`);
+    if (status.indicators && status.composite) {
+      const stale = status.indicators.filter((i) => i.stale).length;
+      const unverified = status.indicators.filter((i) => i.verified === false).length;
+      const top = [...status.indicators].sort((a, b) => b.score - a.score).slice(0, 3).map((i) => `${i.id} ${i.score}`).join(', ');
+      console.log(`    indicators  ${status.indicators.length} scored, ${status.composite.missingCount} missing, ${stale} stale, ${unverified} unverified`);
+      console.log(`    composite   ${status.composite.indicatorScore} (fragility ${status.composite.fragilityScore ?? '—'}, trigger ${status.composite.triggerScore ?? '—'}, confirmation ${status.composite.confirmationScore ?? '—'}), news ${status.composite.newsAdjustment >= 0 ? '+' : ''}${status.composite.newsAdjustment}`);
+      console.log(`    highest     ${top}`);
+    } else {
+      console.log('    indicators  none (the page omits the basket, composite and history lines for the indicator mean)');
+    }
+    if (status.fundamentals) console.log(`    fundamentals ${status.fundamentals.length}`);
     return 0;
   } catch (error) {
     if (error instanceof StatusValidationError) {

@@ -1,0 +1,189 @@
+---
+import type { Composite, Indicator } from '../lib/schema.ts';
+import { bandFor } from '../lib/bands.ts';
+import { formatSigned } from '../lib/format.ts';
+import { GROUP_MEANING, bandForScore, formatScore } from '../lib/indicators.ts';
+import { renderText } from '../lib/cite.ts';
+
+interface Props {
+  composite: Composite;
+  indicators: Indicator[];
+  pressure: number;
+}
+
+const { composite, indicators, pressure } = Astro.props;
+
+const stale = indicators.filter((i) => i.stale).length;
+const unverified = indicators.filter((i) => i.verified === false).length;
+const saturated = indicators.filter((i) => i.score >= 100).length;
+
+interface Figure {
+  key: string;
+  label: string;
+  value: string;
+  note: string;
+  bandId?: string;
+}
+
+const figures: Figure[] = [
+  {
+    key: 'indicators',
+    label: 'Indicators say',
+    value: formatScore(composite.indicatorScore),
+    note: `weighted mean of ${composite.indicatorCount} readings`,
+    bandId: bandForScore(composite.indicatorScore).id,
+  },
+];
+if (composite.fragilityScore !== undefined) {
+  figures.push({ key: 'fragility', label: 'Fragility', value: formatScore(composite.fragilityScore), note: GROUP_MEANING.fragility, bandId: bandForScore(composite.fragilityScore).id });
+}
+if (composite.triggerScore !== undefined) {
+  figures.push({ key: 'trigger', label: 'Trigger', value: formatScore(composite.triggerScore), note: GROUP_MEANING.trigger, bandId: bandForScore(composite.triggerScore).id });
+}
+figures.push({
+  key: 'news',
+  label: 'News nudge',
+  value: formatSigned(composite.newsAdjustment),
+  note: composite.reason ?? 'nothing in the last 48 hours the data has not caught up with',
+});
+
+const published = bandFor(pressure);
+const footnotes: string[] = [];
+if (saturated > 0) footnotes.push(saturated === 1 ? '1 reading sits at or beyond a pre-burst level and scores 100' : `${saturated} readings sit at or beyond a pre-burst level and score 100`);
+if (composite.missingCount > 0) footnotes.push(`${composite.missingCount} could not be fetched and ${composite.missingCount === 1 ? 'is' : 'are'} left out`);
+if (stale > 0) footnotes.push(`${stale} carried forward from the previous run`);
+if (unverified > 0) footnotes.push(`${unverified} feed${unverified === 1 ? '' : 's'} not yet verified`);
+---
+<section class="composite" aria-labelledby="composite-heading">
+  <h2 id="composite-heading" class="label">How the number is made</h2>
+  <ol class="flow">
+    {figures.map((figure) => (
+      <li class="step" data-key={figure.key}>
+        <span class="step-label">{figure.label}</span>
+        <span class="figure">
+          {figure.bandId && <i class="dot" data-band={figure.bandId} aria-hidden="true"></i>}
+          {figure.value}
+        </span>
+        <span class="note" set:html={renderText(figure.note)} />
+      </li>
+    ))}
+    <li class="step result" aria-current="true">
+      <span class="step-label">Published</span>
+      <span class="figure"><i class="dot" data-band={published.id} aria-hidden="true"></i>{pressure}</span>
+      <span class="note">drifts toward the indicator mean by at most 8 points a day</span>
+    </li>
+  </ol>
+  {footnotes.length > 0 && <p class="footnote">{footnotes.join(' · ')}.</p>}
+</section>
+
+<style>
+  .composite {
+    display: grid;
+    gap: var(--space-sm);
+    padding-block: var(--space-md) var(--space-lg);
+    border-top: var(--rule) solid var(--color-rule);
+  }
+
+  h2.label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    line-height: 1.4;
+  }
+
+  h2.label::before {
+    content: none;
+  }
+
+  .flow {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-md) var(--space-lg);
+  }
+
+  .step {
+    display: grid;
+    align-content: start;
+    gap: var(--space-3xs);
+    min-width: 0;
+  }
+
+  .step-label {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  .figure {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-family: var(--font-body);
+    font-size: var(--text-xl);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    font-variant-numeric: lining-nums tabular-nums;
+    color: var(--color-ink);
+  }
+
+  .result .figure {
+    color: var(--color-ink);
+  }
+
+  .dot {
+    --status: var(--color-status-calm);
+    width: 0.4em;
+    height: 0.4em;
+    border-radius: 50%;
+    background: var(--status);
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--status) 22%, var(--color-paper));
+  }
+
+  .dot[data-band='inflating'] { --status: var(--color-status-inflating); }
+  .dot[data-band='stretched'] { --status: var(--color-status-stretched); }
+  .dot[data-band='critical'] { --status: var(--color-status-critical); }
+  .dot[data-band='burst'] { --status: var(--color-status-burst); }
+
+  .note {
+    font-size: var(--text-sm);
+    color: var(--color-muted);
+    text-wrap: pretty;
+  }
+
+  .footnote {
+    font-size: var(--text-sm);
+    color: var(--color-muted);
+  }
+
+  @media (min-width: 60rem) {
+    .flow {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+
+    .step + .step {
+      position: relative;
+      padding-inline-start: var(--space-lg);
+      border-inline-start: var(--rule) solid var(--color-rule);
+    }
+
+    /* A small arrow on the rule before the published score: the one step that is a result, not an input. */
+    .result::before {
+      content: '→';
+      position: absolute;
+      inset-inline-start: -0.4em;
+      top: 0.1em;
+      padding-inline: 0.1em;
+      background: var(--color-paper);
+      font-family: var(--font-mono);
+      font-size: var(--text-sm);
+      color: var(--color-muted);
+    }
+  }
+</style>

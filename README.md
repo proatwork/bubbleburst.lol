@@ -1,6 +1,6 @@
 # Bubble Burst — manual
 
-One static page that answers "will the AI bubble burst?" every day: a pressure score from 0 to 100, four signals, a short analysis and the sources behind every claim. Built with Astro, deployed as plain HTML to Cloudflare Pages. All copy lives in one JSON file.
+One static page that answers "will the AI bubble burst?" several times a day: a pressure score from 0 to 100, how that number is made, four signals, a basket of scored indicators, an unscored fundamentals check, the score's history, a short analysis and the sources behind every claim. Built with Astro, deployed as plain HTML to Cloudflare Pages. All copy lives in one JSON file; the history chart is built from the archived copies of it.
 
 ## Requirements
 
@@ -48,14 +48,25 @@ Field by field:
 | `summary` | ≤ 260 characters. Two or three sentences under the headline. May contain `[n]` citations, which are validated like the others |
 | `signals` | 3–4 items. Each has `label` (≤ 36), `value` (≤ 18), `note` (≤ 72), optional `trend` (`up`, `down`, `flat`) and `sources` (list of source numbers, at least one) |
 | `analysis` | 2–3 paragraphs, each ≤ 520 characters. **Every paragraph must contain at least one `[n]` citation** |
-| `sources` | 3–10 items with `title`, `publisher`, `url` (https only, unique) and `date`. **Every source must be cited at least once** |
+| `sources` | 3–30 items with `title`, `publisher`, `url` (https only, unique) and `date`. **Every source must be cited at least once** — by a paragraph, a signal, a fundamentals tile, the summary or an indicator |
 | `generatedBy` | Model or author identifier shown in the footer |
+| `indicators` | Optional, 1–20 items: the scored basket (see below). When present, `composite` is required and the page shows the basket table and the "how the number is made" strip |
+| `composite` | How the basket was combined: `method` (`"weighted-mean"`), `indicatorScore`, optional `fragilityScore`, `triggerScore`, `confirmationScore`, `newsAdjustment` (integer −5…5), optional `reason` (≤ 160), `indicatorCount` (must equal the number of indicators listed), `missingCount` |
+| `fundamentals` | Optional, 1–3 tiles shaped like `signals`: the readings the score ignores on purpose. Shown as an outlined "Fundamentals check" strip |
+
+Each indicator has `id` (camelCase, unique), `label` (≤ 56), `group` (`fragility`, `trigger` or `confirmation`), `value` (a number), `unit` (≤ 28), `asOf` (the date the figure refers to), `score` (0–100, one decimal), optional `previousScore`, `weight` (0.5–2), optional `direction` (`higher` or `lower` = more bubble), optional `trend`, optional `stale` (carried forward because both fetches failed), optional `verified` (false for a feed never fetched successfully in testing), `detail` (≤ 64, what the figure measures and where it comes from) and `sources`. The reference levels, fetch URLs and weights are not in the JSON; they live in `ROUTINE.md`.
+
+The build checks the arithmetic: `indicatorScore` must be within one point of the weighted mean of the listed scores, each sub-score within one point of its group's weighted mean, and `indicatorCount` must equal the number of indicators. A score of 100 means the reading is at or beyond the level reached before a past burst; the page labels those rows rather than treating them as a move.
 
 Citations are written inline as `[3]` and refer to the 3rd entry in `sources` (1-based). The build turns them into superscript links. A citation that points past the end of the list, a paragraph without a citation, or a source nobody cites all fail validation. Unknown keys fail too, so a typo can never ship silently.
 
 Plain straight quotes and `...` are fine in the JSON; the build converts them to typographic punctuation.
 
 The limits live in `src/lib/limits.ts` and the bands in `src/lib/bands.ts`.
+
+## History
+
+Every run copies the previous `content/status.json` to `content/history/<updatedAt with the colons removed>.json` before writing the new one. The build reads every file in that folder plus the live file, keeps `updatedAt`, `pressure`, `composite.indicatorScore` and each indicator's `score`, de-duplicates by timestamp, and draws the "Pressure over time" chart and the per-indicator sparklines from them. A file that cannot be parsed is skipped with a warning in the build log, never a failed build, so old archives that predate a field still work.
 
 ## Pressure bands
 

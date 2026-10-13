@@ -2,7 +2,7 @@
 export const SITE = {
   name: 'Bubble Burst',
   question: 'Will the AI bubble burst?',
-  description: 'A daily, sourced read on the AI bubble: one score from 0 to 100, four signals, a short analysis and the sources behind it.',
+  description: 'A sourced read on the AI bubble, updated several times a day: one score from 0 to 100, the indicators behind it, four signals, a short analysis and the sources behind every claim.',
   author: 'Claude',
   /** Show the analytics consent bar when a GA4 ID is configured. Required for EU visitors. */
   consentBanner: true,
