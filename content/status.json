@@ -1,36 +1,35 @@
 {
-  "updatedAt": "2026-10-13T00:50:26Z",
-  "pressure": 72,
-  "headline": "Not yet. But the market just flinched.",
-  "summary": "Record highs last Tuesday, a 3–8% rout in AI names on Thursday over a roughly $20 billion revenue shortfall at OpenAI, then a full rebound by Friday. Spending and valuations keep climbing while rates rise. Stretched, not broken. [2]",
+  "updatedAt": "2026-10-13T00:57:34Z",
+  "pressure": 73,
+  "previousPressure": 72,
+  "headline": "Not yet. Bond yields at 24-year highs add to the strain.",
+  "summary": "AI shares fell 3–8% on Thursday 8 October over an OpenAI revenue reset, then rebounded on Friday. Funding and spending keep climbing while the 10-year yield sits near 5.25%. Stretched, not broken.",
   "signals": [
     {
       "label": "OpenAI annualized revenue",
       "value": "$50B",
-      "note": "vs the $68B reported a month earlier",
+      "note": "vs the $68B figure that included partners' revenue",
       "trend": "down",
       "sources": [
         1
       ]
     },
     {
-      "label": "Big Tech 2026 AI capex",
-      "value": "$700B+",
-      "note": "guidance from the four largest hyperscalers",
+      "label": "US 10-year Treasury yield",
+      "value": "~5.25%",
+      "note": "24-year high near 5.37% on Wed 7 October",
       "trend": "up",
       "sources": [
-        7,
-        4
+        2
       ]
     },
     {
-      "label": "Fed funds target",
-      "value": "3.75–4%",
-      "note": "raised 16 September, the first hike in three years",
+      "label": "Big Tech 2026 AI capex",
+      "value": "$700B+",
+      "note": "cited total for the largest hyperscalers",
       "trend": "up",
       "sources": [
-        8,
-        4
+        7
       ]
     },
     {
@@ -39,65 +38,59 @@
       "note": "up from $852B at the March round",
       "trend": "up",
       "sources": [
-        5,
-        6
+        4,
+        5
       ]
     }
   ],
   "analysis": [
-    "The S&P 500 closed above 7,800 for the first time on Tuesday 6 October. Two days later the Financial Times reported that OpenAI's annualized revenue was about $50 billion at the end of September, not the $68 billion signalled a month earlier, and Nvidia fell 3%, Oracle nearly 6% and CoreWeave nearly 8% in one session. By Friday a Bloomberg report that OpenAI expects at least $70 billion by year-end had brought the buyers back. [1][2]",
-    "The spending has not blinked. The four largest hyperscalers guide to more than $700 billion of capital expenditure this year, Goldman Sachs puts global AI investment above $1 trillion for 2026, and Alphabet posted its first negative free cash flow since its 2004 IPO to fund its share. [4][7] OpenAI, meanwhile, is sounding out investors for at least $30 billion at roughly $1.4 trillion, 64% above the $852 billion it closed in March. [5][6]",
-    "The classic trigger is dearer money, and it has arrived: on 16 September the Federal Reserve raised its target range to 3.75–4%, its first hike in over three years, and 56% of CEOs tell PwC that AI has delivered neither revenue nor savings. Joachim Klement of Panmure Liberum told Bloomberg TV last week the bubble \"will either burst in 2027 or in 2028\". [8][4][3] Why 72 and not 90: Nvidia's revenue still more than doubled year over year, indices sit at records, and Thursday's dip was bought within a day. [2][4]"
+    "On Thursday 8 October Nvidia fell about 3%, Oracle nearly 6%, CoreWeave nearly 8% and AMD about 4% after OpenAI told investors its annualized revenue was about $50 billion at the end of September. The $68 billion figure that had circulated included partners' gross revenue, and OpenAI's third-quarter run rate still grew 77%. [1] On Friday 9 October the S&P 500 rose 0.6%, finishing the week up 1.2%. [2]",
+    "Funding has not slowed: OpenAI is seeking at least $30 billion at about $1.4 trillion before the new money, as bridge financing in place of an IPO, against the $852 billion it closed in March with $122 billion committed. [4][5] One estimate puts 2026 hyperscaler AI spending above $700 billion. [7] Panmure Liberum's Joachim Klement told Bloomberg TV the bubble \"will either burst in 2027 or in 2028\". [3]",
+    "Money is getting dearer. The 10-year Treasury yield was just below 5.25% on Friday 9 October after touching nearly 5.37% on Wednesday 7 October, a 24-year high, and the Fed raised its target range to 3.75–4% on 16 September. [2][6] Why 73: the yield spike adds strain, but indices sit near records and Thursday's selloff was bought within a day. [2]"
   ],
   "sources": [
     {
-      "title": "Nvidia, Oracle, other AI stocks sink on OpenAI revenue report",
-      "publisher": "CNBC",
-      "url": "https://www.cnbc.com/2026/10/08/open-ai-revenue-nvidia-oracle-coreweave.html",
-      "date": "2026-10-08"
+      "title": "OpenAI Shows $50 Billion Annualized Revenue as AI Stocks Sell Off",
+      "publisher": "TokenPost",
+      "url": "https://www.tokenpost.com/news/investing/28762",
+      "date": "2026-10-09"
     },
     {
-      "title": "Stocks saw new highs and big declines: how the volatile AI trade moved last week's market",
-      "publisher": "CNBC Investing Club",
-      "url": "https://www.cnbc.com/investingclub/2026/10/10/stocks-saw-new-highs-and-big-declines-how-the-volatile-ai-trade-moved-last-weeks-market.html",
-      "date": "2026-10-10"
+      "title": "Markets News, Oct. 9, 2026: Stocks Rise as Oil Prices, Treasury Yields Stabilize; Major Indexes Post Weekly Gains",
+      "publisher": "Investopedia via Yahoo Finance",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/markets-news-oct-9-2026-105547352.html",
+      "date": "2026-10-09"
     },
     {
-      "title": "Mainstream news anchors now talking about the AI bubble bursting at any moment",
+      "title": "Mainstream News Anchors Now Talking About the AI Bubble Bursting at Any Moment",
       "publisher": "Futurism",
       "url": "https://futurism.com/future-society/mainstream-news-anchors-bloomberg-tv-ai-bubble-bursting",
       "date": "2026-10-10"
     },
     {
-      "title": "The AI bubble in 2026: what the data says and when it could burst",
-      "publisher": "AI Eating The World",
-      "url": "https://www.aieatingtheworld.com/articles/ai-bubble-2026-data-warning-signs-burst-forecasts",
-      "date": "2026-09-20"
+      "title": "OpenAI targets $30 billion funding at $1.4 trillion valuation, Bloomberg News reports",
+      "publisher": "Reuters via Investing.com",
+      "url": "https://www.investing.com/news/stock-market-news/openai-targets-30-billion-funding-at-14-trillion-valuation-bloomberg-news-reports-4923324",
+      "date": "2026-09-29"
     },
     {
-      "title": "OpenAI reportedly targets at least $30 billion funding at $1.4 trillion valuation",
-      "publisher": "Pulse 2.0, citing Bloomberg",
-      "url": "https://pulse2.com/openai-reportedly-targets-at-least-30-billion-funding-at-1-4-trillion-valuation/",
-      "date": "2026-09-30"
-    },
-    {
-      "title": "OpenAI valued at $852 billion after mega $122 billion round",
+      "title": "OpenAI Valued at $852 Billion After Mega $122 Billion Round",
       "publisher": "Bloomberg Law",
       "url": "https://news.bloomberglaw.com/tech-and-telecom-law/openai-valued-at-852-billion-after-closing-122-billion-round",
       "date": "2026-04-01"
-    },
-    {
-      "title": "Hyperscalers hit $700 billion in 2026 AI spending plans",
-      "publisher": "24/7 Wall St.",
-      "url": "https://247wallst.com/investing/2026/05/01/hyperscalers-hit-700-billion-in-2026-AI-spending-plans/",
-      "date": "2026-05-01"
     },
     {
       "title": "Federal Reserve issues FOMC statement",
       "publisher": "Federal Reserve",
       "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm",
       "date": "2026-09-16"
+    },
+    {
+      "title": "Hyperscalers Hit $700 Billion in 2026 AI Spending Plans",
+      "publisher": "24/7 Wall St.",
+      "url": "https://247wallst.com/investing/2026/05/01/hyperscalers-hit-700-billion-in-2026-AI-spending-plans/",
+      "date": "2026-05-01"
     }
   ],
-  "generatedBy": "claude-fable-5-1"
+  "generatedBy": "claude-sonnet-5-5"
 }
