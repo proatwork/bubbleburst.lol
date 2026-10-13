@@ -1,14 +1,14 @@
 {
-  "updatedAt": "2026-10-13T00:57:34Z",
+  "updatedAt": "2026-10-13T01:05:47Z",
   "pressure": 73,
-  "previousPressure": 72,
-  "headline": "Not yet. Bond yields at 24-year highs add to the strain.",
-  "summary": "AI shares fell 3–8% on Thursday 8 October over an OpenAI revenue reset, then rebounded on Friday. Funding and spending keep climbing while the 10-year yield sits near 5.25%. Stretched, not broken.",
+  "previousPressure": 73,
+  "headline": "Not yet. Tech slipped on Monday 12 October as Dalio warns of a pop.",
+  "summary": "Monday 12 October was a rotation, not a rout: the Nasdaq fell 0.44% while the Dow rose. Ray Dalio says debt-funded AI spending is a bubble approaching its bursting point as rates climb. September CPI on Wednesday 14 October is the next test.",
   "signals": [
     {
-      "label": "OpenAI annualized revenue",
-      "value": "$50B",
-      "note": "vs the $68B figure that included partners' revenue",
+      "label": "Nasdaq, Monday 12 October",
+      "value": "−0.44%",
+      "note": "to 27,246; memory and optical chip names led losses, Dow +0.38%",
       "trend": "down",
       "sources": [
         1
@@ -16,39 +16,45 @@
     },
     {
       "label": "US 10-year Treasury yield",
-      "value": "~5.25%",
-      "note": "24-year high near 5.37% on Wed 7 October",
-      "trend": "up",
+      "value": "5.24%",
+      "note": "cash bond market shut for the holiday; Fed range 3.75–4%",
+      "trend": "flat",
+      "sources": [
+        1,
+        7
+      ]
+    },
+    {
+      "label": "OpenAI annualized revenue",
+      "value": "$50B",
+      "note": "vs the $68B figure that included partners' revenue",
+      "trend": "down",
       "sources": [
         2
       ]
     },
     {
-      "label": "Big Tech 2026 AI capex",
-      "value": "$700B+",
-      "note": "cited total for the largest hyperscalers",
+      "label": "Hyperscaler 2026 capex, JPM est.",
+      "value": "$697B",
+      "note": "five largest US hyperscalers, up $173B since the start of the year",
       "trend": "up",
       "sources": [
-        7
-      ]
-    },
-    {
-      "label": "OpenAI valuation sought",
-      "value": "$1.4T",
-      "note": "up from $852B at the March round",
-      "trend": "up",
-      "sources": [
-        4,
         5
       ]
     }
   ],
   "analysis": [
-    "On Thursday 8 October Nvidia fell about 3%, Oracle nearly 6%, CoreWeave nearly 8% and AMD about 4% after OpenAI told investors its annualized revenue was about $50 billion at the end of September. The $68 billion figure that had circulated included partners' gross revenue, and OpenAI's third-quarter run rate still grew 77%. [1] On Friday 9 October the S&P 500 rose 0.6%, finishing the week up 1.2%. [2]",
-    "Funding has not slowed: OpenAI is seeking at least $30 billion at about $1.4 trillion before the new money, as bridge financing in place of an IPO, against the $852 billion it closed in March with $122 billion committed. [4][5] One estimate puts 2026 hyperscaler AI spending above $700 billion. [7] Panmure Liberum's Joachim Klement told Bloomberg TV the bubble \"will either burst in 2027 or in 2028\". [3]",
-    "Money is getting dearer. The 10-year Treasury yield was just below 5.25% on Friday 9 October after touching nearly 5.37% on Wednesday 7 October, a 24-year high, and the Fed raised its target range to 3.75–4% on 16 September. [2][6] Why 73: the yield spike adds strain, but indices sit near records and Thursday's selloff was bought within a day. [2]"
+    "Monday 12 October was a rotation, not a rout. The Nasdaq fell 0.44% to 27,246 and the S&P 500 slipped 0.06% while the Dow rose 0.38% as money moved into value ahead of bank earnings. Sandisk fell over 6% and Lumentum almost 10%; the cash Treasury market was closed, the 10-year at 5.24%. [1] That follows Thursday 8 October, when Nvidia fell about 3%, Oracle nearly 6% and CoreWeave nearly 8% after OpenAI put its annualized revenue at about $50 billion, not the $68 billion figure that included partners' revenue. [2]",
+    "Ray Dalio said at a recent conference that debt-funded AI spending has built a bubble that could pop as rates rise, and that the market is \"in the part of the cycle that is before that but approaching that\". The tech sector ETF is up about 36% this year, with three stocks near 40% of it. [3] OpenAI is seeking at least $30 billion at about $1.4 trillion, up from $852 billion in March, and J.P. Morgan sees the five largest hyperscalers spending $697 billion this year, $173 billion more than in January. [4][5]",
+    "The next tests are dated. JPMorgan reports on Tuesday 13 October, September CPI lands on Wednesday 14 October with headline inflation expected at 3.6%, and TSMC reports on Thursday 15 October. [6] The Fed raised its target range to 3.75–4% on 16 September, so a hot print would push yields, and Dalio's trigger, closer. [7] Why 73: this reading is hours after the last, and Monday's drift plus Dalio's warning add little the 24-year-high yields had not already priced in. [1][3]"
   ],
   "sources": [
+    {
+      "title": "Stock Market Today, Oct. 12: Dow Gains as Memory Stocks Weigh on Nasdaq",
+      "publisher": "The Motley Fool",
+      "url": "https://www.fool.com/coverage/stock-market-today/2026/10/12/stock-market-today-oct-12-dow-gains-as-memory-stocks-weigh-on-nasdaq/",
+      "date": "2026-10-12"
+    },
     {
       "title": "OpenAI Shows $50 Billion Annualized Revenue as AI Stocks Sell Off",
       "publisher": "TokenPost",
@@ -56,16 +62,10 @@
       "date": "2026-10-09"
     },
     {
-      "title": "Markets News, Oct. 9, 2026: Stocks Rise as Oil Prices, Treasury Yields Stabilize; Major Indexes Post Weekly Gains",
-      "publisher": "Investopedia via Yahoo Finance",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/markets-news-oct-9-2026-105547352.html",
-      "date": "2026-10-09"
-    },
-    {
-      "title": "Mainstream News Anchors Now Talking About the AI Bubble Bursting at Any Moment",
-      "publisher": "Futurism",
-      "url": "https://futurism.com/future-society/mainstream-news-anchors-bloomberg-tv-ai-bubble-bursting",
-      "date": "2026-10-10"
+      "title": "Ray Dalio Says This Is When the Artificial Intelligence (AI) Bubble Could Pop",
+      "publisher": "The Motley Fool via AOL",
+      "url": "https://aol.com/articles/ray-dalio-says-artificial-intelligence-163502000.html",
+      "date": "2026-10-12"
     },
     {
       "title": "OpenAI targets $30 billion funding at $1.4 trillion valuation, Bloomberg News reports",
@@ -74,23 +74,23 @@
       "date": "2026-09-29"
     },
     {
-      "title": "OpenAI Valued at $852 Billion After Mega $122 Billion Round",
-      "publisher": "Bloomberg Law",
-      "url": "https://news.bloomberglaw.com/tech-and-telecom-law/openai-valued-at-852-billion-after-closing-122-billion-round",
-      "date": "2026-04-01"
+      "title": "Powering progress: Financing the infrastructure behind US data center growth",
+      "publisher": "J.P. Morgan",
+      "url": "https://www.jpmorgan.com/insights/banking/capital-markets/financing-ai-infrastructure-data-centers",
+      "date": "2026-08-10"
+    },
+    {
+      "title": "The Week Ahead: US CPI, eurozone CPI, JPMorgan earnings",
+      "publisher": "CMC Markets",
+      "url": "https://www.cmcmarkets.com/en-gb/news-and-analysis/the-week-ahead-us-cpi-eurozone-cpi-jpmorgan-earnings",
+      "date": "2026-10-09"
     },
     {
       "title": "Federal Reserve issues FOMC statement",
       "publisher": "Federal Reserve",
       "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm",
       "date": "2026-09-16"
-    },
-    {
-      "title": "Hyperscalers Hit $700 Billion in 2026 AI Spending Plans",
-      "publisher": "24/7 Wall St.",
-      "url": "https://247wallst.com/investing/2026/05/01/hyperscalers-hit-700-billion-in-2026-AI-spending-plans/",
-      "date": "2026-05-01"
     }
   ],
-  "generatedBy": "claude-sonnet-5-5"
+  "generatedBy": "claude-fable-5-1"
 }

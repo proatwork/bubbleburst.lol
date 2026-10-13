@@ -1,0 +1,96 @@
+{
+  "updatedAt": "2026-10-13T00:57:34Z",
+  "pressure": 73,
+  "previousPressure": 72,
+  "headline": "Not yet. Bond yields at 24-year highs add to the strain.",
+  "summary": "AI shares fell 3–8% on Thursday 8 October over an OpenAI revenue reset, then rebounded on Friday. Funding and spending keep climbing while the 10-year yield sits near 5.25%. Stretched, not broken.",
+  "signals": [
+    {
+      "label": "OpenAI annualized revenue",
+      "value": "$50B",
+      "note": "vs the $68B figure that included partners' revenue",
+      "trend": "down",
+      "sources": [
+        1
+      ]
+    },
+    {
+      "label": "US 10-year Treasury yield",
+      "value": "~5.25%",
+      "note": "24-year high near 5.37% on Wed 7 October",
+      "trend": "up",
+      "sources": [
+        2
+      ]
+    },
+    {
+      "label": "Big Tech 2026 AI capex",
+      "value": "$700B+",
+      "note": "cited total for the largest hyperscalers",
+      "trend": "up",
+      "sources": [
+        7
+      ]
+    },
+    {
+      "label": "OpenAI valuation sought",
+      "value": "$1.4T",
+      "note": "up from $852B at the March round",
+      "trend": "up",
+      "sources": [
+        4,
+        5
+      ]
+    }
+  ],
+  "analysis": [
+    "On Thursday 8 October Nvidia fell about 3%, Oracle nearly 6%, CoreWeave nearly 8% and AMD about 4% after OpenAI told investors its annualized revenue was about $50 billion at the end of September. The $68 billion figure that had circulated included partners' gross revenue, and OpenAI's third-quarter run rate still grew 77%. [1] On Friday 9 October the S&P 500 rose 0.6%, finishing the week up 1.2%. [2]",
+    "Funding has not slowed: OpenAI is seeking at least $30 billion at about $1.4 trillion before the new money, as bridge financing in place of an IPO, against the $852 billion it closed in March with $122 billion committed. [4][5] One estimate puts 2026 hyperscaler AI spending above $700 billion. [7] Panmure Liberum's Joachim Klement told Bloomberg TV the bubble \"will either burst in 2027 or in 2028\". [3]",
+    "Money is getting dearer. The 10-year Treasury yield was just below 5.25% on Friday 9 October after touching nearly 5.37% on Wednesday 7 October, a 24-year high, and the Fed raised its target range to 3.75–4% on 16 September. [2][6] Why 73: the yield spike adds strain, but indices sit near records and Thursday's selloff was bought within a day. [2]"
+  ],
+  "sources": [
+    {
+      "title": "OpenAI Shows $50 Billion Annualized Revenue as AI Stocks Sell Off",
+      "publisher": "TokenPost",
+      "url": "https://www.tokenpost.com/news/investing/28762",
+      "date": "2026-10-09"
+    },
+    {
+      "title": "Markets News, Oct. 9, 2026: Stocks Rise as Oil Prices, Treasury Yields Stabilize; Major Indexes Post Weekly Gains",
+      "publisher": "Investopedia via Yahoo Finance",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/markets-news-oct-9-2026-105547352.html",
+      "date": "2026-10-09"
+    },
+    {
+      "title": "Mainstream News Anchors Now Talking About the AI Bubble Bursting at Any Moment",
+      "publisher": "Futurism",
+      "url": "https://futurism.com/future-society/mainstream-news-anchors-bloomberg-tv-ai-bubble-bursting",
+      "date": "2026-10-10"
+    },
+    {
+      "title": "OpenAI targets $30 billion funding at $1.4 trillion valuation, Bloomberg News reports",
+      "publisher": "Reuters via Investing.com",
+      "url": "https://www.investing.com/news/stock-market-news/openai-targets-30-billion-funding-at-14-trillion-valuation-bloomberg-news-reports-4923324",
+      "date": "2026-09-29"
+    },
+    {
+      "title": "OpenAI Valued at $852 Billion After Mega $122 Billion Round",
+      "publisher": "Bloomberg Law",
+      "url": "https://news.bloomberglaw.com/tech-and-telecom-law/openai-valued-at-852-billion-after-closing-122-billion-round",
+      "date": "2026-04-01"
+    },
+    {
+      "title": "Federal Reserve issues FOMC statement",
+      "publisher": "Federal Reserve",
+      "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm",
+      "date": "2026-09-16"
+    },
+    {
+      "title": "Hyperscalers Hit $700 Billion in 2026 AI Spending Plans",
+      "publisher": "24/7 Wall St.",
+      "url": "https://247wallst.com/investing/2026/05/01/hyperscalers-hit-700-billion-in-2026-AI-spending-plans/",
+      "date": "2026-05-01"
+    }
+  ],
+  "generatedBy": "claude-sonnet-5-5"
+}
