@@ -10,6 +10,7 @@
       "value": "3.85",
       "note": "beyond any prior burst; score 100 of 100 in the basket",
       "trend": "flat",
+      "eli5": "The value of the 500 biggest US companies divided by their sales. Sales are harder to dress up than profits, so a high ratio says prices have run far ahead of what firms sell.",
       "sources": [
         7
       ]
@@ -19,6 +20,7 @@
       "value": "96%",
       "note": "Q2 2026, Microsoft, Alphabet, Amazon and Meta combined; score 93.5",
       "trend": "up",
+      "eli5": "What Microsoft, Alphabet, Amazon and Meta spend on data centres and chips, as a share of the cash their businesses make. Near 100% means they spend about all they earn.",
       "sources": [
         21,
         22,
@@ -31,6 +33,7 @@
       "value": "−5.46%",
       "note": "6,035.35; SK hynix −10.09%, Samsung −7.39%; forward P/E a record 4.54",
       "trend": "down",
+      "eli5": "South Korea's main stock index, home to the memory-chip makers SK hynix and Samsung. A big one-day drop there shows the AI chip trade being sold hard.",
       "sources": [
         5
       ]
@@ -40,6 +43,7 @@
       "value": "−8%",
       "note": "fifth straight loss on Tuesday 13 October, −0.23% that day; +70% in 2026",
       "trend": "down",
+      "eli5": "The main index of chip-maker shares. Five losing days in a row means the stocks at the heart of the AI boom are being sold, even after a huge run this year.",
       "sources": [
         1
       ]
@@ -220,6 +224,7 @@
       "weight": 1.5,
       "direction": "higher",
       "detail": "S&P 500 cyclically adjusted P/E, multpl.com monthly table",
+      "eli5": "Share prices divided by ten years of average company profits, so one good or bad year cannot fool it. The higher it is, the more people are paying for each dollar of profit.",
       "sources": [
         6
       ],
@@ -235,6 +240,7 @@
       "weight": 1,
       "direction": "higher",
       "detail": "Price over trailing 12-month sales, multpl.com; beyond any burst",
+      "eli5": "The value of the 500 biggest US companies divided by their sales. Sales are harder to dress up than profits, so a high ratio says prices have run far ahead of what firms sell.",
       "sources": [
         7
       ],
@@ -250,6 +256,7 @@
       "weight": 1,
       "direction": "higher",
       "detail": "Ratio of the two index closes on the same day, from FRED",
+      "eli5": "How the tech-heavy Nasdaq compares with the broader S&P 500. When this climbs, money is piling into tech faster than into everything else, which is what past bubbles looked like.",
       "sources": [
         8,
         9
@@ -266,6 +273,7 @@
       "weight": 1,
       "direction": "higher",
       "detail": "FINRA margin debit balances, Aug 2026 vs Aug 2025",
+      "eli5": "How much more money investors have borrowed from their brokers to buy shares than a year ago. Borrowed bets pile up in a boom and get sold in a hurry when prices fall.",
       "sources": [
         10
       ],
@@ -281,6 +289,7 @@
       "weight": 0.75,
       "direction": "higher",
       "detail": "Fed Z.1 via FRED, Q2 2026; beyond any prior burst",
+      "eli5": "The slice of ordinary households' savings that sits in shares. The bigger the slice, the fewer new buyers are left to push prices up, and the harder a fall would hit.",
       "sources": [
         11
       ],
@@ -296,6 +305,7 @@
       "weight": 0.5,
       "direction": "lower",
       "detail": "ICE BofA US High Yield option-adjusted spread, FRED",
+      "eli5": "The extra interest risky companies pay to borrow compared with the US government. A small gap means lenders are relaxed; a widening gap often comes just before trouble.",
       "sources": [
         12
       ],
@@ -311,6 +321,7 @@
       "weight": 0.75,
       "direction": "higher",
       "detail": "Private credit to GDP minus its trend, BIS, Q1 2026",
+      "eli5": "How far total US borrowing has run ahead of its usual path relative to the size of the economy. Near zero is routine; a big positive gap has come before most credit busts.",
       "sources": [
         13
       ],
@@ -326,6 +337,7 @@
       "weight": 1,
       "direction": "higher",
       "detail": "Upper bound 4.00% vs 4.25% a year earlier (−25bp), FRED",
+      "eli5": "How much the Fed has raised its main interest rate over the past year. Higher rates make borrowing dearer and have pricked past bubbles; a year of cuts counts as zero here.",
       "sources": [
         14
       ],
@@ -341,6 +353,7 @@
       "weight": 1.25,
       "direction": "higher",
       "detail": "Constant-maturity yield, US Treasury daily par yield curve",
+      "eli5": "The interest rate the US government pays to borrow for ten years. When it rises, safe bonds compete with shares, and expensive stocks are the first to look less attractive.",
       "sources": [
         15
       ],
@@ -356,6 +369,7 @@
       "weight": 0.5,
       "direction": "lower",
       "detail": "U-3 unemployment, September 2026, BLS via FRED",
+      "eli5": "The share of people looking for work who cannot find it. Very low unemployment is where booms peak; once it starts rising, the economy is usually already turning.",
       "sources": [
         16
       ],
@@ -371,6 +385,7 @@
       "weight": 0.5,
       "direction": "higher",
       "detail": "Fitch subprime auto ABS 60+ day index, July 2026; beyond burst",
+      "eli5": "The share of riskier car loans more than two months behind on payments. Car loans go bad early when households are squeezed, so this is an early warning for the economy.",
       "sources": [
         17
       ],
@@ -386,6 +401,7 @@
       "weight": 0.5,
       "direction": "lower",
       "detail": "NFCI, negative means looser than average, FRED",
+      "eli5": "The Chicago Fed's one-number summary of how easy money is: credit, borrowing and market stress. Below zero means easier than usual, the conditions bubbles grow in.",
       "sources": [
         18
       ],
@@ -402,6 +418,7 @@
       "direction": "higher",
       "verified": false,
       "detail": "PHLX Semiconductor close over S&P 500 close, Yahoo Finance",
+      "eli5": "The main chip-maker index compared with the S&P 500. Chips are the picks and shovels of the AI boom, so this shows how much of the market's bet is riding on it.",
       "sources": [
         19,
         20
@@ -419,6 +436,7 @@
       "direction": "higher",
       "verified": false,
       "detail": "MSFT+GOOGL+AMZN+META, Q2 2026, SEC XBRL 10-Q/10-K cash flows",
+      "eli5": "What Microsoft, Alphabet, Amazon and Meta spend on data centres and chips, as a share of the cash their businesses make. Near 100% means they spend about all they earn.",
       "sources": [
         21,
         22,
@@ -438,6 +456,7 @@
       "direction": "higher",
       "verified": false,
       "detail": "September 2026 revenue NT$511.86bn, TSMC press release",
+      "eli5": "How fast sales are growing at TSMC, the company that makes nearly every advanced AI chip. Its order book is an early read on whether AI demand is still speeding up.",
       "sources": [
         25
       ],
@@ -461,6 +480,7 @@
       "value": "19.1",
       "note": "equal to its 10-year average of 19.1 and below the 5-year 19.8 (FactSet)",
       "trend": "flat",
+      "eli5": "Share prices divided by the profits analysts expect over the next year. At its ten-year average, prices are not running ahead of expected earnings.",
       "sources": [
         26
       ]
@@ -470,6 +490,7 @@
       "value": "+29.6%",
       "note": "Q3 2026 estimate as of 9 October; forward P/E 19.1 (FactSet)",
       "trend": "up",
+      "eli5": "How much more profit the 500 biggest US companies are expected to have made this quarter than a year ago. Fast growth means real earnings, not just hope, back prices.",
       "sources": [
         26
       ]
@@ -479,6 +500,7 @@
       "value": "+54.6% y/y",
       "note": "NT$511.86bn; January–September revenue up 41.1% on 2025",
       "trend": "up",
+      "eli5": "How fast sales are growing at TSMC, the company that makes nearly every advanced AI chip. Its order book is an early read on whether AI demand is still speeding up.",
       "sources": [
         25
       ]
