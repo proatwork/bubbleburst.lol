@@ -5,6 +5,7 @@ import { formatShortDate, formatSigned } from '../lib/format.ts';
 import type { IndicatorPoint } from '../lib/history.ts';
 import { GROUP_LABEL, bandForScore, formatReading, formatScore, isSaturated } from '../lib/indicators.ts';
 import { TREND_ARROWS } from '../lib/trend.ts';
+import Explain from './Explain.astro';
 
 interface Props {
   indicators: Indicator[];
@@ -68,7 +69,11 @@ function scoreChange(indicator: Indicator): number | null {
         <li class="row" id={`indicator-${indicator.id}`} data-band={band.id} data-stale={indicator.stale ? '' : undefined} style={`--score: ${indicator.score}`}>
           <div class="who">
             <span class="name">
-              {indicator.label}
+              {indicator.eli5 ? (
+                <Explain id={`explain-indicator-${indicator.id}`} text={indicator.eli5}>{indicator.label}</Explain>
+              ) : (
+                indicator.label
+              )}
               <span class="group">{GROUP_LABEL[indicator.group]}</span>
             </span>
             <span class="detail" set:html={`${renderText(indicator.detail)}${renderCitationLinks(indicator.sources, sourceCount)}`} />

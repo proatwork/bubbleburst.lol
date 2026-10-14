@@ -99,6 +99,30 @@ test('citations in the summary are range-checked and count as citing', () => {
   assert.doesNotThrow(() => parseStatus(onlyInSummary));
 });
 
+test('eli5 is optional on signals, fundamentals and indicators, and capped at 200 characters', () => {
+  const s = loadBasketFixture();
+  assert.equal(typeof s.signals[0].eli5, 'string');
+  assert.equal(s.signals[2].eli5, undefined);
+  assert.equal(typeof s.indicators![0].eli5, 'string');
+  assert.equal(typeof s.fundamentals![0].eli5, 'string');
+  const parsed = parseStatus(s);
+  assert.equal(parsed.signals[0].eli5, s.signals[0].eli5);
+  assert.equal(parsed.indicators![0].eli5, s.indicators![0].eli5);
+
+  const longSignal = loadFixture();
+  longSignal.signals[0].eli5 = 'x'.repeat(201);
+  expectInvalid(longSignal, 'signals.0.eli5');
+  const longIndicator = loadBasketFixture();
+  longIndicator.indicators![0].eli5 = 'x'.repeat(201);
+  expectInvalid(longIndicator, 'indicators.0.eli5');
+  const longTile = loadBasketFixture();
+  longTile.fundamentals![0].eli5 = 'x'.repeat(201);
+  expectInvalid(longTile, 'fundamentals.0.eli5');
+  const empty = loadFixture();
+  empty.signals[0].eli5 = '   ';
+  expectInvalid(empty, 'signals.0.eli5');
+});
+
 // ---- indicator basket ----------------------------------------------------------------------
 
 test('a status with a consistent indicator basket is valid', () => {

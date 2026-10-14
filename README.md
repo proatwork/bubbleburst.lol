@@ -46,7 +46,7 @@ Field by field:
 | `previousPressure` | Optional integer 0–100. When present the gauge shows the change since the previous reading |
 | `headline` | ≤ 70 characters. The one-line answer to "will it burst?" |
 | `summary` | ≤ 260 characters. Two or three sentences under the headline. May contain `[n]` citations, which are validated like the others |
-| `signals` | 3–4 items. Each has `label` (≤ 36), `value` (≤ 18), `note` (≤ 72), optional `trend` (`up`, `down`, `flat`) and `sources` (list of source numbers, at least one) |
+| `signals` | 3–4 items. Each has `label` (≤ 36), `value` (≤ 18), `note` (≤ 72), optional `trend` (`up`, `down`, `flat`), optional `eli5` (≤ 200, see below) and `sources` (list of source numbers, at least one) |
 | `analysis` | 2–3 paragraphs, each ≤ 520 characters. **Every paragraph must contain at least one `[n]` citation** |
 | `sources` | 3–30 items with `title`, `publisher`, `url` (https only, unique) and `date`. **Every source must be cited at least once** — by a paragraph, a signal, a fundamentals tile, the summary or an indicator |
 | `generatedBy` | Model or author identifier shown in the footer |
@@ -54,7 +54,9 @@ Field by field:
 | `composite` | How the basket was combined: `method` (`"weighted-mean"`), `indicatorScore`, optional `fragilityScore`, `triggerScore`, `confirmationScore`, `newsAdjustment` (integer −5…5), optional `reason` (≤ 160), `indicatorCount` (must equal the number of indicators listed), `missingCount` |
 | `fundamentals` | Optional, 1–3 tiles shaped like `signals`: the readings the score ignores on purpose. Shown as an outlined "Fundamentals check" strip |
 
-Each indicator has `id` (camelCase, unique), `label` (≤ 56), `group` (`fragility`, `trigger` or `confirmation`), `value` (a number), `unit` (≤ 28), `asOf` (the date the figure refers to), `score` (0–100, one decimal), optional `previousScore`, `weight` (0.5–2), optional `direction` (`higher` or `lower` = more bubble), optional `trend`, optional `stale` (carried forward because both fetches failed), optional `verified` (false for a feed never fetched successfully in testing), `detail` (≤ 64, what the figure measures and where it comes from) and `sources`. The reference levels, fetch URLs and weights are not in the JSON; they live in `ROUTINE.md`.
+Each indicator has `id` (camelCase, unique), `label` (≤ 56), `group` (`fragility`, `trigger` or `confirmation`), `value` (a number), `unit` (≤ 28), `asOf` (the date the figure refers to), `score` (0–100, one decimal), optional `previousScore`, `weight` (0.5–2), optional `direction` (`higher` or `lower` = more bubble), optional `trend`, optional `stale` (carried forward because both fetches failed), optional `verified` (false for a feed never fetched successfully in testing), `detail` (≤ 64, what the figure measures and where it comes from), optional `eli5` (≤ 200) and `sources`. The reference levels, fetch URLs and weights are not in the JSON; they live in `ROUTINE.md`.
+
+`eli5` is the plain-language "what is this?" for a signal, a fundamentals tile or an indicator: one or two sentences for someone who has never heard of the figure. When present, the tile's label or the indicator's name gets a dotted underline and shows the text on hover, keyboard focus or tap. The fixed wording for each basket indicator is in `ROUTINE.md`; the "how the number is made" strip has its own, kept in `src/components/Composite.astro`.
 
 The build checks the arithmetic: `indicatorScore` must be within one point of the weighted mean of the listed scores, each sub-score within one point of its group's weighted mean, and `indicatorCount` must equal the number of indicators. A score of 100 means the reading is at or beyond the level reached before a past burst; the page labels those rows rather than treating them as a move.
 
@@ -108,7 +110,7 @@ The site is fully static, so it also works on any host that serves files.
 content/status.json      the daily copy and sources (the only file the routine edits)
 content/history/         archive of previous readings, one file per update, named by timestamp
 src/pages/index.astro    the page: head tags, layout, build-time validation
-src/components/          Header, Meter, Signals, Analysis, Sources, Footer, ThemeToggle, Analytics, ConsentBar
+src/components/          Header, Meter, Composite, Signals, Indicators, Explain (hover explanations), History, Analysis, Sources, Footer, ThemeToggle, Analytics, ConsentBar
 src/lib/                 schema, bands, citation rendering, formatting, and their tests
 src/styles/              tokens.css (colours, type, spacing) and global.css
 src/config.ts            site name, description, consent flag, env lookups

@@ -2,6 +2,7 @@
 import type { Signal } from '../lib/schema.ts';
 import { renderCitationLinks, renderText } from '../lib/cite.ts';
 import { TREND_ARROWS } from '../lib/trend.ts';
+import Explain from './Explain.astro';
 
 interface Props {
   signals: Signal[];
@@ -16,7 +17,8 @@ interface Props {
 }
 
 const { signals, sourceCount, heading, caption, tone = 'scored', ariaLabel = 'Key signals' } = Astro.props;
-const headingId = heading ? `${heading.toLowerCase().replace(/[^a-z0-9]+/g, '-')}-heading` : undefined;
+const slug = heading ? heading.toLowerCase().replace(/[^a-z0-9]+/g, '-') : 'signals';
+const headingId = heading ? `${slug}-heading` : undefined;
 ---
 <section class="signals" data-tone={tone} aria-label={heading ? undefined : ariaLabel} aria-labelledby={headingId}>
   {heading && (
@@ -26,9 +28,11 @@ const headingId = heading ? `${heading.toLowerCase().replace(/[^a-z0-9]+/g, '-')
     </div>
   )}
   <ul class="strip" data-count={signals.length}>
-    {signals.map((signal) => (
+    {signals.map((signal, i) => (
       <li class="tile">
-        <span class="label">{signal.label}</span>
+        <span class="label">
+          {signal.eli5 ? <Explain id={`explain-${slug}-${i + 1}`} text={signal.eli5}>{signal.label}</Explain> : signal.label}
+        </span>
         <span class="value">
           {signal.value}
           {signal.trend && (

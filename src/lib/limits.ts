@@ -16,6 +16,8 @@ export const LIMITS = {
   sourceTitleMax: 160,
   publisherMax: 60,
   generatedByMax: 60,
+  /** The plain-language "what is this?" shown on hover for a signal, fundamentals tile or indicator. */
+  eli5Max: 200,
 
   /** The indicator basket: scored series behind the pressure number. */
   indicatorsMin: 1,

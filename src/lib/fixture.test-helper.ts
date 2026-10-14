@@ -13,7 +13,7 @@ export function loadShippedStatus(): Status {
 }
 
 /**
- * A small, static, valid status: three signals, two paragraphs, three sources, no basket.
+ * A small, static, valid status: three signals (two with an eli5 text), two paragraphs, three sources, no basket.
  * Every source lives under example.com so a fixture URL can never collide with a real citation.
  * Source [1] is cited by paragraph 1 and signal 1, [2] by paragraph 2 and signal 2, [3] by signal 3.
  */
@@ -24,8 +24,8 @@ const BASELINE: Status = {
   headline: 'AI capex keeps climbing while the market waits for earnings',
   summary: 'Spending guidance rose again and the index is flat into the big bank prints. [1]',
   signals: [
-    { label: 'Hyperscaler capex guidance', value: '$420bn', note: 'raised for the third quarter in a row', trend: 'up', sources: [1] },
-    { label: 'S&P 500 futures', value: '-0.1%', note: 'muted ahead of earnings season', trend: 'flat', sources: [2] },
+    { label: 'Hyperscaler capex guidance', value: '$420bn', note: 'raised for the third quarter in a row', trend: 'up', eli5: 'What the biggest cloud companies plan to spend on data centres and chips. When it keeps rising, the boom is still being built.', sources: [1] },
+    { label: 'S&P 500 futures', value: '-0.1%', note: 'muted ahead of earnings season', trend: 'flat', eli5: 'Bets on where the main US stock index will open. A flat reading means the market is waiting rather than moving.', sources: [2] },
     { label: 'Fund-manager AI bubble worry', value: '54%', note: 'the most-cited tail risk in the monthly survey', trend: 'up', sources: [3] },
   ],
   analysis: [
@@ -77,6 +77,7 @@ export function loadBasketFixture(): Status {
       direction: 'higher',
       trend: 'up',
       detail: 'S&P 500 cyclically adjusted P/E',
+      eli5: 'Share prices divided by ten years of average profits, so one odd year cannot fool it. Higher means people pay more for each dollar of profit.',
       sources: [base + 1],
     },
     {
@@ -121,7 +122,7 @@ export function loadBasketFixture(): Status {
     missingCount: 0,
   };
   status.fundamentals = [
-    { label: 'S&P 500 forward P/E', value: '19.1', note: 'at its 10-year average; the strongest "not a bubble" reading', trend: 'flat', sources: [base + 4] },
+    { label: 'S&P 500 forward P/E', value: '19.1', note: 'at its 10-year average; the strongest "not a bubble" reading', trend: 'flat', eli5: 'Share prices divided by the profits analysts expect next year. At its long-run average, prices are not ahead of expected earnings.', sources: [base + 4] },
   ];
   return status;
 }

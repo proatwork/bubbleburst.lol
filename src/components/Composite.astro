@@ -4,6 +4,7 @@ import { bandFor } from '../lib/bands.ts';
 import { formatSigned } from '../lib/format.ts';
 import { GROUP_MEANING, bandForScore, formatScore } from '../lib/indicators.ts';
 import { renderText } from '../lib/cite.ts';
+import Explain from './Explain.astro';
 
 interface Props {
   composite: Composite;
@@ -24,6 +25,15 @@ interface Figure {
   note: string;
   bandId?: string;
 }
+
+/** Plain-language "what is this?" for each step, shown on hover. Fixed wording, so it lives here and not in the JSON. */
+const EXPLAIN: Record<string, string> = {
+  indicators: 'The average of every indicator in the basket, each scored 0 to 100 between a calm level and a pre-burst level. Heavier indicators count for more.',
+  fragility: 'How stretched prices, borrowing and AI spending already are. High fragility means a lot is riding on things going right, not that a fall is near.',
+  trigger: 'Whether money is getting tighter: interest rates, borrowing costs and credit. This is what has set off past bursts once prices were stretched.',
+  news: 'A small manual nudge, at most 3 points either way, for what the last two days of news add that the data has not caught up with yet.',
+  published: 'The number on the meter. It drifts toward what the indicators say by at most 8 points a day, so one odd reading cannot swing it.',
+};
 
 const figures: Figure[] = [
   {
@@ -59,7 +69,9 @@ if (unverified > 0) footnotes.push(`${unverified} feed${unverified === 1 ? '' : 
   <ol class="flow">
     {figures.map((figure) => (
       <li class="step" data-key={figure.key}>
-        <span class="step-label">{figure.label}</span>
+        <span class="step-label">
+          {EXPLAIN[figure.key] ? <Explain id={`explain-composite-${figure.key}`} text={EXPLAIN[figure.key]}>{figure.label}</Explain> : figure.label}
+        </span>
         <span class="figure">
           {figure.bandId && <i class="dot" data-band={figure.bandId} aria-hidden="true"></i>}
           {figure.value}
@@ -68,7 +80,7 @@ if (unverified > 0) footnotes.push(`${unverified} feed${unverified === 1 ? '' : 
       </li>
     ))}
     <li class="step result" aria-current="true">
-      <span class="step-label">Published</span>
+      <span class="step-label"><Explain id="explain-composite-published" text={EXPLAIN.published}>Published</Explain></span>
       <span class="figure"><i class="dot" data-band={published.id} aria-hidden="true"></i>{pressure}</span>
       <span class="note">drifts toward the indicator mean by at most 8 points a day</span>
     </li>

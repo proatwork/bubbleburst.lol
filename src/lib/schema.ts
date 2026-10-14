@@ -46,6 +46,8 @@ export const SignalSchema = z
     value: text(LIMITS.signalValueMax),
     note: text(LIMITS.signalNoteMax),
     trend: z.enum(['up', 'down', 'flat']).optional(),
+    /** ≤ 200 characters, shown on hover: what the figure is, for someone who has never heard of it. */
+    eli5: text(LIMITS.eli5Max).optional(),
     sources: citationList,
   });
 
@@ -92,6 +94,8 @@ export const IndicatorSchema = z.strictObject({
   verified: z.boolean().optional(),
   /** ≤ 64 characters: what the figure measures and where it comes from. */
   detail: text(LIMITS.indicatorDetailMax),
+  /** ≤ 200 characters, shown on hover: what the figure is and why a high or low reading matters, in plain words. */
+  eli5: text(LIMITS.eli5Max).optional(),
   sources: citationList,
 });
 

@@ -1,0 +1,116 @@
+---
+/**
+ * A term with a plain-language explanation that appears on hover, keyboard focus or tap.
+ * Pure HTML and CSS; the script only nudges a bubble back inside the viewport when it would spill out.
+ */
+import { smarten } from '../lib/cite.ts';
+
+interface Props {
+  /** The explanation: one or two plain sentences, at most 200 characters. */
+  text: string;
+  /** Unique on the page. Links the term to its explanation for assistive technology. */
+  id: string;
+}
+
+const { text, id } = Astro.props;
+---
+<span class="explain" data-explain>
+  <span class="term" tabindex="0" aria-describedby={id}><slot /></span>
+  <span class="bubble" role="tooltip" id={id}>{smarten(text)}</span>
+</span>
+
+<style>
+  .explain {
+    position: relative;
+    display: inline-block;
+    max-width: 100%;
+  }
+
+  .term {
+    text-decoration-line: underline;
+    text-decoration-style: dotted;
+    text-decoration-color: var(--color-rule-2);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.22em;
+    cursor: help;
+    border-radius: 2px;
+  }
+
+  .explain:hover .term,
+  .explain:focus-within .term {
+    text-decoration-color: var(--color-accent);
+  }
+
+  .bubble {
+    position: absolute;
+    z-index: 5;
+    top: calc(100% + 0.5em);
+    inset-inline-start: 0;
+    width: max-content;
+    max-width: min(36ch, calc(100vw - 1.5rem));
+    padding: var(--space-xs) var(--space-sm);
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    font-weight: 400;
+    line-height: 1.45;
+    letter-spacing: 0;
+    text-transform: none;
+    text-align: start;
+    white-space: normal;
+    text-wrap: pretty;
+    color: var(--color-ink-2);
+    background: var(--color-paper);
+    border: var(--rule) solid var(--color-rule-2);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-whisper);
+    translate: var(--shift, 0) 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--dur-micro) var(--ease-out), visibility var(--dur-micro);
+  }
+
+  /* Bridges the gap under the term so the pointer can travel into the bubble without closing it. */
+  .bubble::before {
+    content: '';
+    position: absolute;
+    inset: -0.6em 0 auto;
+    height: 0.6em;
+  }
+
+  .explain:hover .bubble,
+  .explain:focus-within .bubble {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .bubble {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  const MARGIN = 12;
+
+  for (const explain of document.querySelectorAll<HTMLElement>('[data-explain]')) {
+    const term = explain.querySelector<HTMLElement>('.term');
+    const bubble = explain.querySelector<HTMLElement>('.bubble');
+    if (!term || !bubble) continue;
+
+    const place = () => {
+      bubble.style.removeProperty('--shift');
+      const rect = bubble.getBoundingClientRect();
+      const spillRight = rect.right - (window.innerWidth - MARGIN);
+      const spillLeft = MARGIN - rect.left;
+      if (spillRight > 0) bubble.style.setProperty('--shift', `${-spillRight}px`);
+      else if (spillLeft > 0) bubble.style.setProperty('--shift', `${spillLeft}px`);
+    };
+
+    explain.addEventListener('pointerenter', place);
+    term.addEventListener('focus', place);
+    term.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') term.blur();
+    });
+  }
+</script>
