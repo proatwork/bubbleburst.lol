@@ -1,11 +1,12 @@
 ---
-/** Analytics consent bar. Rendered only when GA4 is configured and consentMode is 'advanced' or 'basic'. */
-import { SITE } from '../config.ts';
+/** Analytics consent bar. Rendered only when an analytics provider is configured and consentMode is 'advanced' or 'basic'. */
+import { ANALYTICS_PROVIDERS, SITE } from '../config.ts';
 
+const providers = new Intl.ListFormat('en', { type: 'conjunction' }).format(ANALYTICS_PROVIDERS);
 const text =
   SITE.consentMode === 'basic'
-    ? 'This page counts visits with Google Analytics. Nothing is sent to Google until you allow it.'
-    : 'This page counts visits with Google Analytics. Allow the analytics cookie, or decline and only anonymous, cookieless counts are kept.';
+    ? `This page measures visits and how the page is used with ${providers}. Nothing is sent until you allow it.`
+    : `This page measures visits and how the page is used with ${providers}. Allow the analytics cookies, or decline and only anonymous, cookieless counts are kept.`;
 ---
 <div class="consent" role="region" aria-label="Analytics consent" data-consent-bar hidden>
   <p class="text">{text}</p>
@@ -69,6 +70,7 @@ const text =
     interface Window {
       gtag?: (...args: unknown[]) => void;
       bbLoadAnalytics?: () => void;
+      bbPosthogConsent?: (choice: Choice) => void;
     }
   }
 
@@ -83,7 +85,7 @@ const text =
     }
   }
 
-  /** Withdrawal means the GA cookies go too. They may sit on the host or on any parent domain. */
+  /** Withdrawal means the GA cookies go too. They may sit on the host or on any parent domain. PostHog drops its own on opt-out, keeping only its opt-out record. */
   function expireAnalyticsCookies(): void {
     const names = document.cookie
       .split(';')
@@ -108,6 +110,7 @@ const text =
     window.gtag?.('consent', 'update', { analytics_storage: choice });
     if (choice === 'granted') window.bbLoadAnalytics?.();
     else expireAnalyticsCookies();
+    window.bbPosthogConsent?.(choice);
     if (bar) bar.hidden = true;
   }
 

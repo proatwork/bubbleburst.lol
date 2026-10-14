@@ -26,8 +26,12 @@ Set these in `.env` locally (copy `.env.example`) and in the Cloudflare Pages pr
 
 | Variable | Purpose |
 | --- | --- |
-| `PUBLIC_GA_MEASUREMENT_ID` | GA4 measurement ID, e.g. `G-ABC123XYZ`. When empty, no Google script, no consent bar and no "Cookie settings" link are emitted at all |
+| `PUBLIC_GA_MEASUREMENT_ID` | GA4 measurement ID, e.g. `G-ABC123XYZ`. When empty, no Google script is emitted at all |
+| `PUBLIC_POSTHOG_KEY` | PostHog project API key, e.g. `phc_abc123`. When empty, no PostHog script is emitted at all |
+| `PUBLIC_POSTHOG_HOST` | PostHog ingestion host. Defaults to PostHog Cloud EU, `https://eu.i.posthog.com`; set `https://us.i.posthog.com` for a project on PostHog Cloud US. A key sent to the wrong region is rejected and no data arrives |
 | `PUBLIC_SITE_URL` | Canonical origin without a trailing slash, e.g. `https://bubbleburst.example`. Used for the canonical link, Open Graph URL and JSON-LD. When empty those tags are omitted |
+
+With both `PUBLIC_GA_MEASUREMENT_ID` and `PUBLIC_POSTHOG_KEY` empty, the build has no analytics script, no consent bar and no "Cookie settings" link.
 
 ## Updating the copy
 
@@ -88,7 +92,7 @@ Option A, Git integration (recommended for the daily routine): push the repo to 
 
 - Build command: `npm run build`
 - Build output directory: `dist`
-- Environment variables: `NODE_VERSION=22`, plus the two `PUBLIC_*` variables above
+- Environment variables: `NODE_VERSION=22`, plus the `PUBLIC_*` variables above
 
 Every push to the production branch then rebuilds and publishes the page.
 
@@ -99,7 +103,10 @@ The site is fully static, so it also works on any host that serves files.
 ## How the page behaves
 
 - **Theme.** The switch in the header cycles Auto → Light → Dark. Auto follows the operating system. A manual choice is stored in `localStorage` under `bb:theme` and applied before first paint, so there is no flash.
-- **Analytics.** GA4 loads on every visit with no consent bar, because the audience is US-only (`consentMode: 'none'` in `src/config.ts`). Before serving EU visitors switch it to `advanced` (Consent Mode v2, cookieless pings until the visitor allows cookies) or `basic` (nothing loads from Google until allowed); both bring back the consent bar and the "Cookie settings" footer link, and declining deletes the `_ga` cookies.
+- **Analytics.** GA4 and PostHog are independent; each is emitted only when its variable is set. Both load on every visit with no consent bar, because the audience is US-only (`consentMode: 'none'` in `src/config.ts`). Before serving EU visitors switch it to `advanced` or `basic`; both bring back the consent bar and the "Cookie settings" footer link, and declining deletes the `_ga` cookies and opts PostHog out, which clears its stored visitor ID (only its opt-out record stays in `localStorage`).
+  - `advanced`: GA4 runs Consent Mode v2 and sends cookieless pings until the visitor allows cookies. PostHog loads but captures and stores nothing until the visitor chooses; a decline is then counted cookielessly, which only works with "Cookieless server hash mode" switched on in the PostHog project (Settings → Web analytics). Without it declined visits are dropped.
+  - `basic`: nothing loads from Google or PostHog until allowed.
+  - PostHog runs with the library defaults pinned by `POSTHOG_DEFAULTS_DATE` in `src/config.ts` (pageviews, pageleaves, autocapture of clicks). Session replay, heatmaps and surveys are switched on or off in the PostHog project, not in this repo.
 - **Fonts.** Newsreader (display), IBM Plex Sans (body and figures) and IBM Plex Mono (labels), self-hosted from the `@fontsource` packages so no request goes to Google Fonts. To change them, swap the imports at the top of `src/pages/index.astro` and the `--font-*` tokens in `src/styles/tokens.css`.
 - **Times.** The HTML carries every timestamp in UTC; a few lines of script convert them to the visitor's local time zone, so the page is correct without JavaScript and friendlier with it.
 - **Meter.** Plain HTML and CSS. A track split into the four bands fills up to the score and the number counts up on load; both are skipped when the visitor prefers reduced motion. Without JavaScript the final value renders statically.
@@ -110,10 +117,10 @@ The site is fully static, so it also works on any host that serves files.
 content/status.json      the daily copy and sources (the only file the routine edits)
 content/history/         archive of previous readings, one file per update, named by timestamp
 src/pages/index.astro    the page: head tags, layout, build-time validation
-src/components/          Header, Meter, Composite, Signals, Indicators, Explain (hover explanations), History, Analysis, Sources, Footer, ThemeToggle, Analytics, ConsentBar
+src/components/          Header, Meter, Composite, Signals, Indicators, Explain (hover explanations), History, Analysis, Sources, Footer, ThemeToggle, Analytics (GA4), Posthog, ConsentBar
 src/lib/                 schema, bands, citation rendering, formatting, and their tests
 src/styles/              tokens.css (colours, type, spacing) and global.css
-src/config.ts            site name, description, consent flag, env lookups
+src/config.ts            site name, description, builder credit, consent flag, PostHog defaults date, env lookups
 scripts/validate.ts      the validator behind `npm run validate`
 ROUTINE.md               the prompt for the daily Claude routine
 ```

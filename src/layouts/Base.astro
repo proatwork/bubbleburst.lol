@@ -6,10 +6,11 @@ import '@fontsource/ibm-plex-mono/500.css';
 import '../styles/tokens.css';
 import '../styles/global.css';
 
-import { SITE, STORAGE_KEYS } from '../config.ts';
+import { ANALYTICS_PROVIDERS, SITE, STORAGE_KEYS } from '../config.ts';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Analytics from '../components/Analytics.astro';
+import Posthog from '../components/Posthog.astro';
 import ConsentBar from '../components/ConsentBar.astro';
 
 interface Props {
@@ -24,7 +25,7 @@ interface Props {
 
 const { title, description, path, jsonLd, updatedAt, generatedBy } = Astro.props;
 const canonical = SITE.url ? `${SITE.url}${path}` : undefined;
-const analyticsEnabled = Boolean(SITE.gaMeasurementId);
+const analyticsEnabled = ANALYTICS_PROVIDERS.length > 0;
 const consentUi = analyticsEnabled && SITE.consentMode !== 'none';
 const jsonLdText = JSON.stringify({ ...jsonLd, ...(canonical ? { url: canonical } : {}) }).replace(/</g, '\\u003c');
 const themeKey = STORAGE_KEYS.theme;
@@ -60,6 +61,7 @@ const themeKey = STORAGE_KEYS.theme;
       }
     </script>
     <Analytics />
+    <Posthog />
   </head>
   <body>
     <slot name="top" />

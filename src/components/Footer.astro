@@ -26,6 +26,9 @@ const { updatedAt, generatedBy, consentUi } = Astro.props;
       </>
     )}
   </p>
+  <p class="credit">
+    <span>Vibed by <a href={SITE.builder.url} target="_blank" rel="noopener">{SITE.builder.name}<span class="visually-hidden"> (opens in a new tab)</span></a></span>
+  </p>
 </footer>
 
 <style>
@@ -40,5 +43,10 @@ const { updatedAt, generatedBy, consentUi } = Astro.props;
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-2xs) var(--space-xs);
+  }
+
+  .foot-line .credit {
+    margin-top: var(--space-2xs);
+    justify-content: center;
   }
 </style>
