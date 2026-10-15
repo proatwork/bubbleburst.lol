@@ -1,9 +1,9 @@
 {
-  "updatedAt": "2026-10-15T00:27:25Z",
-  "pressure": 79,
-  "previousPressure": 78,
-  "headline": "Not yet, but pressure rises to 79: hot CPI revives rate-hike fears",
-  "summary": "Hot September CPI lifted the odds of a Fed hike and pushed chip stocks down a sixth day on Wednesday 14 October, with the S&P 500 off 1.1%. The 73-point basket is still led by valuations; rates and credit stay calmer. [1][2][3]",
+  "updatedAt": "2026-10-15T21:56:54Z",
+  "pressure": 81,
+  "previousPressure": 79,
+  "headline": "Not yet, but pressure rises to 81 as AI debt fears hit chips",
+  "summary": "Chips fell a seventh straight session on Thursday 15 October as AI borrowing costs and hot producer prices rattled investors; the S&P 500 still closed up 0.3%. The 71.7-point basket stays led by valuations. [1][2][3]",
   "signals": [
     {
       "label": "S&P 500 price to sales",
@@ -16,117 +16,114 @@
       ]
     },
     {
-      "label": "Hyperscaler capex ÷ cash flow",
-      "value": "96%",
-      "note": "Q2 2026, Microsoft, Alphabet, Amazon and Meta combined; score 93.5",
-      "trend": "flat",
-      "eli5": "What Microsoft, Alphabet, Amazon and Meta spend on data centres and chips, as a share of the cash their businesses make. Near 100% means they spend about all they earn.",
-      "sources": [
-        20,
-        21,
-        22,
-        23
-      ]
-    },
-    {
       "label": "Chips ÷ S&P 500 (SOX ratio)",
-      "value": "1.51",
-      "note": "fell from 1.56 a day earlier; basket score 72.4",
+      "value": "1.50",
+      "note": "down from 1.51 a day earlier; basket score 71.1",
       "trend": "down",
       "eli5": "The main chip-maker index compared with the S&P 500. Chips are the picks and shovels of the AI boom, so this shows how much of the market's bet is riding on it.",
       "sources": [
         18,
-        19
+        8
       ]
     },
     {
-      "label": "Fed hike odds, October meeting",
-      "value": "47%",
-      "note": "CME FedWatch, up from about 22% before CPI; Citi sees a December hike",
-      "trend": "up",
-      "eli5": "The chance traders see that the Fed raises interest rates at its next meeting. Higher rates make borrowing dearer, which tends to hurt the priciest shares first.",
+      "label": "10-year Treasury yield",
+      "value": "5.10%",
+      "note": "down from 5.19%; basket score 73.3",
+      "trend": "down",
+      "eli5": "The interest rate the US government pays to borrow for ten years. When it rises, safe bonds compete with shares, and expensive stocks are the first to look less attractive.",
       "sources": [
-        2
+        14
+      ]
+    },
+    {
+      "label": "Fed hike odds by December",
+      "value": "67%",
+      "note": "CME FedWatch, up from 62% a day earlier",
+      "trend": "up",
+      "eli5": "The chance traders see that the Fed raises interest rates by its December meeting. Higher rates make borrowing dearer, which tends to hurt the priciest shares first.",
+      "sources": [
+        1
       ]
     }
   ],
   "analysis": [
-    "The basket scores 72.8: fragility 85.2, trigger 38.3, confirmation 87.6. Price to sales at 3.81, household equities at 48.2% of financial assets and subprime auto delinquency at 5.98% sit beyond any prior burst; the Shiller CAPE at 41.38, TSMC revenue growth of 54.6% and hyperscaler capex at 96% of operating cash flow score near or above 90. Chips are at 1.51 times the S&P 500 and the Nasdaq at 3.49 times. [5][6][7][8][10][16][18][19][20][21][22][23][24]",
-    "Triggers are mixed: the BIS credit gap is −11.3 points and the high-yield spread is 316bp, but the 10-year yield is 5.19%. September CPI rose 3.7% from a year earlier against 3.6% expected, and traders now price a 47% chance of a Fed hike on 28 October. On Wednesday 14 October the S&P 500 fell 1.1% to 7,718.94, the Nasdaq 1.9%, and the chip index logged its sixth straight loss; Oracle and CoreWeave tumbled. [1][2][3][11][12][14]",
-    "The IMF named an AI-driven correction one of three salient risks on 13 October, warning AI-linked equities and credit now account for a large share of both markets. Against that, FactSet's forward P/E of 19.1 equals its 10-year average. Why 79: the basket anchors at 72.8, but the rate-hike repricing and the chip rout hold the score above it. [4][25]"
+    "The basket scores 71.7: fragility 84.6, trigger 35.5, confirmation 87.6. Price to sales at 3.81, household equities at 48.2% of financial assets and subprime auto delinquency at 5.98% sit beyond any prior burst; CAPE at 41.38, TSMC revenue growth of 54.6% and hyperscaler capex at 96% of operating cash flow score above 89. The Nasdaq is 3.45 times the S&P 500. [5][6][7][8][10][16][20][21][22][23][24]",
+    "Triggers are calmer: the BIS credit gap is −11.3 points and the high-yield spread widened to 325bp, while the 10-year yield eased to 5.10% from 5.19%. On Thursday 15 October the S&P 500 rose 0.3% to 7,744.06, but the chip index lost 0.9% for a seventh straight fall and Nvidia dropped 1.8%. Traders put a 67% chance on a Fed hike by December, and September producer prices rose most in 4½ years. [1][2][11][12][14][19]",
+    "Investors are scrutinising AI companies' heavy debt as rates rise. CoreWeave's default insurance hit a record and its bond yields reached 15% [2][3]. Against that, the S&P 500 trades near 19 times expected earnings, close to FactSet's 19.1 ten-year average [25]. Why 81: the basket anchors at 71.7, but the chip rout and AI-debt stress lift the score above it. [1][2][3][4][25]"
   ],
   "sources": [
     {
-      "title": "Nasdaq ends sharply lower as hot inflation data stirs rate-hike worries",
-      "publisher": "Reuters via The Standard",
-      "url": "https://www.thestandard.com.hk/finance/article/345514/Nasdaq-ends-sharply-lower-as-hot-inflation-data-stirs-rate-hike-worries",
-      "date": "2026-10-14"
+      "title": "S&P 500 ends higher as traders shift from AI to healthcare",
+      "publisher": "Reuters via Yahoo Finance",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/nasdaq-futures-dive-1-ai-082517898.html",
+      "date": "2026-10-15"
     },
     {
-      "title": "Citi turns hawkish on Fed after inflation surprise, expects December rate hike",
-      "publisher": "Reuters via The Standard",
-      "url": "https://www.thestandard.com.hk/finance/article/345500/Citi-turns-hawkish-on-Fed-after-inflation-surprise-expects-December-rate-hike",
-      "date": "2026-10-14"
-    },
-    {
-      "title": "Stock market today: Hot inflation report drops tech, drives S&P 500, Dow and Nasdaq down",
+      "title": "Stock market today: Dow jumps, S&P 500, Nasdaq gain as AI jitters fade",
       "publisher": "Yahoo Finance",
-      "url": "https://finance.yahoo.com/markets/live/stock-market-today-hot-inflation-report-drops-tech-drives-sp-500-nasdaq-down-152206632.html",
-      "date": "2026-10-14"
+      "url": "https://finance.yahoo.com/markets/live/stock-market-today-dow-sp-500-rise-nasdaq-trims-losses-as-treasury-yields-sink-153611834.html",
+      "date": "2026-10-15"
     },
     {
-      "title": "International Monetary Fund warns of AI-driven market correction in global economy",
-      "publisher": "The Irish Times",
-      "url": "https://www.irishtimes.com/business/2026/10/13/imf-warns-of-ai-driven-market-correction-in-global-economy/",
-      "date": "2026-10-13"
+      "title": "Stock Market Midday, Oct. 15: Markets Mixed as AI Sell-Off Continues",
+      "publisher": "The Motley Fool via Yahoo Finance",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/stock-market-midday-oct-15-165500678.html",
+      "date": "2026-10-15"
+    },
+    {
+      "title": "Stock Market Today: Stocks Head Lower as Hot Inflation Puts Another Fed Rate Hike Back in Play",
+      "publisher": "24/7 Wall St. via Yahoo Finance",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/stock-market-today-stocks-head-132743645.html",
+      "date": "2026-10-14"
     },
     {
       "title": "Shiller PE Ratio by Month",
       "publisher": "multpl.com",
       "url": "https://www.multpl.com/shiller-pe/table/by-month",
-      "date": "2026-10-14"
+      "date": "2026-10-15"
     },
     {
       "title": "S&P 500 Price to Sales Ratio",
       "publisher": "multpl.com",
       "url": "https://www.multpl.com/s-p-500-price-to-sales",
-      "date": "2026-10-14"
+      "date": "2026-10-15"
     },
     {
-      "title": "Table Data - NASDAQ Composite (NASDAQCOM)",
-      "publisher": "FRED, Federal Reserve Bank of St. Louis",
-      "url": "https://fred.stlouisfed.org/data/NASDAQCOM",
-      "date": "2026-10-14"
+      "title": "Nasdaq Composite (^IXIC) chart data, 5 days",
+      "publisher": "Yahoo Finance",
+      "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5EIXIC?range=5d&interval=1d",
+      "date": "2026-10-15"
     },
     {
-      "title": "Table Data - S&P 500 (SP500)",
-      "publisher": "FRED, Federal Reserve Bank of St. Louis",
-      "url": "https://fred.stlouisfed.org/data/SP500",
-      "date": "2026-10-14"
+      "title": "S&P 500 (^GSPC) chart data, 5 days (Nasdaq ratio denominator)",
+      "publisher": "Yahoo Finance",
+      "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5EGSPC?range=5d&interval=1d",
+      "date": "2026-10-15"
     },
     {
       "title": "Margin Statistics",
       "publisher": "FINRA",
       "url": "https://www.finra.org/rules-guidance/key-topics/margin-accounts/margin-statistics",
-      "date": "2026-10-14"
+      "date": "2026-10-15"
     },
     {
       "title": "Table Data - Households and Nonprofit Organizations; Directly and Indirectly Held Corporate Equities as a Percentage of Financial Assets (BOGZ1FL153064486Q)",
       "publisher": "FRED, Federal Reserve Bank of St. Louis",
       "url": "https://fred.stlouisfed.org/data/BOGZ1FL153064486Q",
-      "date": "2026-10-14"
+      "date": "2026-10-15"
     },
     {
       "title": "ICE BofA US High Yield Index Option-Adjusted Spread (BAMLH0A0HYM2)",
       "publisher": "FRED, Federal Reserve Bank of St. Louis",
       "url": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2",
-      "date": "2026-10-14"
+      "date": "2026-10-15"
     },
     {
       "title": "Credit-to-GDP gap, United States, actual minus trend (WS_CREDIT_GAP Q.US.P.A.C)",
       "publisher": "Bank for International Settlements",
       "url": "https://stats.bis.org/api/v2/data/dataflow/BIS/WS_CREDIT_GAP/1.0/Q.US.P.A.C?format=csv&lastNObservations=1",
-      "date": "2026-10-14"
+      "date": "2026-10-15"
     },
     {
       "title": "Table Data - Federal Funds Target Range - Upper Limit (DFEDTARU)",
@@ -138,19 +135,19 @@
       "title": "Daily Treasury Par Yield Curve Rates, October 2026 (CSV)",
       "publisher": "U.S. Department of the Treasury",
       "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/daily-treasury-rates.csv/all/202610?type=daily_treasury_yield_curve&field_tdr_date_value_month=202610&page&_format=csv",
-      "date": "2026-10-14"
+      "date": "2026-10-15"
     },
     {
       "title": "Table Data - Unemployment Rate (UNRATE)",
       "publisher": "FRED, Federal Reserve Bank of St. Louis",
       "url": "https://fred.stlouisfed.org/data/UNRATE",
-      "date": "2026-10-14"
+      "date": "2026-10-15"
     },
     {
       "title": "United States Car Loan Delinquency",
       "publisher": "Trading Economics",
       "url": "https://tradingeconomics.com/united-states/car-loan-delinquency",
-      "date": "2026-10-14"
+      "date": "2026-10-15"
     },
     {
       "title": "Table Data - Chicago Fed National Financial Conditions Index (NFCI)",
@@ -162,13 +159,13 @@
       "title": "PHLX Semiconductor Index (^SOX) chart data, 5 days",
       "publisher": "Yahoo Finance",
       "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5ESOX?range=5d&interval=1d",
-      "date": "2026-10-14"
+      "date": "2026-10-15"
     },
     {
-      "title": "S&P 500 (^GSPC) chart data, 5 days",
-      "publisher": "Yahoo Finance",
-      "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5EGSPC?range=5d&interval=1d",
-      "date": "2026-10-14"
+      "title": "Stock Market Today (Oct. 15, 2026): Dow edges higher as tech sell-off pivots",
+      "publisher": "TheStreet via Yahoo Finance",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/stock-market-today-oct-15-140429285.html",
+      "date": "2026-10-15"
     },
     {
       "title": "XBRL company facts: Microsoft Corporation (CIK 0000789019)",
@@ -224,8 +221,8 @@
         5
       ],
       "score": 89.6,
-      "previousScore": 91.3,
-      "trend": "down"
+      "previousScore": 89.6,
+      "trend": "flat"
     },
     {
       "id": "sp500PriceToSales",
@@ -249,9 +246,9 @@
       "id": "nasdaqToSp500Ratio",
       "label": "Nasdaq Composite ÷ S&P 500",
       "group": "fragility",
-      "value": 3.4853,
+      "value": 3.4495,
       "unit": "ratio",
-      "asOf": "2026-10-13",
+      "asOf": "2026-10-15",
       "weight": 1,
       "direction": "higher",
       "detail": "Nasdaq Composite ÷ S&P 500 close, 13 Oct, FRED/Yahoo",
@@ -260,9 +257,9 @@
         7,
         8
       ],
-      "score": 86.8,
-      "previousScore": 87.2,
-      "trend": "flat"
+      "score": 83.3,
+      "previousScore": 86.8,
+      "trend": "down"
     },
     {
       "id": "marginDebtGrowth",
@@ -304,9 +301,9 @@
       "id": "highYieldSpread",
       "label": "US high-yield bond spread",
       "group": "trigger",
-      "value": 316,
+      "value": 325,
       "unit": "bp",
-      "asOf": "2026-10-13",
+      "asOf": "2026-10-14",
       "weight": 0.5,
       "direction": "lower",
       "detail": "ICE BofA US high-yield OAS, 316bp, FRED",
@@ -314,8 +311,8 @@
       "sources": [
         11
       ],
-      "score": 69.7,
-      "previousScore": 72,
+      "score": 65.6,
+      "previousScore": 69.7,
       "trend": "down"
     },
     {
@@ -351,16 +348,17 @@
         13
       ],
       "score": 0.0,
-      "previousScore": 0,
-      "trend": "flat"
+      "previousScore": 0.0,
+      "trend": "flat",
+      "stale": true
     },
     {
       "id": "treasury10yYield",
       "label": "10-year Treasury yield",
       "group": "trigger",
-      "value": 5.19,
+      "value": 5.1,
       "unit": "%",
-      "asOf": "2026-10-14",
+      "asOf": "2026-10-15",
       "weight": 1.25,
       "direction": "higher",
       "detail": "10-year Treasury constant maturity, 14 Oct, Treasury",
@@ -368,8 +366,8 @@
       "sources": [
         14
       ],
-      "score": 79.3,
-      "previousScore": 80.7,
+      "score": 73.3,
+      "previousScore": 79.3,
       "trend": "down"
     },
     {
@@ -424,15 +422,16 @@
       ],
       "score": 76,
       "previousScore": 76,
-      "trend": "flat"
+      "trend": "flat",
+      "stale": true
     },
     {
       "id": "soxToSp500Ratio",
       "label": "Semiconductor index ÷ S&P 500",
       "group": "fragility",
-      "value": 1.5137,
+      "value": 1.4955,
       "unit": "ratio",
-      "asOf": "2026-10-14",
+      "asOf": "2026-10-15",
       "weight": 1,
       "direction": "higher",
       "verified": false,
@@ -440,10 +439,10 @@
       "eli5": "The main chip-maker index compared with the S&P 500. Chips are the picks and shovels of the AI boom, so this shows how much of the market's bet is riding on it.",
       "sources": [
         18,
-        19
+        8
       ],
-      "score": 72.4,
-      "previousScore": 76,
+      "score": 71.1,
+      "previousScore": 72.4,
       "trend": "down"
     },
     {
@@ -490,12 +489,12 @@
   ],
   "composite": {
     "method": "weighted-mean",
-    "indicatorScore": 72.8,
-    "fragilityScore": 85.2,
-    "triggerScore": 38.3,
+    "indicatorScore": 71.7,
+    "fragilityScore": 84.6,
+    "triggerScore": 35.5,
     "confirmationScore": 87.6,
-    "newsAdjustment": 2,
-    "reason": "Hot September CPI lifted October Fed-hike odds and chips fell a sixth day, outweighing a one-point drift toward the lower indicator anchor.",
+    "newsAdjustment": 3,
+    "reason": "Chips fell a seventh day, CoreWeave default insurance hit a record and Fed-hike odds rose to 67%, outweighing a small drift toward the anchor.",
     "indicatorCount": 15,
     "missingCount": 0
   },
