@@ -1,13 +1,13 @@
 {
-  "updatedAt": "2026-10-20T12:58:00Z",
-  "pressure": 77,
-  "previousPressure": 80,
-  "headline": "Not yet: pressure eases to 77 as chips rebound, AI debt strain lingers",
-  "summary": "On Monday 19 October the Nasdaq rose 1.1% and chips 2.9% after a rough week, while the 10-year yield rose to 5.15%. The basket scores 71.5, so pressure eases three points to 77. [1][3][4]",
+  "updatedAt": "2026-10-21T00:57:00Z",
+  "pressure": 75,
+  "previousPressure": 77,
+  "headline": "Not yet: pressure eases to 75 as yields dip, AI debt strain lingers",
+  "summary": "On Tuesday 20 October the S&P 500 edged up to 7,712.57 while the Nasdaq was flat and the 10-year yield eased to 5.12%. The basket scores 71.3, so pressure eases two points to 75. [4][7][8][14]",
   "signals": [
     {
       "label": "S&P 500 price to sales",
-      "value": "3.79",
+      "value": "3.81",
       "note": "beyond any prior burst; score 100 of 100 in the basket",
       "trend": "flat",
       "eli5": "The value of the 500 biggest US companies divided by their sales. Sales are harder to dress up than profits, so a high ratio says prices have run far ahead of what firms sell.",
@@ -17,9 +17,9 @@
     },
     {
       "label": "10-year Treasury yield",
-      "value": "5.15%",
-      "note": "up from 5.09%; basket score 76.7",
-      "trend": "up",
+      "value": "5.12%",
+      "note": "down from 5.15%; basket score 74.7",
+      "trend": "down",
       "eli5": "The interest rate the US government pays to borrow for ten years. When it rises, safe bonds compete with shares, and expensive stocks are the first to look less attractive.",
       "sources": [
         14
@@ -27,9 +27,9 @@
     },
     {
       "label": "Chips ÷ S&P 500 (SOX ratio)",
-      "value": "1.47",
-      "note": "up from 1.45 on Friday; basket score 69.4",
-      "trend": "up",
+      "value": "1.46",
+      "note": "down from 1.47 on Monday; basket score 68.8",
+      "trend": "down",
       "eli5": "The main chip-maker index compared with the S&P 500. Chips are the picks and shovels of the AI boom, so this shows how much of the market's bet is riding on it.",
       "sources": [
         18,
@@ -48,9 +48,9 @@
     }
   ],
   "analysis": [
-    "The basket scores 71.5: fragility 83.8, trigger 36.4, confirmation 87.8. Price to sales (3.79), household equities (48.2% of financial assets) and subprime auto delinquency (5.98%) sit beyond any prior burst; CAPE is 40.72 and TSMC revenue growth 54.6%. The BIS credit gap, at −11.3 points, is the calmest reading. [5][6][10][12][16][24]",
-    "On Monday 19 October the S&P 500 rose 0.41% to 7,690.73 and the Nasdaq 1.11% to 26,430.89, while the Dow slipped 0.07%. The chip index gained 2.9%, its first rise since 6 October, after an 11.4% fall the week before. The 10-year yield rose to 5.15%. [1][4][7][8][14][18]",
-    "The rebound recovered roughly a quarter of about $2 trillion lost by chip stocks, and one report calls it positioning, not new demand evidence. CoreWeave rose 3.6% after a 25% drop, with bond yields near 15%, and Firmus withdrew its IPO. Why 77: the basket anchors near 71.5, and lingering AI-debt strain keeps the score above it. [1][2][19]"
+    "The basket scores 71.3: fragility 83.7, trigger 35.8, confirmation 87.8. Price to sales (3.81), household equities (48.2% of financial assets) and subprime auto delinquency (5.98%) sit beyond any prior burst; CAPE is 40.86 and TSMC revenue growth 54.6%. The BIS credit gap, at −11.3 points, is the calmest reading. [5][6][10][12][16][24]",
+    "On Tuesday 20 October the S&P 500 rose to 7,712.57 and the Nasdaq was flat at 26,424.82, while the chip index slipped to 11,283.81 after Monday's 2.9% rebound, which tech investors read as AI confidence returning. The 10-year yield eased to 5.12% from 5.15%. [3][7][8][14][18]",
+    "The rebound recovered roughly a quarter of about $2 trillion lost by chip stocks, and one report calls it positioning, not new demand evidence. CoreWeave rose 3.6% after a 25% drop, with bond yields near 15%, and Firmus withdrew its IPO. Why 75: the basket anchors near 71.3, and lingering AI-debt strain keeps the score above it. [1][2][19]"
   ],
   "sources": [
     {
@@ -81,25 +81,25 @@
       "title": "Shiller PE Ratio by Month",
       "publisher": "multpl.com",
       "url": "https://www.multpl.com/shiller-pe/table/by-month",
-      "date": "2026-10-19"
+      "date": "2026-10-20"
     },
     {
       "title": "S&P 500 Price to Sales Ratio",
       "publisher": "multpl.com",
       "url": "https://www.multpl.com/s-p-500-price-to-sales",
-      "date": "2026-10-19"
+      "date": "2026-10-20"
     },
     {
       "title": "Nasdaq Composite (^IXIC) chart data, 5 days",
       "publisher": "Yahoo Finance",
       "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5EIXIC?range=5d&interval=1d",
-      "date": "2026-10-19"
+      "date": "2026-10-20"
     },
     {
       "title": "S&P 500 (^GSPC) chart data, 5 days (Nasdaq ratio denominator)",
       "publisher": "Yahoo Finance",
       "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5EGSPC?range=5d&interval=1d",
-      "date": "2026-10-19"
+      "date": "2026-10-20"
     },
     {
       "title": "Margin Statistics",
@@ -117,7 +117,7 @@
       "title": "ICE BofA US High Yield Index Option-Adjusted Spread (BAMLH0A0HYM2)",
       "publisher": "FRED, Federal Reserve Bank of St. Louis",
       "url": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2",
-      "date": "2026-10-16"
+      "date": "2026-10-19"
     },
     {
       "title": "Credit-to-GDP gap, United States, actual minus trend (WS_CREDIT_GAP Q.US.P.A.C)",
@@ -135,7 +135,7 @@
       "title": "Daily Treasury Par Yield Curve Rates, October 2026 (CSV)",
       "publisher": "U.S. Department of the Treasury",
       "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/daily-treasury-rates.csv/all/202610?type=daily_treasury_yield_curve&field_tdr_date_value_month=202610&page&_format=csv",
-      "date": "2026-10-19"
+      "date": "2026-10-20"
     },
     {
       "title": "Table Data - Unemployment Rate (UNRATE)",
@@ -159,7 +159,7 @@
       "title": "PHLX Semiconductor Index (^SOX) chart data, 5 days",
       "publisher": "Yahoo Finance",
       "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5ESOX?range=5d&interval=1d",
-      "date": "2026-10-19"
+      "date": "2026-10-20"
     },
     {
       "title": "Stock market today: Dow jumps, S&P 500, Nasdaq gain as AI jitters fade",
@@ -210,9 +210,9 @@
       "id": "shillerCape",
       "label": "Shiller CAPE, S&P 500",
       "group": "fragility",
-      "value": 40.72,
+      "value": 40.86,
       "unit": "ratio",
-      "asOf": "2026-10-19",
+      "asOf": "2026-10-20",
       "weight": 1.5,
       "direction": "higher",
       "detail": "S&P 500 cyclically adjusted P/E, multpl.com monthly table",
@@ -220,17 +220,17 @@
       "sources": [
         5
       ],
-      "score": 87.2,
-      "previousScore": 86.5,
+      "score": 87.7,
+      "previousScore": 87.2,
       "trend": "up"
     },
     {
       "id": "sp500PriceToSales",
       "label": "S&P 500 price to sales",
       "group": "fragility",
-      "value": 3.79,
+      "value": 3.81,
       "unit": "ratio",
-      "asOf": "2026-10-19",
+      "asOf": "2026-10-20",
       "weight": 1,
       "direction": "higher",
       "detail": "Price over trailing 12-month sales, multpl.com; beyond any burst",
@@ -246,9 +246,9 @@
       "id": "nasdaqToSp500Ratio",
       "label": "Nasdaq Composite ÷ S&P 500",
       "group": "fragility",
-      "value": 3.4367,
+      "value": 3.4262,
       "unit": "ratio",
-      "asOf": "2026-10-19",
+      "asOf": "2026-10-20",
       "weight": 1,
       "direction": "higher",
       "detail": "Nasdaq Composite ÷ S&P 500 close, Yahoo chart data",
@@ -257,9 +257,9 @@
         7,
         8
       ],
-      "score": 82.0,
-      "previousScore": 79.7,
-      "trend": "up"
+      "score": 81.0,
+      "previousScore": 82.0,
+      "trend": "down"
     },
     {
       "id": "marginDebtGrowth",
@@ -301,19 +301,19 @@
       "id": "highYieldSpread",
       "label": "US high-yield bond spread",
       "group": "trigger",
-      "value": 331,
+      "value": 329,
       "unit": "bp",
-      "asOf": "2026-10-16",
+      "asOf": "2026-10-19",
       "weight": 0.5,
       "direction": "lower",
-      "detail": "ICE BofA US high-yield OAS in bp, FRED (16 Oct)",
+      "detail": "ICE BofA US high-yield OAS in bp, FRED (19 Oct)",
       "eli5": "The extra interest risky companies pay to borrow compared with the US government. A small gap means lenders are relaxed; a widening gap often comes just before trouble.",
       "sources": [
         11
       ],
-      "score": 62.8,
-      "previousScore": 66.5,
-      "trend": "down"
+      "score": 63.8,
+      "previousScore": 62.8,
+      "trend": "up"
     },
     {
       "id": "bisCreditGap",
@@ -356,9 +356,9 @@
       "id": "treasury10yYield",
       "label": "10-year Treasury yield",
       "group": "trigger",
-      "value": 5.15,
+      "value": 5.12,
       "unit": "%",
-      "asOf": "2026-10-19",
+      "asOf": "2026-10-20",
       "weight": 1.25,
       "direction": "higher",
       "detail": "10-year Treasury constant maturity, Treasury",
@@ -366,9 +366,9 @@
       "sources": [
         14
       ],
-      "score": 76.7,
-      "previousScore": 72.7,
-      "trend": "up"
+      "score": 74.7,
+      "previousScore": 76.7,
+      "trend": "down"
     },
     {
       "id": "unemploymentRate",
@@ -428,9 +428,9 @@
       "id": "soxToSp500Ratio",
       "label": "Semiconductor index ÷ S&P 500",
       "group": "fragility",
-      "value": 1.4714,
+      "value": 1.463,
       "unit": "ratio",
-      "asOf": "2026-10-19",
+      "asOf": "2026-10-20",
       "weight": 1,
       "direction": "higher",
       "verified": false,
@@ -440,9 +440,9 @@
         18,
         8
       ],
-      "score": 69.4,
-      "previousScore": 68.1,
-      "trend": "up"
+      "score": 68.8,
+      "previousScore": 69.4,
+      "trend": "down"
     },
     {
       "id": "hyperscalerCapexToOcf",
@@ -488,9 +488,9 @@
   ],
   "composite": {
     "method": "weighted-mean",
-    "indicatorScore": 71.5,
-    "fragilityScore": 83.8,
-    "triggerScore": 36.4,
+    "indicatorScore": 71.3,
+    "fragilityScore": 83.7,
+    "triggerScore": 35.8,
     "confirmationScore": 87.8,
     "newsAdjustment": 1,
     "reason": "Chips bounced, but CoreWeave bond yields near 15% and a withdrawn Firmus IPO show AI financing strain persists.",
