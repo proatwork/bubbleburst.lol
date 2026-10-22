@@ -1,0 +1,515 @@
+{
+  "updatedAt": "2026-10-22T00:57:11Z",
+  "pressure": 73,
+  "previousPressure": 75,
+  "headline": "Not yet: pressure eases to 73 as chips rally, yields stay high",
+  "summary": "On Wednesday 21 October the Nasdaq rose 1.1% and the S&P 500 0.6% as chips and SpaceX rallied, but the 10-year yield held at 5.13%. The basket scores 71.7, so pressure eases two points to 73. [1][2][12]",
+  "signals": [
+    {
+      "label": "S&P 500 price to sales",
+      "value": "3.83",
+      "note": "beyond any prior burst; score 100 of 100 in the basket",
+      "trend": "flat",
+      "eli5": "The value of the 500 biggest US companies divided by their sales. Sales are harder to dress up than profits, so a high ratio says prices have run far ahead of what firms sell.",
+      "sources": [
+        4
+      ]
+    },
+    {
+      "label": "10-year Treasury yield",
+      "value": "5.13%",
+      "note": "up from 5.12%; basket score 75.3",
+      "trend": "up",
+      "eli5": "The interest rate the US government pays to borrow for ten years. When it rises, safe bonds compete with shares, and expensive stocks are the first to look less attractive.",
+      "sources": [
+        12
+      ]
+    },
+    {
+      "label": "Chips ÷ S&P 500 (SOX ratio)",
+      "value": "1.48",
+      "note": "up from 1.46 on Tuesday; basket score 70.2",
+      "trend": "up",
+      "eli5": "The main chip-maker index compared with the S&P 500. Chips are the picks and shovels of the AI boom, so this shows how much of the market's bet is riding on it.",
+      "sources": [
+        16,
+        6
+      ]
+    },
+    {
+      "label": "SpaceX Q3 revenue",
+      "value": "$14.6B",
+      "note": "up over 160% y/y; AI segment $7.6B; shares rose 7.8%",
+      "trend": "up",
+      "eli5": "Sales at SpaceX, whose AI business now brings in about half its revenue. Big AI sales help the bull case, but they also show how much money is flowing into the AI race.",
+      "sources": [
+        1,
+        2
+      ]
+    }
+  ],
+  "analysis": [
+    "The basket scores 71.7: fragility 84.2, trigger 36.0, confirmation 87.8. Price to sales (3.83), household equities (48.2% of financial assets) and subprime auto delinquency (5.98%) sit beyond any prior burst; CAPE is 41.08 and TSMC revenue growth 54.6%. The BIS credit gap, at −11.3 points, is the calmest reading. [3][4][8][10][14][21]",
+    "On Wednesday 21 October the Nasdaq rose 1.1% to 26,702.86 and the S&P 500 gained 0.6% to 7,757.17, led by SpaceX (up 7.8% after $14.6 billion of quarterly revenue) and chip stocks including Nvidia. The 10-year yield was 5.13%, up from 5.12%. [2][5][6][12]",
+    "Super Micro rose over 9.5% on a raised revenue forecast, while Netflix fell 5.3% on weak guidance. Yahoo Finance notes investors have grown more concerned about the industry's massive spending, and Brent crude was near $109.93. Why 73: the basket anchors near 71.7, and spending worries add one point. [1][2]"
+  ],
+  "sources": [
+    {
+      "title": "Stock market today: Dow, S&P 500, Nasdaq rise as tech rallies, SpaceX stock surges nearly 8%",
+      "publisher": "Yahoo Finance",
+      "url": "https://finance.yahoo.com/markets/live/stock-market-today-wednesday-october-21-dow-sp-500-nasdaq-100000105.html",
+      "date": "2026-10-21"
+    },
+    {
+      "title": "Nasdaq surges 1% as tech lifted by SpaceX, Tesla on Musk's hint at possible merger",
+      "publisher": "Investing.com",
+      "url": "https://investing.com/news/stock-market-news/us-stock-futures-rise-as-spacex-surges-on-upbeat-earnings-4961479",
+      "date": "2026-10-21"
+    },
+    {
+      "title": "Shiller PE Ratio by Month",
+      "publisher": "multpl.com",
+      "url": "https://www.multpl.com/shiller-pe/table/by-month",
+      "date": "2026-10-21"
+    },
+    {
+      "title": "S&P 500 Price to Sales Ratio",
+      "publisher": "multpl.com",
+      "url": "https://www.multpl.com/s-p-500-price-to-sales",
+      "date": "2026-10-21"
+    },
+    {
+      "title": "Nasdaq Composite (^IXIC) chart data, 5 days",
+      "publisher": "Yahoo Finance",
+      "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5EIXIC?range=5d&interval=1d",
+      "date": "2026-10-21"
+    },
+    {
+      "title": "S&P 500 (^GSPC) chart data, 5 days (Nasdaq ratio denominator)",
+      "publisher": "Yahoo Finance",
+      "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5EGSPC?range=5d&interval=1d",
+      "date": "2026-10-21"
+    },
+    {
+      "title": "Margin Statistics",
+      "publisher": "FINRA",
+      "url": "https://www.finra.org/rules-guidance/key-topics/margin-accounts/margin-statistics",
+      "date": "2026-10-16"
+    },
+    {
+      "title": "Table Data - Households and Nonprofit Organizations; Directly and Indirectly Held Corporate Equities as a Percentage of Financial Assets (BOGZ1FL153064486Q)",
+      "publisher": "FRED, Federal Reserve Bank of St. Louis",
+      "url": "https://fred.stlouisfed.org/data/BOGZ1FL153064486Q",
+      "date": "2026-10-15"
+    },
+    {
+      "title": "ICE BofA US High Yield Index Option-Adjusted Spread (BAMLH0A0HYM2)",
+      "publisher": "FRED, Federal Reserve Bank of St. Louis",
+      "url": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2",
+      "date": "2026-10-19"
+    },
+    {
+      "title": "Credit-to-GDP gap, United States, actual minus trend (WS_CREDIT_GAP Q.US.P.A.C)",
+      "publisher": "Bank for International Settlements",
+      "url": "https://stats.bis.org/api/v2/data/dataflow/BIS/WS_CREDIT_GAP/1.0/Q.US.P.A.C?format=csv&lastNObservations=1",
+      "date": "2026-10-15"
+    },
+    {
+      "title": "Table Data - Federal Funds Target Range - Upper Limit (DFEDTARU)",
+      "publisher": "FRED, Federal Reserve Bank of St. Louis",
+      "url": "https://fred.stlouisfed.org/data/DFEDTARU",
+      "date": "2026-10-14"
+    },
+    {
+      "title": "Daily Treasury Par Yield Curve Rates, October 2026 (CSV)",
+      "publisher": "U.S. Department of the Treasury",
+      "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/daily-treasury-rates.csv/all/202610?type=daily_treasury_yield_curve&field_tdr_date_value_month=202610&page&_format=csv",
+      "date": "2026-10-21"
+    },
+    {
+      "title": "Table Data - Unemployment Rate (UNRATE)",
+      "publisher": "FRED, Federal Reserve Bank of St. Louis",
+      "url": "https://fred.stlouisfed.org/data/UNRATE",
+      "date": "2026-10-16"
+    },
+    {
+      "title": "United States Car Loan Delinquency",
+      "publisher": "Trading Economics",
+      "url": "https://tradingeconomics.com/united-states/car-loan-delinquency",
+      "date": "2026-10-15"
+    },
+    {
+      "title": "Table Data - Chicago Fed National Financial Conditions Index (NFCI)",
+      "publisher": "FRED, Federal Reserve Bank of St. Louis",
+      "url": "https://fred.stlouisfed.org/data/NFCI",
+      "date": "2026-10-16"
+    },
+    {
+      "title": "PHLX Semiconductor Index (^SOX) chart data, 5 days",
+      "publisher": "Yahoo Finance",
+      "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5ESOX?range=5d&interval=1d",
+      "date": "2026-10-21"
+    },
+    {
+      "title": "XBRL company facts: Microsoft Corporation (CIK 0000789019)",
+      "publisher": "U.S. Securities and Exchange Commission",
+      "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000789019.json",
+      "date": "2026-07-29"
+    },
+    {
+      "title": "XBRL company facts: Alphabet Inc. (CIK 0001652044)",
+      "publisher": "U.S. Securities and Exchange Commission",
+      "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001652044.json",
+      "date": "2026-07-23"
+    },
+    {
+      "title": "XBRL company facts: Amazon.com, Inc. (CIK 0001018724)",
+      "publisher": "U.S. Securities and Exchange Commission",
+      "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001018724.json",
+      "date": "2026-07-31"
+    },
+    {
+      "title": "XBRL company facts: Meta Platforms, Inc. (CIK 0001326801)",
+      "publisher": "U.S. Securities and Exchange Commission",
+      "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001326801.json",
+      "date": "2026-07-30"
+    },
+    {
+      "title": "TSMC September 2026 Revenue Report",
+      "publisher": "Taiwan Semiconductor Manufacturing Company",
+      "url": "https://pr.tsmc.com/english/news/3343",
+      "date": "2026-10-08"
+    },
+    {
+      "title": "FactSet Earnings Insight, October 9, 2026",
+      "publisher": "FactSet",
+      "url": "https://advantage.factset.com/hubfs/Website/Resources%20Section/Research%20Desk/Earnings%20Insight/EarningsInsight_100926.pdf",
+      "date": "2026-10-09"
+    }
+  ],
+  "generatedBy": "claude-sonnet-5-5",
+  "indicators": [
+    {
+      "id": "shillerCape",
+      "label": "Shiller CAPE, S&P 500",
+      "group": "fragility",
+      "value": 41.08,
+      "unit": "ratio",
+      "asOf": "2026-10-21",
+      "weight": 1.5,
+      "direction": "higher",
+      "detail": "S&P 500 cyclically adjusted P/E, multpl.com monthly table",
+      "eli5": "Share prices divided by ten years of average company profits, so one good or bad year cannot fool it. The higher it is, the more people are paying for each dollar of profit.",
+      "sources": [
+        3
+      ],
+      "score": 88.5,
+      "previousScore": 87.7,
+      "trend": "up"
+    },
+    {
+      "id": "sp500PriceToSales",
+      "label": "S&P 500 price to sales",
+      "group": "fragility",
+      "value": 3.83,
+      "unit": "ratio",
+      "asOf": "2026-10-21",
+      "weight": 1,
+      "direction": "higher",
+      "detail": "Price over trailing 12-month sales, multpl.com; beyond any burst",
+      "eli5": "The value of the 500 biggest US companies divided by their sales. Sales are harder to dress up than profits, so a high ratio says prices have run far ahead of what firms sell.",
+      "sources": [
+        4
+      ],
+      "score": 100,
+      "previousScore": 100,
+      "trend": "flat"
+    },
+    {
+      "id": "nasdaqToSp500Ratio",
+      "label": "Nasdaq Composite ÷ S&P 500",
+      "group": "fragility",
+      "value": 3.4423,
+      "unit": "ratio",
+      "asOf": "2026-10-21",
+      "weight": 1,
+      "direction": "higher",
+      "detail": "Nasdaq Composite ÷ S&P 500 close, Yahoo chart data",
+      "eli5": "How the tech-heavy Nasdaq compares with the broader S&P 500. When this climbs, money is piling into tech faster than into everything else, which is what past bubbles looked like.",
+      "sources": [
+        5,
+        6
+      ],
+      "score": 82.6,
+      "previousScore": 81.0,
+      "trend": "up"
+    },
+    {
+      "id": "marginDebtGrowth",
+      "label": "Margin debt growth, year on year",
+      "group": "fragility",
+      "value": 37.1898,
+      "unit": "% y/y",
+      "asOf": "2026-08-31",
+      "weight": 1,
+      "direction": "higher",
+      "detail": "FINRA margin debit balances, Aug 2026 vs Aug 2025",
+      "eli5": "How much more money investors have borrowed from their brokers to buy shares than a year ago. Borrowed bets pile up in a boom and get sold in a hurry when prices fall.",
+      "sources": [
+        7
+      ],
+      "score": 45.3,
+      "previousScore": 45.3,
+      "trend": "flat"
+    },
+    {
+      "id": "householdEquityShare",
+      "label": "Household equities as share of assets",
+      "group": "fragility",
+      "value": 48.23,
+      "unit": "% of financial assets",
+      "asOf": "2026-06-30",
+      "weight": 0.75,
+      "direction": "higher",
+      "detail": "Fed Z.1 via FRED, Q2 2026; beyond any prior burst",
+      "eli5": "The slice of ordinary households' savings that sits in shares. The bigger the slice, the fewer new buyers are left to push prices up, and the harder a fall would hit.",
+      "sources": [
+        8
+      ],
+      "score": 100,
+      "previousScore": 100,
+      "trend": "flat"
+    },
+    {
+      "id": "highYieldSpread",
+      "label": "US high-yield bond spread",
+      "group": "trigger",
+      "value": 329,
+      "unit": "bp",
+      "asOf": "2026-10-19",
+      "weight": 0.5,
+      "direction": "lower",
+      "detail": "ICE BofA US high-yield OAS in bp, FRED (19 Oct)",
+      "eli5": "The extra interest risky companies pay to borrow compared with the US government. A small gap means lenders are relaxed; a widening gap often comes just before trouble.",
+      "sources": [
+        9
+      ],
+      "score": 63.8,
+      "previousScore": 63.8,
+      "trend": "flat"
+    },
+    {
+      "id": "bisCreditGap",
+      "label": "BIS credit-to-GDP gap, US",
+      "group": "trigger",
+      "value": -11.32,
+      "unit": "pp",
+      "asOf": "2026-03-31",
+      "weight": 0.75,
+      "direction": "higher",
+      "detail": "Private credit to GDP minus its trend, BIS, Q1 2026",
+      "eli5": "How far total US borrowing has run ahead of its usual path relative to the size of the economy. Near zero is routine; a big positive gap has come before most credit busts.",
+      "sources": [
+        10
+      ],
+      "score": 0,
+      "previousScore": 0,
+      "trend": "flat"
+    },
+    {
+      "id": "fedFundsRate",
+      "label": "Fed funds target, 12-month change",
+      "group": "trigger",
+      "value": 0,
+      "unit": "bp (cuts clamp at 0)",
+      "asOf": "2026-10-14",
+      "weight": 1,
+      "direction": "higher",
+      "detail": "Upper bound 4.00% vs 4.25% a year earlier (−25bp), FRED",
+      "eli5": "How much the Fed has raised its main interest rate over the past year. Higher rates make borrowing dearer and have pricked past bubbles; a year of cuts counts as zero here.",
+      "sources": [
+        11
+      ],
+      "score": 0,
+      "previousScore": 0,
+      "trend": "flat",
+      "stale": true
+    },
+    {
+      "id": "treasury10yYield",
+      "label": "10-year Treasury yield",
+      "group": "trigger",
+      "value": 5.13,
+      "unit": "%",
+      "asOf": "2026-10-21",
+      "weight": 1.25,
+      "direction": "higher",
+      "detail": "10-year Treasury constant maturity, Treasury",
+      "eli5": "The interest rate the US government pays to borrow for ten years. When it rises, safe bonds compete with shares, and expensive stocks are the first to look less attractive.",
+      "sources": [
+        12
+      ],
+      "score": 75.3,
+      "previousScore": 74.7,
+      "trend": "up"
+    },
+    {
+      "id": "unemploymentRate",
+      "label": "Unemployment rate",
+      "group": "confirmation",
+      "value": 4.2,
+      "unit": "%",
+      "asOf": "2026-09-01",
+      "weight": 0.5,
+      "direction": "lower",
+      "detail": "U-3 unemployment, September 2026, BLS via FRED",
+      "eli5": "The share of people looking for work who cannot find it. Very low unemployment is where booms peak; once it starts rising, the economy is usually already turning.",
+      "sources": [
+        13
+      ],
+      "score": 86.7,
+      "previousScore": 86.7,
+      "trend": "flat"
+    },
+    {
+      "id": "autoLoanDelinquency",
+      "label": "Subprime auto loan delinquency",
+      "group": "confirmation",
+      "value": 5.98,
+      "unit": "% 60+ days",
+      "asOf": "2026-08-01",
+      "weight": 0.5,
+      "direction": "higher",
+      "detail": "Subprime auto 60+ day delinquency, Aug 2026, Trading Econ.",
+      "eli5": "The share of riskier car loans more than two months behind on payments. Car loans go bad early when households are squeezed, so this is an early warning for the economy.",
+      "sources": [
+        14
+      ],
+      "score": 100,
+      "previousScore": 100,
+      "trend": "flat"
+    },
+    {
+      "id": "nfci",
+      "label": "Chicago Fed financial conditions",
+      "group": "confirmation",
+      "value": -0.499,
+      "unit": "index",
+      "asOf": "2026-10-09",
+      "weight": 0.5,
+      "direction": "lower",
+      "detail": "NFCI, negative means looser than average, FRED",
+      "eli5": "The Chicago Fed's one-number summary of how easy money is: credit, borrowing and market stress. Below zero means easier than usual, the conditions bubbles grow in.",
+      "sources": [
+        15
+      ],
+      "score": 76.8,
+      "previousScore": 76.8,
+      "trend": "flat"
+    },
+    {
+      "id": "soxToSp500Ratio",
+      "label": "Semiconductor index ÷ S&P 500",
+      "group": "fragility",
+      "value": 1.4832,
+      "unit": "ratio",
+      "asOf": "2026-10-21",
+      "weight": 1,
+      "direction": "higher",
+      "verified": false,
+      "detail": "PHLX Semiconductor ÷ S&P 500 close, Yahoo chart data",
+      "eli5": "The main chip-maker index compared with the S&P 500. Chips are the picks and shovels of the AI boom, so this shows how much of the market's bet is riding on it.",
+      "sources": [
+        16,
+        6
+      ],
+      "score": 70.2,
+      "previousScore": 68.8,
+      "trend": "up"
+    },
+    {
+      "id": "hyperscalerCapexToOcf",
+      "label": "Hyperscaler capex ÷ cash flow",
+      "group": "fragility",
+      "value": 96.0939,
+      "unit": "% of OCF",
+      "asOf": "2026-06-30",
+      "weight": 1,
+      "direction": "higher",
+      "verified": false,
+      "detail": "MSFT+GOOGL+AMZN+META, Q2 2026, SEC XBRL 10-Q/10-K cash flows",
+      "eli5": "What Microsoft, Alphabet, Amazon and Meta spend on data centres and chips, as a share of the cash their businesses make. Near 100% means they spend about all they earn.",
+      "sources": [
+        17,
+        18,
+        19,
+        20
+      ],
+      "score": 93.5,
+      "previousScore": 93.5,
+      "trend": "flat"
+    },
+    {
+      "id": "tsmcRevenueGrowth",
+      "label": "TSMC monthly revenue growth",
+      "group": "fragility",
+      "value": 54.6,
+      "unit": "% y/y",
+      "asOf": "2026-09-30",
+      "weight": 0.75,
+      "direction": "higher",
+      "verified": false,
+      "detail": "September 2026 revenue NT$511.86bn, TSMC press release",
+      "eli5": "How fast sales are growing at TSMC, the company that makes nearly every advanced AI chip. Its order book is an early read on whether AI demand is still speeding up.",
+      "sources": [
+        21
+      ],
+      "score": 99.1,
+      "previousScore": 99.1,
+      "trend": "flat"
+    }
+  ],
+  "composite": {
+    "method": "weighted-mean",
+    "indicatorScore": 71.7,
+    "fragilityScore": 84.2,
+    "triggerScore": 36.0,
+    "confirmationScore": 87.8,
+    "newsAdjustment": 1,
+    "reason": "Chips and SpaceX rallied, but Yahoo Finance notes investors are more concerned about the industry's massive AI spending.",
+    "indicatorCount": 15,
+    "missingCount": 0
+  },
+  "fundamentals": [
+    {
+      "label": "S&P 500 forward 12-month P/E",
+      "value": "19.1",
+      "note": "equal to its 10-year average of 19.1 and below the 5-year 19.8 (FactSet)",
+      "trend": "flat",
+      "eli5": "Share prices divided by the profits analysts expect over the next year. At its ten-year average, prices are not running ahead of expected earnings.",
+      "sources": [
+        22
+      ]
+    },
+    {
+      "label": "S&P 500 Q3 earnings growth, est.",
+      "value": "+29.6%",
+      "note": "Q3 2026 estimate as of 9 October; forward P/E 19.1 (FactSet)",
+      "trend": "up",
+      "eli5": "How much more profit the 500 biggest US companies are expected to have made this quarter than a year ago. Fast growth means real earnings, not just hope, back prices.",
+      "sources": [
+        22
+      ]
+    },
+    {
+      "label": "TSMC September revenue growth",
+      "value": "+54.6% y/y",
+      "note": "NT$511.86bn; January–September revenue up 41.1% on 2025",
+      "trend": "up",
+      "eli5": "How fast sales are growing at TSMC, the company that makes nearly every advanced AI chip. Its order book is an early read on whether AI demand is still speeding up.",
+      "sources": [
+        21
+      ]
+    }
+  ]
+}
