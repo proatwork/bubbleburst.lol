@@ -1,14 +1,14 @@
 {
-  "updatedAt": "2026-10-28T13:00:04Z",
+  "updatedAt": "2026-10-29T00:59:05Z",
   "pressure": 72,
   "previousPressure": 72,
-  "headline": "Not yet: pressure holds at 72 as AI stocks rally before the Fed",
-  "summary": "On Tuesday 27 October the Nasdaq rose 1.2% and the S&P 500 0.6% as AI stocks rebounded after Anthropic's IPO filing. The basket scores 70.6, so pressure holds at 72. [1][22]",
+  "headline": "Not yet: pressure holds at 72 as the Fed holds and Alphabet slides",
+  "summary": "The Fed held at 3.75–4% on Wednesday 28 October, with two votes for a hike, and Alphabet fell about 11% after hours. The basket scores 71.2, so pressure holds at 72. [1][22]",
   "signals": [
     {
       "label": "S&P 500 price to sales",
-      "value": "3.81",
-      "note": "up from 3.79; beyond any prior burst; score 100",
+      "value": "3.82",
+      "note": "up from 3.81; beyond any prior burst; score 100",
       "trend": "up",
       "eli5": "The value of the 500 biggest US companies divided by their sales. Sales are harder to dress up than profits, so a high ratio says prices have run far ahead of what firms sell.",
       "sources": [
@@ -17,9 +17,9 @@
     },
     {
       "label": "10-year Treasury yield",
-      "value": "4.99%",
-      "note": "edged down from 5.00%; basket score 66.0",
-      "trend": "down",
+      "value": "5.05%",
+      "note": "up from 4.99% after the Fed hold; basket score 70.0",
+      "trend": "up",
       "eli5": "The interest rate the US government pays to borrow for ten years. When it rises, safe bonds compete with shares, and expensive stocks are the first to look less attractive.",
       "sources": [
         11
@@ -28,8 +28,8 @@
     {
       "label": "Chips ÷ S&P 500 (SOX ratio)",
       "value": "1.49",
-      "note": "up from 1.44 on the chip rebound; basket score 70.5",
-      "trend": "up",
+      "note": "unchanged since 27 Oct; basket score 70.5",
+      "trend": "flat",
       "eli5": "The main chip-maker index compared with the S&P 500. Chips are the picks and shovels of the AI boom, so this shows how much of the market's bet is riding on it.",
       "sources": [
         15,
@@ -39,8 +39,8 @@
     {
       "label": "Nasdaq ÷ S&P 500",
       "value": "3.43",
-      "note": "up from 3.41; basket score 81.2",
-      "trend": "up",
+      "note": "unchanged since 27 Oct; basket score 81.2",
+      "trend": "flat",
       "eli5": "How the tech-heavy Nasdaq compares with the broader S&P 500. When this climbs, money is piling into tech faster than into everything else, which is what past bubbles looked like.",
       "sources": [
         4,
@@ -49,16 +49,16 @@
     }
   ],
   "analysis": [
-    "The basket scores 70.6: fragility 83.9, trigger 32.6, confirmation 87.7. Price to sales (3.81), household equities (48.2% of financial assets) and subprime auto delinquency (5.98%) sit beyond any prior burst; CAPE is 40.89 and TSMC revenue growth 54.6%. The BIS credit gap, at −11.3 points, is the calmest reading. [2][3][7][9][13][20]",
-    "On Tuesday 27 October the Nasdaq rose 1.18% to 26,477.81 and the S&P 500 0.6% to 7,722.60 as AI and data-centre stocks recovered after Anthropic's S-1 filing for a Nasdaq listing. Consumer confidence rose to 91.7. Meta's plan to raise $95 billion for AI infrastructure remains a financing worry. [1][22][23]",
-    "The 10-year yield is 4.99% and the high-yield spread 330 bp (26 October). Brent fell to $113.88 on hopes of Middle East peace talks. The Fed decides on Wednesday 28 October; markets price an 83% chance of a December hike. Why 72: the basket anchors near 70.6 and financing worries add one point. [8][11][23]"
+    "The basket scores 71.2: fragility 84.1, trigger 34.8, confirmation 87.7. Price to sales (3.82), household equities (48.2% of financial assets) and subprime auto delinquency (5.98%) sit beyond any prior burst; CAPE is 41.04 and TSMC revenue growth 54.6%. The BIS credit gap, at −11.3 points, is the calmest reading. [2][3][7][9][13][20]",
+    "On Wednesday 28 October the Fed kept its rate at 3.75–4% in a 10-2 vote, with Lisa Cook and Beth Hammack favouring a quarter-point hike. After the close Alphabet fell 10.8% as Search growth slowed to 12%, while Microsoft rose 4.9% on Azure growth of 48%. Capex was $45.2 billion at Microsoft and $51.4 billion at Alphabet. [1]",
+    "The 10-year yield rose to 5.05% on 28 October and the high-yield spread eased to 318 bp on 27 October. On Tuesday 27 October the S&P 500 gained about 0.6% and the Nasdaq over 1% as chip stocks rose a third session on Anthropic IPO buzz. Why 72: the basket anchors near 71.2 and the Alphabet drop adds one point. [8][11][22]"
   ],
   "sources": [
     {
-      "title": "Stock Market News for Oct 27, 2026",
-      "publisher": "Zacks Equity Research via Yahoo Finance",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/stock-market-news-oct-27-072700640.html",
-      "date": "2026-10-27"
+      "title": "Stock Market Today Live October 28, 2026: Fed Holds Rates; Fortinet and Alphabet Fall After Hours",
+      "publisher": "StockTitan",
+      "url": "https://www.stocktitan.net/articles/stock-market-today-live-october-28-2026",
+      "date": "2026-10-28"
     },
     {
       "title": "Shiller PE Ratio by Month",
@@ -181,15 +181,9 @@
       "date": "2026-10-09"
     },
     {
-      "title": "Stock Market Today (Oct. 27, 2026): S&P 500 climbs as Wall Street gears up for earnings, Fed meeting",
-      "publisher": "TheStreet via Yahoo Finance",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/stock-market-today-oct-27-135043351.html",
-      "date": "2026-10-27"
-    },
-    {
-      "title": "Market Review: October 27, 2026",
-      "publisher": "Investrade",
-      "url": "https://investrade.com/market-review-october-27-2026/",
+      "title": "Wall Street ends higher on revived AI momentum",
+      "publisher": "Reuters via MarketScreener",
+      "url": "https://www.marketscreener.com/news/wall-street-ends-higher-on-revived-ai-momentum-ce785cddde81f423",
       "date": "2026-10-27"
     }
   ],
@@ -199,9 +193,9 @@
       "id": "shillerCape",
       "label": "Shiller CAPE, S&P 500",
       "group": "fragility",
-      "value": 40.89,
+      "value": 41.04,
       "unit": "ratio",
-      "asOf": "2026-10-27",
+      "asOf": "2026-10-28",
       "weight": 1.5,
       "direction": "higher",
       "detail": "S&P 500 cyclically adjusted P/E, multpl.com monthly table",
@@ -209,17 +203,17 @@
       "sources": [
         2
       ],
-      "score": 87.8,
-      "previousScore": 87.0,
+      "score": 88.4,
+      "previousScore": 87.8,
       "trend": "up"
     },
     {
       "id": "sp500PriceToSales",
       "label": "S&P 500 price to sales",
       "group": "fragility",
-      "value": 3.81,
+      "value": 3.82,
       "unit": "ratio",
-      "asOf": "2026-10-27",
+      "asOf": "2026-10-28",
       "weight": 1,
       "direction": "higher",
       "detail": "Price over trailing 12-month sales, multpl.com; beyond any burst",
@@ -228,7 +222,7 @@
         3
       ],
       "score": 100,
-      "previousScore": 100.0,
+      "previousScore": 100,
       "trend": "flat"
     },
     {
@@ -247,7 +241,7 @@
         5
       ],
       "score": 81.2,
-      "previousScore": 79.3,
+      "previousScore": 81.2,
       "trend": "up"
     },
     {
@@ -290,9 +284,9 @@
       "id": "highYieldSpread",
       "label": "US high-yield bond spread",
       "group": "trigger",
-      "value": 330,
+      "value": 318,
       "unit": "bp",
-      "asOf": "2026-10-26",
+      "asOf": "2026-10-27",
       "weight": 0.5,
       "direction": "lower",
       "detail": "ICE BofA US high-yield OAS in bp, FRED (26 Oct)",
@@ -300,8 +294,8 @@
       "sources": [
         8
       ],
-      "score": 63.3,
-      "previousScore": 59.6,
+      "score": 68.8,
+      "previousScore": 63.3,
       "trend": "up"
     },
     {
@@ -344,9 +338,9 @@
       "id": "treasury10yYield",
       "label": "10-year Treasury yield",
       "group": "trigger",
-      "value": 4.99,
+      "value": 5.05,
       "unit": "%",
-      "asOf": "2026-10-27",
+      "asOf": "2026-10-28",
       "weight": 1.25,
       "direction": "higher",
       "detail": "10-year Treasury constant maturity, Treasury",
@@ -354,9 +348,9 @@
       "sources": [
         11
       ],
-      "score": 66.0,
-      "previousScore": 66.7,
-      "trend": "down"
+      "score": 70.0,
+      "previousScore": 66.0,
+      "trend": "up"
     },
     {
       "id": "unemploymentRate",
@@ -409,7 +403,7 @@
         14
       ],
       "score": 76.3,
-      "previousScore": 76.8,
+      "previousScore": 76.3,
       "trend": "flat"
     },
     {
@@ -429,7 +423,7 @@
         5
       ],
       "score": 70.5,
-      "previousScore": 67.4,
+      "previousScore": 70.5,
       "trend": "up"
     },
     {
@@ -476,12 +470,12 @@
   ],
   "composite": {
     "method": "weighted-mean",
-    "indicatorScore": 70.6,
-    "fragilityScore": 83.9,
-    "triggerScore": 32.6,
+    "indicatorScore": 71.2,
+    "fragilityScore": 84.1,
+    "triggerScore": 34.8,
     "confirmationScore": 87.7,
     "newsAdjustment": 1,
-    "reason": "Anthropic's IPO filing lifted tech on 27 October, but Meta's reported $95 billion AI raise and a possible December Fed hike keep financing worries alive.",
+    "reason": "Alphabet's 11% after-hours drop on 28 October and two Fed votes for a hike add financing worries, partly offset by Microsoft's Azure beat.",
     "indicatorCount": 15,
     "missingCount": 0
   },
