@@ -1,15 +1,15 @@
 {
-  "updatedAt": "2026-11-03T12:57:07Z",
+  "updatedAt": "2026-11-04T00:57:00Z",
   "pressure": 69,
-  "previousPressure": 71,
-  "headline": "Not yet: chip selling goes on, pressure eases to 69",
-  "summary": "Chips fell again on Monday 2 November (Nasdaq −0.96%, S&P 500 −0.41%) while oil and the 10-year yield (4.91%) dropped. The basket scores 68.1, so pressure moves to 69. [23][11]",
+  "previousPressure": 69,
+  "headline": "Not yet: chips rebound on Tuesday, pressure holds at 69",
+  "summary": "Chips and the Nasdaq (+0.83%) bounced on Tuesday 3 November, and AMD beat estimates after the close. The 10-year yield rose to 4.95%. The basket scores 68.6, so pressure stays at 69. [23][11]",
   "signals": [
     {
       "label": "Chips ÷ S&P 500 (SOX ratio)",
-      "value": "1.37",
-      "note": "down from 1.41; basket score 62.1",
-      "trend": "down",
+      "value": "1.40",
+      "note": "up from 1.37; basket score 64.3",
+      "trend": "up",
       "eli5": "The main chip-maker index compared with the S&P 500. Chips are the picks and shovels of the AI boom, so this shows how much of the market's bet is riding on it.",
       "sources": [
         15,
@@ -18,9 +18,9 @@
     },
     {
       "label": "Nasdaq ÷ S&P 500",
-      "value": "3.34",
-      "note": "down from 3.36; basket score 72.2",
-      "trend": "down",
+      "value": "3.35",
+      "note": "up from 3.34; basket score 73.7",
+      "trend": "up",
       "eli5": "How the tech-heavy Nasdaq compares with the broader S&P 500. When this climbs, money is piling into tech faster than into everything else, which is what past bubbles looked like.",
       "sources": [
         4,
@@ -29,9 +29,9 @@
     },
     {
       "label": "10-year Treasury yield",
-      "value": "4.91%",
-      "note": "down from 4.94%; basket score 60.7",
-      "trend": "down",
+      "value": "4.95%",
+      "note": "up from 4.91%; basket score 63.3",
+      "trend": "up",
       "eli5": "The interest rate the US government pays to borrow for ten years. When it rises, safe bonds compete with shares, and expensive stocks are the first to look less attractive.",
       "sources": [
         11
@@ -49,9 +49,9 @@
     }
   ],
   "analysis": [
-    "The basket scores 68.1: fragility 81.2, trigger 29.8, confirmation 87.2. Price to sales (3.74), household equities (48.2% of financial assets) and subprime auto delinquency (5.98%) sit beyond any prior burst; CAPE is 40.13. The BIS credit gap, at −11.3 points, is the calmest reading. [3][7][13][2][9]",
-    "On Monday 2 November the Nasdaq Composite fell 0.96% and the S&P 500 0.41%, while the Dow rose 0.52%. Marvell lost 12.81%, AMD 7.03% and Intel 8.70%, extending the rout that began on Friday 30 October, when the Nasdaq fell 2.86%. AMD reports third-quarter results on Tuesday 3 November. [1][22][23][24]",
-    "WTI oil fell 7.68% to $96.12 on US-Iran diplomacy hopes and the 10-year yield eased to 4.91%. The high-yield spread was 344 bp on 30 October, up from 326 bp. Why 69: the basket anchors near 68.1, and continued chip selling adds one point. [23][11][8]"
+    "The basket scores 68.6: fragility 81.7, trigger 30.8, confirmation 87.2. Price to sales (3.74), household equities (48.2% of financial assets) and subprime auto delinquency (5.98%) sit beyond any prior burst; CAPE is 40.13. The BIS credit gap, at −11.3 points, is the calmest reading. [3][7][13][2][9]",
+    "On Tuesday 3 November the Nasdaq Composite rose 0.83% and the S&P 500 0.36%, with Nvidia up 2.27% and Broadcom 3.07%, though breadth was narrow. AMD beat on revenue ($13.40B vs $13.10B expected) after the close. This follows the Friday 30 October rout (AMD had slid 3% on Monday 2 November [24]), when the Nasdaq fell 2.86%. [23][22][1]",
+    "The 10-year yield rose to 4.95% on 3 November from 4.91%, and the high-yield spread was 343 bp on 2 November, little changed. Why 69: the basket anchors near 68.6, and the chip rebound offsets the earlier selling, so the news adds nothing. [11][8]"
   ],
   "sources": [
     {
@@ -76,13 +76,13 @@
       "title": "Nasdaq Composite (^IXIC) chart data, 5 days",
       "publisher": "Yahoo Finance",
       "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5EIXIC?range=5d&interval=1d",
-      "date": "2026-11-02"
+      "date": "2026-11-03"
     },
     {
       "title": "S&P 500 (^GSPC) chart data, 5 days (Nasdaq ratio denominator)",
       "publisher": "Yahoo Finance",
       "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5EGSPC?range=5d&interval=1d",
-      "date": "2026-11-02"
+      "date": "2026-11-03"
     },
     {
       "title": "Margin Statistics",
@@ -100,7 +100,7 @@
       "title": "ICE BofA US High Yield Index Option-Adjusted Spread (BAMLH0A0HYM2)",
       "publisher": "FRED, Federal Reserve Bank of St. Louis",
       "url": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2",
-      "date": "2026-10-30"
+      "date": "2026-11-02"
     },
     {
       "title": "Credit-to-GDP gap, United States, actual minus trend (WS_CREDIT_GAP Q.US.P.A.C)",
@@ -118,7 +118,7 @@
       "title": "Daily Treasury Par Yield Curve Rates, November 2026 (CSV)",
       "publisher": "U.S. Department of the Treasury",
       "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/daily-treasury-rates.csv/all/202611?type=daily_treasury_yield_curve&field_tdr_date_value_month=202611&page&_format=csv",
-      "date": "2026-11-02"
+      "date": "2026-11-03"
     },
     {
       "title": "Table Data - Unemployment Rate (UNRATE)",
@@ -142,7 +142,7 @@
       "title": "PHLX Semiconductor Index (^SOX) chart data, 5 days",
       "publisher": "Yahoo Finance",
       "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5ESOX?range=5d&interval=1d",
-      "date": "2026-11-02"
+      "date": "2026-11-03"
     },
     {
       "title": "XBRL company facts: Microsoft Corporation (CIK 0000789019)",
@@ -187,10 +187,10 @@
       "date": "2026-10-30"
     },
     {
-      "title": "investingLive Americas FX news wrap 2 Nov: It's a wrap: AI selling overwhelms oil's plunge",
+      "title": "Nasdaq rebounds as chip stocks rally and Dow slips",
       "publisher": "investingLive",
-      "url": "https://investinglive.com/news/investinglive-americas-fx-news-wrap-2-nov-it-s-a-wrap-ai-selling-overwhelms-oil-s-plunge/",
-      "date": "2026-11-02"
+      "url": "https://investinglive.com/stocks/nasdaq-rebounds-as-chip-stocks-rally-and-dow-slips/",
+      "date": "2026-11-03"
     },
     {
       "title": "AMD Slides 3% Ahead of Earnings as PC Worries Linger; Intel Drops 5%, NVIDIA Edges Higher",
@@ -241,9 +241,9 @@
       "id": "nasdaqToSp500Ratio",
       "label": "Nasdaq Composite ÷ S&P 500",
       "group": "fragility",
-      "value": 3.3368,
+      "value": 3.3521,
       "unit": "ratio",
-      "asOf": "2026-11-02",
+      "asOf": "2026-11-03",
       "weight": 1,
       "direction": "higher",
       "detail": "Nasdaq Composite ÷ S&P 500 close, Yahoo chart data",
@@ -252,9 +252,9 @@
         4,
         5
       ],
-      "score": 72.2,
-      "previousScore": 74.1,
-      "trend": "down"
+      "score": 73.7,
+      "previousScore": 72.2,
+      "trend": "up"
     },
     {
       "id": "marginDebtGrowth",
@@ -296,9 +296,9 @@
       "id": "highYieldSpread",
       "label": "US high-yield bond spread",
       "group": "trigger",
-      "value": 344,
+      "value": 343,
       "unit": "bp",
-      "asOf": "2026-10-30",
+      "asOf": "2026-11-02",
       "weight": 0.5,
       "direction": "lower",
       "detail": "ICE BofA US high-yield OAS in bp, FRED (26 Oct)",
@@ -306,9 +306,9 @@
       "sources": [
         8
       ],
-      "score": 56.9,
-      "previousScore": 65.1,
-      "trend": "down"
+      "score": 57.3,
+      "previousScore": 56.9,
+      "trend": "up"
     },
     {
       "id": "bisCreditGap",
@@ -350,9 +350,9 @@
       "id": "treasury10yYield",
       "label": "10-year Treasury yield",
       "group": "trigger",
-      "value": 4.91,
+      "value": 4.95,
       "unit": "%",
-      "asOf": "2026-11-02",
+      "asOf": "2026-11-03",
       "weight": 1.25,
       "direction": "higher",
       "detail": "10-year Treasury constant maturity, Treasury",
@@ -360,9 +360,9 @@
       "sources": [
         11
       ],
-      "score": 60.7,
-      "previousScore": 62.7,
-      "trend": "down"
+      "score": 63.3,
+      "previousScore": 60.7,
+      "trend": "up"
     },
     {
       "id": "unemploymentRate",
@@ -422,9 +422,9 @@
       "id": "soxToSp500Ratio",
       "label": "Semiconductor index ÷ S&P 500",
       "group": "fragility",
-      "value": 1.3696,
+      "value": 1.4005,
       "unit": "ratio",
-      "asOf": "2026-11-02",
+      "asOf": "2026-11-03",
       "weight": 1,
       "direction": "higher",
       "verified": false,
@@ -434,9 +434,9 @@
         15,
         5
       ],
-      "score": 62.1,
-      "previousScore": 65.0,
-      "trend": "down"
+      "score": 64.3,
+      "previousScore": 62.1,
+      "trend": "up"
     },
     {
       "id": "hyperscalerCapexToOcf",
@@ -482,12 +482,12 @@
   ],
   "composite": {
     "method": "weighted-mean",
-    "indicatorScore": 68.1,
-    "fragilityScore": 81.2,
-    "triggerScore": 29.8,
+    "indicatorScore": 68.6,
+    "fragilityScore": 81.7,
+    "triggerScore": 30.8,
     "confirmationScore": 87.2,
-    "newsAdjustment": 1,
-    "reason": "Chip selling extended on Monday 2 November, with Marvell down 12.8% and AMD 7.0% before its earnings, partly offset by falling oil and yields.",
+    "newsAdjustment": 0,
+    "reason": "Chips rebounded on Tuesday 3 November and AMD beat estimates, offsetting the prior selling, so the news does not move the score.",
     "indicatorCount": 15,
     "missingCount": 0
   },
