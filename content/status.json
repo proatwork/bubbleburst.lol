@@ -1,15 +1,15 @@
 {
-  "updatedAt": "2026-11-05T13:00:20Z",
-  "pressure": 69,
+  "updatedAt": "2026-11-07T12:57:26Z",
+  "pressure": 70,
   "previousPressure": 69,
-  "headline": "Not yet: chips rebound on Tuesday, pressure holds at 69",
-  "summary": "Chips and the Nasdaq (+0.83%) bounced on Tuesday 3 November, and AMD beat estimates after the close. The 10-year yield eased to 4.90% on 4 November. The basket scores 68.2, so pressure stays at 69. [23][11]",
+  "headline": "Not yet: Nasdaq enters a correction, but pressure edges up to 70",
+  "summary": "Nasdaq fell 5.52% on Thursday 5 November and chips 12.25%, then the Nasdaq rebounded 1.09% on Friday 6 November. The basket scores 66.7; a +3 news nudge puts pressure at 70. [22][23]",
   "signals": [
     {
       "label": "Chips ÷ S&P 500 (SOX ratio)",
-      "value": "1.40",
-      "note": "up from 1.37; basket score 64.3",
-      "trend": "up",
+      "value": "1.27",
+      "note": "down from 1.40; basket score 55.2",
+      "trend": "down",
       "eli5": "The main chip-maker index compared with the S&P 500. Chips are the picks and shovels of the AI boom, so this shows how much of the market's bet is riding on it.",
       "sources": [
         15,
@@ -18,9 +18,9 @@
     },
     {
       "label": "Nasdaq ÷ S&P 500",
-      "value": "3.35",
-      "note": "up from 3.34; basket score 73.7",
-      "trend": "up",
+      "value": "3.33",
+      "note": "down from 3.35; basket score 71.8",
+      "trend": "down",
       "eli5": "How the tech-heavy Nasdaq compares with the broader S&P 500. When this climbs, money is piling into tech faster than into everything else, which is what past bubbles looked like.",
       "sources": [
         4,
@@ -29,8 +29,8 @@
     },
     {
       "label": "10-year Treasury yield",
-      "value": "4.90%",
-      "note": "down from 4.95%; basket score 60.0",
+      "value": "4.86%",
+      "note": "down from 4.90%; basket score 57.3",
       "trend": "down",
       "eli5": "The interest rate the US government pays to borrow for ten years. When it rises, safe bonds compete with shares, and expensive stocks are the first to look less attractive.",
       "sources": [
@@ -39,8 +39,8 @@
     },
     {
       "label": "S&P 500 price to sales",
-      "value": "3.74",
-      "note": "3.74 as of 30 Oct; beyond any prior burst; score 100",
+      "value": "3.64",
+      "note": "3.64 on 6 Nov; beyond any prior burst; score 100",
       "trend": "down",
       "eli5": "The value of the 500 biggest US companies divided by their sales. Sales are harder to dress up than profits, so a high ratio says prices have run far ahead of what firms sell.",
       "sources": [
@@ -49,40 +49,40 @@
     }
   ],
   "analysis": [
-    "The basket scores 68.2: fragility 81.7, trigger 29.8, confirmation 85.8. Price to sales (3.74), household equities (48.2% of financial assets) and subprime auto delinquency (5.98%) sit beyond any prior burst; CAPE is 40.13. The BIS credit gap, at −11.3 points, is the calmest reading. [3][7][13][2][9]",
-    "On Tuesday 3 November the Nasdaq Composite rose 0.83% and the S&P 500 0.36%, with Nvidia up 2.27% and Broadcom 3.07%, though breadth was narrow. AMD beat on revenue ($13.40B vs $13.10B expected) after the close. This follows the Friday 30 October rout (AMD had slid 3% on Monday 2 November [24]), when the Nasdaq fell 2.86%. [23][22][1]",
-    "The 10-year yield eased to 4.90% on Wednesday 4 November from 4.95%, and the high-yield spread was 340 bp on 3 November, little changed. Why 69: the basket anchors near 68.2, and the chip rebound offsets the earlier selling, so the news adds nothing. [11][8]"
+    "The basket scores 66.7: fragility 79.5, trigger 28.3, confirmation 88.0. Price to sales (3.64), household equities (48.2% of financial assets) and subprime auto delinquency (5.98%) sit beyond any prior burst; unemployment (4.1%) scores 93.3 and CAPE is 38.91. The BIS credit gap, at −11.3 points, is the calmest reading. [3][7][13][12][2][9]",
+    "On Thursday 5 November the Nasdaq Composite fell 5.52% into correction, the S&P 500 4.36% and the Philadelphia Semiconductor Index 12.25%; Nvidia lost about 9% and Micron 17.46%. Investors cited Democratic midterm wins and possible limits on data centres. [1][22] The Nasdaq rebounded 1.09% on Friday 6 November, with AMD up about 9% and October payrolls up 165,000. [23]",
+    "The 10-year yield was 4.86% on 6 November and the high-yield spread 348 bp on 5 November, up from 332 bp on 4 November, so credit stress rose only slightly. Nomura's Charlie McElligott put the selloff down to hedge funds locking in gains. Why 70: the basket anchors near 66.7 and the crash adds the maximum +3. [11][8][24]"
   ],
   "sources": [
     {
-      "title": "Wall Street closes sharply lower as AI cash burn fears spark tech selloff",
-      "publisher": "Reuters via Yahoo Finance",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/nasdaq-futures-sink-amazon-intel-114737736.html",
-      "date": "2026-10-30"
+      "title": "Stocks plunge as Dem midterm sweep fuels AI regulatory concerns",
+      "publisher": "Fox Business",
+      "url": "https://www.foxbusiness.com/markets/stocks-nov-5-2026",
+      "date": "2026-11-05"
     },
     {
       "title": "Shiller PE Ratio by Month",
       "publisher": "multpl.com",
       "url": "https://www.multpl.com/shiller-pe",
-      "date": "2026-10-30"
+      "date": "2026-11-06"
     },
     {
       "title": "S&P 500 Price to Sales Ratio",
       "publisher": "multpl.com",
       "url": "https://www.multpl.com/s-p-500-price-to-sales",
-      "date": "2026-10-30"
+      "date": "2026-11-06"
     },
     {
       "title": "Nasdaq Composite (^IXIC) chart data, 5 days",
       "publisher": "Yahoo Finance",
       "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5EIXIC?range=5d&interval=1d",
-      "date": "2026-11-03"
+      "date": "2026-11-06"
     },
     {
       "title": "S&P 500 (^GSPC) chart data, 5 days (Nasdaq ratio denominator)",
       "publisher": "Yahoo Finance",
       "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5EGSPC?range=5d&interval=1d",
-      "date": "2026-11-03"
+      "date": "2026-11-06"
     },
     {
       "title": "Margin Statistics",
@@ -100,7 +100,7 @@
       "title": "ICE BofA US High Yield Index Option-Adjusted Spread (BAMLH0A0HYM2)",
       "publisher": "FRED, Federal Reserve Bank of St. Louis",
       "url": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2",
-      "date": "2026-11-03"
+      "date": "2026-11-05"
     },
     {
       "title": "Credit-to-GDP gap, United States, actual minus trend (WS_CREDIT_GAP Q.US.P.A.C)",
@@ -118,13 +118,13 @@
       "title": "Daily Treasury Par Yield Curve Rates, November 2026 (CSV)",
       "publisher": "U.S. Department of the Treasury",
       "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/daily-treasury-rates.csv/all/202611?type=daily_treasury_yield_curve&field_tdr_date_value_month=202611&page&_format=csv",
-      "date": "2026-11-04"
+      "date": "2026-11-06"
     },
     {
       "title": "Table Data - Unemployment Rate (UNRATE)",
       "publisher": "FRED, Federal Reserve Bank of St. Louis",
       "url": "https://fred.stlouisfed.org/data/UNRATE",
-      "date": "2026-10-16"
+      "date": "2026-11-06"
     },
     {
       "title": "United States Car Loan Delinquency",
@@ -142,7 +142,7 @@
       "title": "PHLX Semiconductor Index (^SOX) chart data, 5 days",
       "publisher": "Yahoo Finance",
       "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5ESOX?range=5d&interval=1d",
-      "date": "2026-11-03"
+      "date": "2026-11-06"
     },
     {
       "title": "XBRL company facts: Microsoft Corporation (CIK 0000789019)",
@@ -181,22 +181,22 @@
       "date": "2026-10-09"
     },
     {
-      "title": "Nasdaq Drops 2.86% in Biggest Decline Since June as Investors Sell AI Stocks; Philly Semi Falls Over 7%, Intel Plunges 28%",
+      "title": "Nasdaq Drops Over 5%, Philadelphia Semiconductor Index Plunges 12% as Chip and AI Infrastructure Stocks Are Sold Off; Micron Falls 17%, Nvidia Drops 9%",
       "publisher": "TradingKey",
-      "url": "https://www.tradingkey.com/analysis/stocks/us-stocks/262262171-us-stock-market-today-nasdaq-drop-intel-amazon-chip-tradingkey",
-      "date": "2026-10-30"
+      "url": "https://www.tradingkey.com/analysis/stocks/us-stocks/262284414-us-stocks-close-nasdaq-sp500-dow-enters-correction-ai-selloff-tradingkey",
+      "date": "2026-11-05"
     },
     {
-      "title": "Nasdaq rebounds as chip stocks rally and Dow slips",
-      "publisher": "investingLive",
-      "url": "https://investinglive.com/stocks/nasdaq-rebounds-as-chip-stocks-rally-and-dow-slips/",
-      "date": "2026-11-03"
+      "title": "Nasdaq rebounds 1% following worst session in 18 months as traders snap up tech shares: Live updates",
+      "publisher": "CNBC",
+      "url": "https://www.cnbc.com/2026/11/05/stock-market-today-live-updates.html",
+      "date": "2026-11-06"
     },
     {
-      "title": "AMD Slides 3% Ahead of Earnings as PC Worries Linger; Intel Drops 5%, NVIDIA Edges Higher",
-      "publisher": "24/7 Wall St.",
-      "url": "https://247wallst.com/investing/2026/11/02/amd-slides-3-ahead-of-earnings-as-pc-worries-linger-intel-drops-5-nvidia-edges-higher/",
-      "date": "2026-11-02"
+      "title": "Stock market today: Dow plunges 1,800 points, Nasdaq enters correction in AI trade meltdown",
+      "publisher": "Yahoo Finance",
+      "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-november-5-dow-sp-500-nasdaq-plunge-chip-stocks-melt-down-193726491.html",
+      "date": "2026-11-05"
     }
   ],
   "generatedBy": "claude-sonnet-5-5",
@@ -205,9 +205,9 @@
       "id": "shillerCape",
       "label": "Shiller CAPE, S&P 500",
       "group": "fragility",
-      "value": 40.13,
+      "value": 38.91,
       "unit": "ratio",
-      "asOf": "2026-10-30",
+      "asOf": "2026-11-06",
       "weight": 1.5,
       "direction": "higher",
       "detail": "S&P 500 cyclically adjusted P/E, multpl.com monthly table",
@@ -215,17 +215,17 @@
       "sources": [
         2
       ],
-      "score": 85.0,
+      "score": 80.6,
       "previousScore": 85.0,
-      "trend": "flat"
+      "trend": "down"
     },
     {
       "id": "sp500PriceToSales",
       "label": "S&P 500 price to sales",
       "group": "fragility",
-      "value": 3.74,
+      "value": 3.64,
       "unit": "ratio",
-      "asOf": "2026-10-30",
+      "asOf": "2026-11-06",
       "weight": 1,
       "direction": "higher",
       "detail": "Price over trailing 12-month sales, multpl.com; beyond any burst",
@@ -241,9 +241,9 @@
       "id": "nasdaqToSp500Ratio",
       "label": "Nasdaq Composite ÷ S&P 500",
       "group": "fragility",
-      "value": 3.3521,
+      "value": 3.332,
       "unit": "ratio",
-      "asOf": "2026-11-03",
+      "asOf": "2026-11-06",
       "weight": 1,
       "direction": "higher",
       "detail": "Nasdaq Composite ÷ S&P 500 close, Yahoo chart data",
@@ -252,9 +252,9 @@
         4,
         5
       ],
-      "score": 73.7,
-      "previousScore": 72.2,
-      "trend": "up"
+      "score": 71.8,
+      "previousScore": 73.7,
+      "trend": "down"
     },
     {
       "id": "marginDebtGrowth",
@@ -296,9 +296,9 @@
       "id": "highYieldSpread",
       "label": "US high-yield bond spread",
       "group": "trigger",
-      "value": 340,
+      "value": 348,
       "unit": "bp",
-      "asOf": "2026-11-03",
+      "asOf": "2026-11-05",
       "weight": 0.5,
       "direction": "lower",
       "detail": "ICE BofA US high-yield OAS in bp, FRED",
@@ -306,9 +306,9 @@
       "sources": [
         8
       ],
-      "score": 58.7,
-      "previousScore": 57.3,
-      "trend": "up"
+      "score": 55.0,
+      "previousScore": 58.7,
+      "trend": "down"
     },
     {
       "id": "bisCreditGap",
@@ -350,9 +350,9 @@
       "id": "treasury10yYield",
       "label": "10-year Treasury yield",
       "group": "trigger",
-      "value": 4.9,
+      "value": 4.86,
       "unit": "%",
-      "asOf": "2026-11-04",
+      "asOf": "2026-11-06",
       "weight": 1.25,
       "direction": "higher",
       "detail": "10-year Treasury constant maturity, Treasury",
@@ -360,27 +360,27 @@
       "sources": [
         11
       ],
-      "score": 60.0,
-      "previousScore": 63.3,
+      "score": 57.3,
+      "previousScore": 60.0,
       "trend": "down"
     },
     {
       "id": "unemploymentRate",
       "label": "Unemployment rate",
       "group": "confirmation",
-      "value": 4.2,
+      "value": 4.1,
       "unit": "%",
-      "asOf": "2026-09-01",
+      "asOf": "2026-10-01",
       "weight": 0.5,
       "direction": "lower",
-      "detail": "U-3 unemployment, September 2026, BLS via FRED",
+      "detail": "U-3 unemployment, October 2026, BLS via FRED",
       "eli5": "The share of people looking for work who cannot find it. Very low unemployment is where booms peak; once it starts rising, the economy is usually already turning.",
       "sources": [
         12
       ],
-      "score": 86.7,
+      "score": 93.3,
       "previousScore": 86.7,
-      "trend": "flat"
+      "trend": "up"
     },
     {
       "id": "autoLoanDelinquency",
@@ -422,9 +422,9 @@
       "id": "soxToSp500Ratio",
       "label": "Semiconductor index ÷ S&P 500",
       "group": "fragility",
-      "value": 1.4005,
+      "value": 1.2729,
       "unit": "ratio",
-      "asOf": "2026-11-03",
+      "asOf": "2026-11-06",
       "weight": 1,
       "direction": "higher",
       "verified": false,
@@ -434,9 +434,9 @@
         15,
         5
       ],
-      "score": 64.3,
-      "previousScore": 62.1,
-      "trend": "up"
+      "score": 55.2,
+      "previousScore": 64.3,
+      "trend": "down"
     },
     {
       "id": "hyperscalerCapexToOcf",
@@ -482,12 +482,12 @@
   ],
   "composite": {
     "method": "weighted-mean",
-    "indicatorScore": 68.2,
-    "fragilityScore": 81.7,
-    "triggerScore": 29.8,
-    "confirmationScore": 85.8,
-    "newsAdjustment": 0,
-    "reason": "No new market-close coverage was found for Wednesday 4 November, so the news does not move the score.",
+    "indicatorScore": 66.7,
+    "fragilityScore": 79.5,
+    "triggerScore": 28.3,
+    "confirmationScore": 88.0,
+    "newsAdjustment": 3,
+    "reason": "The Nasdaq's 5.52% drop on Thursday 5 November, its worst day since April 2025, adds the maximum +3 even though the indicators already reflect lower prices.",
     "indicatorCount": 15,
     "missingCount": 0
   },
