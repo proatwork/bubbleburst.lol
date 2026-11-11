@@ -1,15 +1,15 @@
 {
-  "updatedAt": "2026-11-10T12:58:00Z",
+  "updatedAt": "2026-11-11T00:58:45Z",
   "pressure": 69,
-  "previousPressure": 70,
-  "headline": "Not yet: stocks rebound, but pressure stays high at 69",
-  "summary": "Wall Street had its best day since April on Monday 9 November (Nasdaq +2.74%, S&P 500 +2.35%) after last week's rout. Valuations rose again with prices; the basket scores 67.7 and pressure eases to 69. [1][23]",
+  "previousPressure": 69,
+  "headline": "Not yet: hot inflation and Nvidia scandal keep pressure at 69",
+  "summary": "Stocks slipped on Tuesday 10 November (S&P 500 −0.38%, Nasdaq −0.74%) as hot October CPI lifted Fed hike odds and Nvidia fell 5.5%. The basket scores 68.4; pressure holds at 69. [1][22]",
   "signals": [
     {
       "label": "Shiller CAPE",
-      "value": "39.85",
-      "note": "up from 38.91; basket score 84.0",
-      "trend": "up",
+      "value": "39.70",
+      "note": "down from 39.85; basket score 83.5",
+      "trend": "down",
       "eli5": "Share prices divided by ten years of average company profits, so one good or bad year cannot fool it. The higher it is, the more people are paying for each dollar of profit.",
       "sources": [
         2
@@ -18,8 +18,8 @@
     {
       "label": "Chips ÷ S&P 500 (SOX ratio)",
       "value": "1.33",
-      "note": "up from 1.27; basket score 59.2",
-      "trend": "up",
+      "note": "flat vs 1.33; basket score 59.2",
+      "trend": "flat",
       "eli5": "The main chip-maker index compared with the S&P 500. Chips are the picks and shovels of the AI boom, so this shows how much of the market's bet is riding on it.",
       "sources": [
         15,
@@ -28,8 +28,8 @@
     },
     {
       "label": "10-year Treasury yield",
-      "value": "4.88%",
-      "note": "up from 4.86%; basket score 58.7",
+      "value": "4.98%",
+      "note": "up from 4.88%; basket score 65.3",
       "trend": "up",
       "eli5": "The interest rate the US government pays to borrow for ten years. When it rises, safe bonds compete with shares, and expensive stocks are the first to look less attractive.",
       "sources": [
@@ -38,9 +38,9 @@
     },
     {
       "label": "S&P 500 price to sales",
-      "value": "3.72",
+      "value": "3.71",
       "note": "beyond any prior burst; basket score 100",
-      "trend": "up",
+      "trend": "flat",
       "eli5": "The value of the 500 biggest US companies divided by their sales. Sales are harder to dress up than profits, so a high ratio says prices have run far ahead of what firms sell.",
       "sources": [
         3
@@ -48,40 +48,40 @@
     }
   ],
   "analysis": [
-    "The basket scores 67.7: fragility 80.8, trigger 29.2, confirmation 88.0. Price to sales (3.72), household equities (48.2% of financial assets) and subprime auto delinquency (5.98%) sit beyond any prior burst; CAPE is 39.85 and unemployment (4.1%) scores 93.3. The BIS credit gap, at −11.3 points, is the calmest reading. [3][7][13][2][12][9]",
-    "On Monday 9 November the Nasdaq rose 2.74% and the S&P 500 2.35%, its best day since April, after last week's chip rout. Nvidia fell about 4% as its board opened an investigation into CEO Jensen Huang, while AMD jumped about 12%. Asian chip stocks rallied on Tuesday 10 November. [1][23]",
-    "The 10-year yield rose to 4.88% on 9 November and the high-yield spread was 342 bp on 6 November, so credit stress is modest. Anthropic's IPO valuation has reportedly fallen from as much as $2 trillion to as low as $1 trillion, a test for the AI trade. Why 69: the basket anchors near 68 and news adds +1. [11][8][22]"
+    "The basket scores 68.4: fragility 80.6, trigger 32.1, confirmation 88.0. Price to sales (3.71), household equities (48.2% of financial assets) and subprime auto delinquency (5.98%) sit beyond any prior burst; CAPE is 39.70 and unemployment (4.1%) scores 93.3. The BIS credit gap, at −11.3 points, is the calmest reading. [3][7][13][2][12][9]",
+    "On Tuesday 10 November the S&P 500 fell 0.38% to 7,520.93 and the Nasdaq 0.74%, as hotter-than-expected October inflation raised bets on a December Fed hike. Nvidia dropped 5.5% to $168.80 on reports tied to CEO Jensen Huang and a board probe; AMD and Broadcom rallied. Earnings are due 17 November. [1][22]",
+    "The 10-year yield rose to 4.98% on 10 November and the high-yield spread was 334 bp on 9 November, so credit stress is modest. Anthropic's IPO is set to price on 18 November at up to a $1.405 trillion valuation, a test for the AI trade. Why 69: the basket anchors near 68 and news adds +1. [11][8][23]"
   ],
   "sources": [
     {
-      "title": "Stock market today: Nasdaq surges despite Nvidia stock slide, Dow and S&P 500 rally as AI tech trade rises",
-      "publisher": "Yahoo Finance",
-      "url": "https://finance.yahoo.com/markets/live/stock-market-today-monday-november-9-dow-sp-500-nasdaq-nvidia-090535419.html",
-      "date": "2026-11-09"
+      "title": "Stock Market Today, Nov. 10: Nvidia Stock Plunges 5.5% as CEO Scandal Overshadows Its Upcoming Earnings Report",
+      "publisher": "Yahoo Finance (The Motley Fool)",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/stock-market-today-nov-10-223502212.html",
+      "date": "2026-11-10"
     },
     {
       "title": "Shiller PE Ratio by Month",
       "publisher": "multpl.com",
       "url": "https://www.multpl.com/shiller-pe",
-      "date": "2026-11-09"
+      "date": "2026-11-10"
     },
     {
       "title": "S&P 500 Price to Sales Ratio",
       "publisher": "multpl.com",
       "url": "https://www.multpl.com/s-p-500-price-to-sales",
-      "date": "2026-11-09"
+      "date": "2026-11-10"
     },
     {
       "title": "Nasdaq Composite (^IXIC) chart data, 5 days",
       "publisher": "Yahoo Finance",
       "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5EIXIC?range=5d&interval=1d",
-      "date": "2026-11-09"
+      "date": "2026-11-10"
     },
     {
       "title": "S&P 500 (^GSPC) chart data, 5 days (Nasdaq ratio denominator)",
       "publisher": "Yahoo Finance",
       "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5EGSPC?range=5d&interval=1d",
-      "date": "2026-11-09"
+      "date": "2026-11-10"
     },
     {
       "title": "Margin Statistics",
@@ -99,7 +99,7 @@
       "title": "ICE BofA US High Yield Index Option-Adjusted Spread (BAMLH0A0HYM2)",
       "publisher": "FRED, Federal Reserve Bank of St. Louis",
       "url": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2",
-      "date": "2026-11-06"
+      "date": "2026-11-09"
     },
     {
       "title": "Credit-to-GDP gap, United States, actual minus trend (WS_CREDIT_GAP Q.US.P.A.C)",
@@ -117,7 +117,7 @@
       "title": "Daily Treasury Par Yield Curve Rates, November 2026 (CSV)",
       "publisher": "U.S. Department of the Treasury",
       "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/daily-treasury-rates.csv/all/202611?type=daily_treasury_yield_curve&field_tdr_date_value_month=202611&page&_format=csv",
-      "date": "2026-11-09"
+      "date": "2026-11-10"
     },
     {
       "title": "Table Data - Unemployment Rate (UNRATE)",
@@ -141,7 +141,7 @@
       "title": "PHLX Semiconductor Index (^SOX) chart data, 5 days",
       "publisher": "Yahoo Finance",
       "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5ESOX?range=5d&interval=1d",
-      "date": "2026-11-09"
+      "date": "2026-11-10"
     },
     {
       "title": "XBRL company facts: Microsoft Corporation (CIK 0000789019)",
@@ -180,16 +180,16 @@
       "date": "2026-10-09"
     },
     {
-      "title": "Jim Cramer says Anthropic's IPO could make or break the AI trade. Here's why",
+      "title": "Nvidia sells off for second day in fallout from Jensen Huang’s affair with alleged spy",
       "publisher": "CNBC",
-      "url": "https://www.cnbc.com/2026/11/09/anthropic-ipo-ai-trade-jim-cramer.html",
-      "date": "2026-11-09"
+      "url": "https://www.cnbc.com/2026/11/10/nvidia-nvda-jensen-huang-affair-chinese-spy.html",
+      "date": "2026-11-10"
     },
     {
-      "title": "SoftBank Group shares surge 11% as Asian tech stocks rally after Wall Street rebounds",
+      "title": "The stock market 'dodged a real bullet' — Cramer on Anthropic's new IPO valuation",
       "publisher": "CNBC",
-      "url": "https://www.cnbc.com/2026/11/10/ai-softbank-sk-hynix-samsung-wall-street-tech-stocks.html",
-      "date": "2026-11-09"
+      "url": "https://www.cnbc.com/2026/11/10/the-stock-market-dodged-a-real-bullet-cramer-on-anthropics-new-ipo-valuation.html",
+      "date": "2026-11-10"
     }
   ],
   "generatedBy": "claude-sonnet-5-5",
@@ -198,9 +198,9 @@
       "id": "shillerCape",
       "label": "Shiller CAPE, S&P 500",
       "group": "fragility",
-      "value": 39.85,
+      "value": 39.7,
       "unit": "ratio",
-      "asOf": "2026-11-09",
+      "asOf": "2026-11-10",
       "weight": 1.5,
       "direction": "higher",
       "detail": "S&P 500 cyclically adjusted P/E, multpl.com monthly table",
@@ -208,17 +208,17 @@
       "sources": [
         2
       ],
-      "score": 84.0,
-      "previousScore": 80.6,
-      "trend": "up"
+      "score": 83.5,
+      "previousScore": 84.0,
+      "trend": "down"
     },
     {
       "id": "sp500PriceToSales",
       "label": "S&P 500 price to sales",
       "group": "fragility",
-      "value": 3.72,
+      "value": 3.71,
       "unit": "ratio",
-      "asOf": "2026-11-09",
+      "asOf": "2026-11-10",
       "weight": 1,
       "direction": "higher",
       "detail": "Price over trailing 12-month sales, multpl.com; beyond any burst",
@@ -234,9 +234,9 @@
       "id": "nasdaqToSp500Ratio",
       "label": "Nasdaq Composite ÷ S&P 500",
       "group": "fragility",
-      "value": 3.345,
+      "value": 3.333,
       "unit": "ratio",
-      "asOf": "2026-11-09",
+      "asOf": "2026-11-10",
       "weight": 1,
       "direction": "higher",
       "detail": "Nasdaq Composite ÷ S&P 500 close, Yahoo chart data",
@@ -245,9 +245,9 @@
         4,
         5
       ],
-      "score": 73.0,
-      "previousScore": 71.8,
-      "trend": "up"
+      "score": 71.9,
+      "previousScore": 73.0,
+      "trend": "down"
     },
     {
       "id": "marginDebtGrowth",
@@ -289,9 +289,9 @@
       "id": "highYieldSpread",
       "label": "US high-yield bond spread",
       "group": "trigger",
-      "value": 342,
+      "value": 334,
       "unit": "bp",
-      "asOf": "2026-11-06",
+      "asOf": "2026-11-09",
       "weight": 0.5,
       "direction": "lower",
       "detail": "ICE BofA US high-yield OAS in bp, FRED",
@@ -299,8 +299,8 @@
       "sources": [
         8
       ],
-      "score": 57.8,
-      "previousScore": 55.0,
+      "score": 61.5,
+      "previousScore": 57.8,
       "trend": "up"
     },
     {
@@ -343,9 +343,9 @@
       "id": "treasury10yYield",
       "label": "10-year Treasury yield",
       "group": "trigger",
-      "value": 4.88,
+      "value": 4.98,
       "unit": "%",
-      "asOf": "2026-11-09",
+      "asOf": "2026-11-10",
       "weight": 1.25,
       "direction": "higher",
       "detail": "10-year Treasury constant maturity, Treasury",
@@ -353,8 +353,8 @@
       "sources": [
         11
       ],
-      "score": 58.7,
-      "previousScore": 57.3,
+      "score": 65.3,
+      "previousScore": 58.7,
       "trend": "up"
     },
     {
@@ -417,7 +417,7 @@
       "group": "fragility",
       "value": 1.329,
       "unit": "ratio",
-      "asOf": "2026-11-09",
+      "asOf": "2026-11-10",
       "weight": 1,
       "direction": "higher",
       "verified": false,
@@ -428,8 +428,8 @@
         5
       ],
       "score": 59.2,
-      "previousScore": 55.2,
-      "trend": "up"
+      "previousScore": 59.2,
+      "trend": "flat"
     },
     {
       "id": "hyperscalerCapexToOcf",
@@ -475,12 +475,12 @@
   ],
   "composite": {
     "method": "weighted-mean",
-    "indicatorScore": 67.7,
-    "fragilityScore": 80.8,
-    "triggerScore": 29.2,
+    "indicatorScore": 68.4,
+    "fragilityScore": 80.6,
+    "triggerScore": 32.1,
     "confirmationScore": 88.0,
     "newsAdjustment": 1,
-    "reason": "The rebound is partly offset by Nvidia's CEO investigation and a reported cut in Anthropic's IPO valuation, so news adds +1.",
+    "reason": "Hot CPI, rate-hike odds and the Nvidia CEO probe outweigh the chip rebound, so news adds +1.",
     "indicatorCount": 15,
     "missingCount": 0
   },
