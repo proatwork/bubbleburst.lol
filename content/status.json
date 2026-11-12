@@ -1,15 +1,15 @@
 {
-  "updatedAt": "2026-11-11T12:57:33Z",
+  "updatedAt": "2026-11-12T00:56:43Z",
   "pressure": 69,
   "previousPressure": 69,
-  "headline": "Not yet: hot inflation and Nvidia scandal keep pressure at 69",
-  "summary": "Stocks slipped on Tuesday 10 November (S&P 500 −0.38%, Nasdaq −0.74%) as hot October CPI lifted Fed hike odds and Nvidia fell 5.5%. The basket scores 68.4; pressure holds at 69. [1][22]",
+  "headline": "Not yet: chips rebound, but rate-hike odds hold pressure at 69",
+  "summary": "Stocks rose on Wednesday 11 November (S&P 500 +1.31%, Nasdaq +1.60%) as CoreWeave jumped 25%, then Nvidia fell 8% after hours on a CEO report. The basket scores 69.0; pressure holds at 69. [1][22]",
   "signals": [
     {
       "label": "Shiller CAPE",
-      "value": "39.70",
-      "note": "down from 39.85; basket score 83.5",
-      "trend": "down",
+      "value": "40.24",
+      "note": "up from 39.70; basket score 85.4",
+      "trend": "up",
       "eli5": "Share prices divided by ten years of average company profits, so one good or bad year cannot fool it. The higher it is, the more people are paying for each dollar of profit.",
       "sources": [
         2
@@ -17,9 +17,9 @@
     },
     {
       "label": "Chips ÷ S&P 500 (SOX ratio)",
-      "value": "1.33",
-      "note": "flat vs 1.33; basket score 59.2",
-      "trend": "flat",
+      "value": "1.39",
+      "note": "up from 1.33; basket score 63.3",
+      "trend": "up",
       "eli5": "The main chip-maker index compared with the S&P 500. Chips are the picks and shovels of the AI boom, so this shows how much of the market's bet is riding on it.",
       "sources": [
         15,
@@ -48,40 +48,40 @@
     }
   ],
   "analysis": [
-    "The basket scores 68.4: fragility 80.6, trigger 32.1, confirmation 88.0. Price to sales (3.71), household equities (48.2% of financial assets) and subprime auto delinquency (5.98%) sit beyond any prior burst; CAPE is 39.70 and unemployment (4.1%) scores 93.3. The BIS credit gap, at −11.3 points, is the calmest reading. [3][7][13][2][12][9]",
-    "On Tuesday 10 November the S&P 500 fell 0.38% to 7,520.93 and the Nasdaq 0.74%, as hotter-than-expected October inflation raised bets on a December Fed hike. Nvidia dropped 5.5% to $168.80 on reports tied to CEO Jensen Huang and a board probe; AMD and Broadcom rallied. Earnings are due 17 November. [1][22]",
-    "The 10-year yield rose to 4.98% on 10 November and the high-yield spread was 334 bp on 9 November, so credit stress is modest. Anthropic's IPO is set to price on 18 November at up to a $1.405 trillion valuation, a test for the AI trade. Why 69: the basket anchors near 68 and news adds +1. [11][8][23]"
+    "The basket scores 69.0: fragility 81.5, trigger 32.1, confirmation 88.0. Price to sales (3.76), household equities (48.2% of financial assets) and subprime auto delinquency (5.98%) sit beyond any prior burst; CAPE is 40.24 and unemployment (4.1%) scores 93.3. The BIS credit gap, at −11.3 points, is the calmest reading. [3][7][13][2][12][9]",
+    "On Wednesday 11 November the S&P 500 rose 1.31% to 7,619.38 and the Nasdaq 1.60%, after CoreWeave raised its 2026 revenue forecast to $13.0–13.3bn and its shares gained 24.7%. After the close Nvidia fell 8.09% on a report that its board is preparing to remove CEO Jensen Huang. [1][22]",
+    "CME FedWatch put the odds of a quarter-point December hike near 90% after hot October CPI; the 10-year yield was 4.98% on 10 November and the high-yield spread 334 bp on 9 November. Anthropic's IPO is due to price on 18 November. Why 69: the basket sits at 69.0 and the news roughly cancels out. [22][11][8][23]"
   ],
   "sources": [
     {
-      "title": "Stock Market Today, Nov. 10: Nvidia Stock Plunges 5.5% as CEO Scandal Overshadows Its Upcoming Earnings Report",
-      "publisher": "Yahoo Finance (The Motley Fool)",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/stock-market-today-nov-10-223502212.html",
-      "date": "2026-11-10"
+      "title": "Tech Stocks Close Higher in the Stock Market Today, November 11, Then Nvidia Falls After Hours",
+      "publisher": "StockTitan",
+      "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-11-2026",
+      "date": "2026-11-11"
     },
     {
       "title": "Shiller PE Ratio by Month",
       "publisher": "multpl.com",
       "url": "https://www.multpl.com/shiller-pe",
-      "date": "2026-11-10"
+      "date": "2026-11-11"
     },
     {
       "title": "S&P 500 Price to Sales Ratio",
       "publisher": "multpl.com",
       "url": "https://www.multpl.com/s-p-500-price-to-sales",
-      "date": "2026-11-10"
+      "date": "2026-11-11"
     },
     {
       "title": "Nasdaq Composite (^IXIC) chart data, 5 days",
       "publisher": "Yahoo Finance",
       "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5EIXIC?range=5d&interval=1d",
-      "date": "2026-11-10"
+      "date": "2026-11-11"
     },
     {
       "title": "S&P 500 (^GSPC) chart data, 5 days (Nasdaq ratio denominator)",
       "publisher": "Yahoo Finance",
       "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5EGSPC?range=5d&interval=1d",
-      "date": "2026-11-10"
+      "date": "2026-11-11"
     },
     {
       "title": "Margin Statistics",
@@ -141,7 +141,7 @@
       "title": "PHLX Semiconductor Index (^SOX) chart data, 5 days",
       "publisher": "Yahoo Finance",
       "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5ESOX?range=5d&interval=1d",
-      "date": "2026-11-10"
+      "date": "2026-11-11"
     },
     {
       "title": "XBRL company facts: Microsoft Corporation (CIK 0000789019)",
@@ -180,10 +180,10 @@
       "date": "2026-10-09"
     },
     {
-      "title": "Nvidia sells off for second day in fallout from Jensen Huang’s affair with alleged spy",
+      "title": "Nasdaq gains more than 1% as CoreWeave spike revitalizes AI trade",
       "publisher": "CNBC",
-      "url": "https://www.cnbc.com/2026/11/10/nvidia-nvda-jensen-huang-affair-chinese-spy.html",
-      "date": "2026-11-10"
+      "url": "https://www.cnbc.com/2026/11/10/stock-market-today-live-updates.html",
+      "date": "2026-11-11"
     },
     {
       "title": "The stock market 'dodged a real bullet' — Cramer on Anthropic's new IPO valuation",
@@ -198,9 +198,9 @@
       "id": "shillerCape",
       "label": "Shiller CAPE, S&P 500",
       "group": "fragility",
-      "value": 39.7,
+      "value": 40.24,
       "unit": "ratio",
-      "asOf": "2026-11-10",
+      "asOf": "2026-11-11",
       "weight": 1.5,
       "direction": "higher",
       "detail": "S&P 500 cyclically adjusted P/E, multpl.com monthly table",
@@ -208,17 +208,17 @@
       "sources": [
         2
       ],
-      "score": 83.5,
-      "previousScore": 84.0,
-      "trend": "down"
+      "score": 85.4,
+      "previousScore": 83.5,
+      "trend": "up"
     },
     {
       "id": "sp500PriceToSales",
       "label": "S&P 500 price to sales",
       "group": "fragility",
-      "value": 3.71,
+      "value": 3.76,
       "unit": "ratio",
-      "asOf": "2026-11-10",
+      "asOf": "2026-11-11",
       "weight": 1,
       "direction": "higher",
       "detail": "Price over trailing 12-month sales, multpl.com; beyond any burst",
@@ -234,9 +234,9 @@
       "id": "nasdaqToSp500Ratio",
       "label": "Nasdaq Composite ÷ S&P 500",
       "group": "fragility",
-      "value": 3.333,
+      "value": 3.342,
       "unit": "ratio",
-      "asOf": "2026-11-10",
+      "asOf": "2026-11-11",
       "weight": 1,
       "direction": "higher",
       "detail": "Nasdaq Composite ÷ S&P 500 close, Yahoo chart data",
@@ -245,9 +245,9 @@
         4,
         5
       ],
-      "score": 71.9,
-      "previousScore": 73.0,
-      "trend": "down"
+      "score": 72.7,
+      "previousScore": 71.9,
+      "trend": "up"
     },
     {
       "id": "marginDebtGrowth",
@@ -300,8 +300,8 @@
         8
       ],
       "score": 61.5,
-      "previousScore": 57.8,
-      "trend": "up"
+      "previousScore": 61.5,
+      "trend": "flat"
     },
     {
       "id": "bisCreditGap",
@@ -354,8 +354,8 @@
         11
       ],
       "score": 65.3,
-      "previousScore": 58.7,
-      "trend": "up"
+      "previousScore": 65.3,
+      "trend": "flat"
     },
     {
       "id": "unemploymentRate",
@@ -415,9 +415,9 @@
       "id": "soxToSp500Ratio",
       "label": "Semiconductor index ÷ S&P 500",
       "group": "fragility",
-      "value": 1.329,
+      "value": 1.386,
       "unit": "ratio",
-      "asOf": "2026-11-10",
+      "asOf": "2026-11-11",
       "weight": 1,
       "direction": "higher",
       "verified": false,
@@ -427,9 +427,9 @@
         15,
         5
       ],
-      "score": 59.2,
+      "score": 63.3,
       "previousScore": 59.2,
-      "trend": "flat"
+      "trend": "up"
     },
     {
       "id": "hyperscalerCapexToOcf",
@@ -475,12 +475,12 @@
   ],
   "composite": {
     "method": "weighted-mean",
-    "indicatorScore": 68.4,
-    "fragilityScore": 80.6,
+    "indicatorScore": 69.0,
+    "fragilityScore": 81.5,
     "triggerScore": 32.1,
     "confirmationScore": 88.0,
-    "newsAdjustment": 1,
-    "reason": "Hot CPI, rate-hike odds and the Nvidia CEO probe outweigh the chip rebound, so news adds +1.",
+    "newsAdjustment": 0,
+    "reason": "A 25% CoreWeave jump and a 5.7% chip rally offset 90% December hike odds and Nvidia falling 8% after hours.",
     "indicatorCount": 15,
     "missingCount": 0
   },
