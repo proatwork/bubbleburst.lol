@@ -1,14 +1,14 @@
 {
-  "updatedAt": "2026-11-13T13:33:00Z",
+  "updatedAt": "2026-11-14T00:57:29Z",
   "pressure": 71,
-  "previousPressure": 69,
-  "headline": "Not yet: yields at 5.1% and Nvidia's CEO gone lift pressure to 71",
-  "summary": "Jensen Huang resigned as Nvidia CEO on Thursday 12 November; the shares fell 4.3% to a 52-week low and are down about 20% this month. The 10-year yield hit 5.10% and a December Fed hike is fully priced. [1][13][2]",
+  "previousPressure": 71,
+  "headline": "Not yet: yields at 5.15% and Nvidia's slide hold pressure at 71",
+  "summary": "Nvidia fell 2.0% on Friday 13 November, a sixth weekly loss, and closed below $4T. The 10-year yield rose to 5.15% as a December Fed hike gained backing. The Nasdaq fell 0.9%, yet both indexes won the week. [24][2][13]",
   "signals": [
     {
       "label": "10-year Treasury yield",
-      "value": "5.10%",
-      "note": "up from 4.98%; basket score 73.3",
+      "value": "5.15%",
+      "note": "up from 5.10%; basket score 76.7",
       "trend": "up",
       "eli5": "The interest rate the US government pays to borrow for ten years. When it rises, safe bonds compete with shares, and expensive stocks are the first to look less attractive.",
       "sources": [
@@ -39,20 +39,20 @@
       ]
     },
     {
-      "label": "Nvidia shares in November",
-      "value": "−20%",
-      "note": "Jensen Huang resigned; CFO Colette Kress is interim CEO",
+      "label": "Nvidia weekly move",
+      "value": "−12.75%",
+      "note": "sixth straight weekly loss; below $4T market cap",
       "trend": "down",
       "eli5": "Nvidia makes the chips the AI boom runs on, so its share price is the market's running bet on AI. A fall in it says confidence in that bet is slipping.",
       "sources": [
-        1
+        24
       ]
     }
   ],
   "analysis": [
-    "The basket scores 69.5: fragility 81.1, trigger 35.2, confirmation 88.1. Price to sales (3.75), household equities (48.2% of financial assets), subprime auto delinquency (6.23%) and hyperscaler capex at 115% of operating cash flow sit beyond any prior burst; CAPE is 40.09. The BIS credit gap, at −11.3 points, and a Fed that has cut over 12 months are the calmest readings. [4][9][15][17][3][11][12]",
-    "Nvidia's Jensen Huang resigned on Thursday 12 November after reports of an affair with a woman US officials believe is a Chinese spy; CFO Colette Kress is interim CEO. The shares fell 4.3% to a 52-week low, leaving them down about 20% in November. The S&P 500 slipped 0.35% to 7,592.40 and the Nasdaq 0.39% to 25,366.09, yet both were still up for the week, and Nvidia traded 2.3% higher before Friday's open. [1][2]",
-    "The 10-year Treasury yield reached 5.10% on 12 November and 5.13% on Friday morning, and CME FedWatch showed a 9 December hike fully priced, 87% at a quarter point. Anthropic is marketing its IPO at $70–78 a share, near $1.3trn. Against that, FactSet puts the forward P/E at 17.7, below its 19.1 ten-year average, with Q3 earnings up 31.4%. Why 71: the basket sits at 69.5 and the rate path and Nvidia shock add two. [13][2][23][22]"
+    "The basket scores 69.6: fragility 80.4, trigger 37.1, confirmation 88.1. Price to sales (3.73), household equities (48.2% of financial assets), subprime auto delinquency (6.23%) and hyperscaler capex at 115% of operating cash flow sit beyond any prior burst; CAPE is 39.95. The BIS credit gap, at −11.3 points, and a Fed that has cut over 12 months are the calmest readings. [4][9][15][17][3][11][12]",
+    "On Friday 13 November the Nasdaq fell 0.91% to 25,136.27 and the S&P 500 0.4% to 7,561.67, though both finished the week higher. Nvidia sank 2.01% and closed below a $4 trillion market value for the first time since July 2025, down 12.75% on the week, after CEO Jensen Huang's resignation; analysts fear his successor may back the AI ecosystem less. [1][2][24]",
+    "The 10-year Treasury yield rose to 5.15% on 13 November in the Treasury data as hot inflation prints firmed bets on a December Fed hike. Against that, FactSet puts the forward P/E at 17.7, below its 19.1 ten-year average, with Q3 earnings up 31.4%. Anthropic is marketing its IPO near $1.3trn. [23] Why 71: the basket sits at 69.6 and the rate path and Nvidia slide add about one. [13][2][22]"
   ],
   "sources": [
     {
@@ -62,7 +62,7 @@
       "date": "2026-11-12"
     },
     {
-      "title": "Stock futures tick higher as Wall Street heads for winning week despite Nvidia woes",
+      "title": "Nasdaq falls on Friday as Nvidia sells off, but index notches best week since August: Live updates",
       "publisher": "CNBC",
       "url": "https://www.cnbc.com/2026/11/12/stock-market-today-live-updates.html",
       "date": "2026-11-13"
@@ -71,31 +71,31 @@
       "title": "Shiller PE Ratio",
       "publisher": "multpl.com",
       "url": "https://www.multpl.com/shiller-pe",
-      "date": "2026-11-12"
+      "date": "2026-11-13"
     },
     {
       "title": "S&P 500 Price to Sales Ratio",
       "publisher": "multpl.com",
       "url": "https://www.multpl.com/s-p-500-price-to-sales",
-      "date": "2026-11-12"
+      "date": "2026-11-13"
     },
     {
       "title": "Nasdaq Composite (^IXIC) daily chart data",
       "publisher": "Yahoo Finance",
       "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5EIXIC?range=5d&interval=1d",
-      "date": "2026-11-12"
+      "date": "2026-11-13"
     },
     {
       "title": "S&P 500 (^GSPC) daily chart data",
       "publisher": "Yahoo Finance",
       "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5EGSPC?range=5d&interval=1d",
-      "date": "2026-11-12"
+      "date": "2026-11-13"
     },
     {
       "title": "PHLX Semiconductor Index (^SOX) daily chart data",
       "publisher": "Yahoo Finance",
       "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5ESOX?range=5d&interval=1d",
-      "date": "2026-11-12"
+      "date": "2026-11-13"
     },
     {
       "title": "Margin Statistics: debit balances in customers' securities margin accounts (xlsx)",
@@ -131,7 +131,7 @@
       "title": "Daily Treasury Par Yield Curve Rates, November 2026 (CSV)",
       "publisher": "U.S. Department of the Treasury",
       "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/daily-treasury-rates.csv/all/202611?type=daily_treasury_yield_curve&field_tdr_date_value_month=202611&page&_format=csv",
-      "date": "2026-11-12"
+      "date": "2026-11-13"
     },
     {
       "title": "Unemployment Rate (UNRATE), series CSV",
@@ -192,6 +192,12 @@
       "publisher": "ABC News",
       "url": "https://abc7news.com/story/anthropic-seeks-70-78-share-new-ipo-filing-values-13-trillion/20029820/",
       "date": "2026-11-10"
+    },
+    {
+      "title": "Nvidia closes below $4T market cap for first time since July 2025 in Huang fallout",
+      "publisher": "CNBC",
+      "url": "https://www.cnbc.com/2026/11/13/nvidia-nvda-stock-jensen-huang-transition.html",
+      "date": "2026-11-13"
     }
   ],
   "generatedBy": "claude-sonnet-5-5",
@@ -200,15 +206,15 @@
       "id": "shillerCape",
       "label": "S&P 500 Shiller CAPE ratio",
       "group": "fragility",
-      "value": 40.09,
+      "value": 39.95,
       "unit": "ratio (10-yr real earnings)",
-      "asOf": "2026-11-12",
-      "score": 84.9,
-      "previousScore": 85.4,
+      "asOf": "2026-11-13",
+      "score": 84.4,
+      "previousScore": 84.9,
       "weight": 1.5,
       "direction": "higher",
       "trend": "down",
-      "detail": "Cyclically adjusted P/E, close of 12 Nov 2026, multpl.com",
+      "detail": "Shiller CAPE, 13 Nov 2026, multpl.com",
       "eli5": "Share prices divided by ten years of average company profits, so one good or bad year cannot fool it. The higher it is, the more people are paying for each dollar of profit.",
       "sources": [
         3
@@ -218,11 +224,11 @@
       "id": "sp500PriceToSales",
       "label": "S&P 500 price to sales",
       "group": "fragility",
-      "value": 3.75,
+      "value": 3.73,
       "unit": "ratio (price / 12-mth sales)",
-      "asOf": "2026-11-12",
-      "score": 100.0,
-      "previousScore": 100,
+      "asOf": "2026-11-13",
+      "score": 100,
+      "previousScore": 100.0,
       "weight": 1.0,
       "direction": "higher",
       "trend": "flat",
@@ -236,11 +242,11 @@
       "id": "nasdaqToSp500Ratio",
       "label": "Nasdaq Composite ÷ S&P 500",
       "group": "fragility",
-      "value": 3.341,
+      "value": 3.324,
       "unit": "index ratio",
-      "asOf": "2026-11-12",
-      "score": 72.6,
-      "previousScore": 72.7,
+      "asOf": "2026-11-13",
+      "score": 71.0,
+      "previousScore": 72.6,
       "weight": 1.0,
       "direction": "higher",
       "trend": "down",
@@ -291,11 +297,11 @@
       "id": "soxToSp500Ratio",
       "label": "Semiconductor index ÷ S&P 500",
       "group": "fragility",
-      "value": 1.384,
+      "value": 1.342,
       "unit": "index ratio",
-      "asOf": "2026-11-12",
-      "score": 63.1,
-      "previousScore": 63.3,
+      "asOf": "2026-11-13",
+      "score": 60.1,
+      "previousScore": 63.1,
       "weight": 1.0,
       "direction": "higher",
       "trend": "down",
@@ -352,11 +358,11 @@
       "id": "highYieldSpread",
       "label": "US high-yield spread (ICE BofA OAS)",
       "group": "trigger",
-      "value": 330,
+      "value": 320,
       "unit": "basis points",
-      "asOf": "2026-11-11",
-      "score": 63.3,
-      "previousScore": 61.5,
+      "asOf": "2026-11-12",
+      "score": 67.9,
+      "previousScore": 63.3,
       "weight": 0.5,
       "direction": "lower",
       "trend": "up",
@@ -406,15 +412,15 @@
       "id": "treasury10yYield",
       "label": "10-year Treasury yield",
       "group": "trigger",
-      "value": 5.1,
+      "value": 5.15,
       "unit": "%",
-      "asOf": "2026-11-12",
-      "score": 73.3,
-      "previousScore": 65.3,
+      "asOf": "2026-11-13",
+      "score": 76.7,
+      "previousScore": 73.3,
       "weight": 1.25,
       "direction": "higher",
       "trend": "up",
-      "detail": "Constant-maturity 10-year, 12 Nov 2026, Treasury CSV",
+      "detail": "Constant-maturity 10-year, 13 Nov 2026, Treasury CSV",
       "eli5": "The interest rate the US government pays to borrow for ten years. When it rises, safe bonds compete with shares, and expensive stocks are the first to look less attractive.",
       "sources": [
         13
@@ -477,12 +483,12 @@
   ],
   "composite": {
     "method": "weighted-mean",
-    "indicatorScore": 69.5,
-    "fragilityScore": 81.1,
-    "triggerScore": 35.2,
+    "indicatorScore": 69.6,
+    "fragilityScore": 80.4,
+    "triggerScore": 37.1,
     "confirmationScore": 88.1,
-    "newsAdjustment": 2,
-    "reason": "Nvidia lost its CEO and is down 20% this month while a December hike moved to fully priced; a winning week and a 17.7 forward P/E offset part of it.",
+    "newsAdjustment": 1,
+    "reason": "Nvidia fell a sixth straight week and hike bets firmed, partly offset by a winning week for the indexes and a 17.7 forward P/E; the anchor sits at 69.6.",
     "indicatorCount": 15,
     "missingCount": 0
   },
