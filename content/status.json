@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-18T12:56:54Z",
+  "updatedAt": "2026-11-19T00:56:40Z",
   "pressure": 70,
   "previousPressure": 72,
   "headline": "Not yet: a fourth straight Wall Street loss keeps pressure at 70",
@@ -7,8 +7,8 @@
   "signals": [
     {
       "label": "10-year Treasury yield",
-      "value": "5.10%",
-      "note": "down from 5.12%; basket score 73.3",
+      "value": "5.07%",
+      "note": "down from 5.10%; basket score 71.3",
       "trend": "down",
       "eli5": "The interest rate the US government pays to borrow for ten years. When it rises, safe bonds compete with shares, and expensive stocks are the first to look less attractive.",
       "sources": [
@@ -51,9 +51,9 @@
     }
   ],
   "analysis": [
-    "The basket scores 68.2: fragility 79.0, trigger 35.0, confirmation 88.1. Price to sales (3.62), household equities (48.2% of financial assets), subprime auto delinquency (6.23%) and hyperscaler capex at 115% of operating cash flow sit beyond any prior burst; CAPE eased to 38.76. The BIS credit gap (−11.3 points) and a year of Fed cuts are the calmest readings. [4][6][12][14][15][16][17][3][8][9]",
+    "The basket scores 67.8: fragility 78.9, trigger 33.6, confirmation 88.1. Price to sales (3.61), household equities (48.2% of financial assets), subprime auto delinquency (6.23%) and hyperscaler capex at 115% of operating cash flow sit beyond any prior burst; CAPE eased to 38.63. The BIS credit gap (−11.3 points) and a year of Fed cuts are the calmest readings. [4][6][12][14][15][16][17][3][8][9]",
     "On Tuesday 17 November the S&P 500 fell 1.03% to 7,340.53 and the Nasdaq 0.74% to 24,328.38, a fourth straight loss. Nvidia slipped 0.44% before reporting revenue of $115.8 billion, up 103%; it had closed below a $4 trillion value on 13 November. Shares rose about 1.3% after hours. Chips had fallen 5.3% on Monday 16 November. [1][2][21][22][23]",
-    "The 10-year yield eased to 5.10% and futures put a December 25bp hike at 95.4%; Anthropic's IPO, filed at $70 to $78 a share, is expected Wednesday. FactSet puts the forward P/E at 17.7 against a 19.1 ten-year average. Why 70: the basket sits at 68.2 and the four-day slide and hike odds add about two points. [10][22][20][19]"
+    "The 10-year yield eased to 5.07% on Wednesday 18 November and futures put a December 25bp hike at 95.4%; Anthropic's IPO, filed at $70 to $78 a share, is expected Wednesday. FactSet puts the forward P/E at 17.7 against a 19.1 ten-year average. Why 70: the basket sits at 67.8 and the four-day slide and hike odds add about two points. [10][22][20][19]"
   ],
   "sources": [
     {
@@ -72,13 +72,13 @@
       "title": "Shiller PE Ratio",
       "publisher": "multpl.com",
       "url": "https://www.multpl.com/shiller-pe",
-      "date": "2026-11-17"
+      "date": "2026-11-18"
     },
     {
       "title": "S&P 500 Price to Sales Ratio",
       "publisher": "multpl.com",
       "url": "https://www.multpl.com/s-p-500-price-to-sales",
-      "date": "2026-11-17"
+      "date": "2026-11-18"
     },
     {
       "title": "Margin Statistics: debit balances in customers' securities margin accounts (xlsx)",
@@ -96,7 +96,7 @@
       "title": "ICE BofA US High Yield Index Option-Adjusted Spread (BAMLH0A0HYM2), series CSV",
       "publisher": "FRED, Federal Reserve Bank of St. Louis",
       "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=BAMLH0A0HYM2",
-      "date": "2026-11-16"
+      "date": "2026-11-17"
     },
     {
       "title": "Credit-to-GDP gap, United States, actual minus trend (WS_CREDIT_GAP Q.US.P.A.C)",
@@ -114,7 +114,7 @@
       "title": "Daily Treasury Par Yield Curve Rates, November 2026 (CSV)",
       "publisher": "U.S. Department of the Treasury",
       "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/daily-treasury-rates.csv/all/202611?type=daily_treasury_yield_curve&field_tdr_date_value_month=202611&page&_format=csv",
-      "date": "2026-11-17"
+      "date": "2026-11-18"
     },
     {
       "title": "Unemployment Rate (UNRATE), series CSV",
@@ -201,15 +201,15 @@
       "id": "shillerCape",
       "label": "S&P 500 Shiller CAPE ratio",
       "group": "fragility",
-      "value": 38.76,
+      "value": 38.63,
       "unit": "ratio (10-yr real earnings)",
-      "asOf": "2026-11-17",
-      "score": 80.0,
-      "previousScore": 81.5,
+      "asOf": "2026-11-18",
+      "score": 79.5,
+      "previousScore": 80.0,
       "weight": 1.5,
       "direction": "higher",
       "trend": "down",
-      "detail": "Shiller CAPE, 17 Nov 2026, multpl.com",
+      "detail": "Shiller CAPE, 18 Nov 2026, multpl.com",
       "eli5": "Share prices divided by ten years of average company profits, so one good or bad year cannot fool it. The higher it is, the more people are paying for each dollar of profit.",
       "sources": [
         3
@@ -219,9 +219,9 @@
       "id": "sp500PriceToSales",
       "label": "S&P 500 price to sales",
       "group": "fragility",
-      "value": 3.62,
+      "value": 3.61,
       "unit": "ratio (price / 12-mth sales)",
-      "asOf": "2026-11-17",
+      "asOf": "2026-11-18",
       "score": 100,
       "previousScore": 100,
       "weight": 1.0,
@@ -351,11 +351,11 @@
       "id": "highYieldSpread",
       "label": "US high-yield spread (ICE BofA OAS)",
       "group": "trigger",
-      "value": 334,
+      "value": 343,
       "unit": "basis points",
-      "asOf": "2026-11-16",
-      "score": 61.5,
-      "previousScore": 66.5,
+      "asOf": "2026-11-17",
+      "score": 57.3,
+      "previousScore": 61.5,
       "weight": 0.5,
       "direction": "lower",
       "trend": "down",
@@ -405,11 +405,11 @@
       "id": "treasury10yYield",
       "label": "10-year Treasury yield",
       "group": "trigger",
-      "value": 5.1,
+      "value": 5.07,
       "unit": "%",
-      "asOf": "2026-11-17",
-      "score": 73.3,
-      "previousScore": 74.7,
+      "asOf": "2026-11-18",
+      "score": 71.3,
+      "previousScore": 73.3,
       "weight": 1.25,
       "direction": "higher",
       "trend": "down",
@@ -476,9 +476,9 @@
   ],
   "composite": {
     "method": "weighted-mean",
-    "indicatorScore": 68.2,
-    "fragilityScore": 79.0,
-    "triggerScore": 35.0,
+    "indicatorScore": 67.8,
+    "fragilityScore": 78.9,
+    "triggerScore": 33.6,
     "confirmationScore": 88.1,
     "newsAdjustment": 2,
     "reason": "Wall Street fell for a fourth day and December hike odds are 95.4%, partly offset by Nvidia beating estimates after the close.",
