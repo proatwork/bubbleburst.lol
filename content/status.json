@@ -1,84 +1,93 @@
 {
-  "updatedAt": "2026-11-19T12:57:14Z",
-  "pressure": 70,
-  "previousPressure": 72,
-  "headline": "Not yet: a fourth straight Wall Street loss keeps pressure at 70",
-  "summary": "The S&P 500 fell 1.03% and the Nasdaq 0.74% on Tuesday 17 November, a four-day losing streak, with December hike odds at 95.4%. Nvidia beat estimates after the close on revenue of $115.8B. [22][23]",
+  "updatedAt": "2026-11-20T00:57:09Z",
+  "pressure": 71,
+  "previousPressure": 70,
+  "headline": "Not yet: a sixth straight S&P 500 loss lifts pressure to 71",
+  "summary": "The S&P 500 fell 2.02% on Thursday 19 November, a sixth straight loss, as Anthropic priced its IPO at $83 and Nvidia dropped 3.30% despite $115.8B of quarterly revenue. [1][2][3]",
   "signals": [
     {
-      "label": "10-year Treasury yield",
-      "value": "5.07%",
-      "note": "down from 5.10%; basket score 71.3",
+      "label": "S&P 500 daily move",
+      "value": "-2.02%",
+      "note": "Thu 19 Nov: sixth straight loss; Dow -2.19%, Nasdaq -2.25%",
       "trend": "down",
-      "eli5": "The interest rate the US government pays to borrow for ten years. When it rises, safe bonds compete with shares, and expensive stocks are the first to look less attractive.",
-      "sources": [
-        10
-      ]
-    },
-    {
-      "label": "Chips vs S&P 500 (SOX ÷ S&P)",
-      "value": "1.30",
-      "note": "SOX fell 5.3% on 16 Nov; basket score 56.9",
-      "trend": "down",
-      "eli5": "The main chip-maker index compared with the S&P 500. Chips are the picks and shovels of the AI boom, so this shows how much of the market's bet is riding on it.",
+      "eli5": "How much the 500 biggest US companies' shares lost in a day. A long run of daily losses shows buyers stepping back, which is how bigger falls often begin.",
       "sources": [
         1
       ]
     },
     {
-      "label": "Hyperscaler capex ÷ cash flow",
-      "value": "115%",
-      "note": "Q3: the four spend more than they earn; score 100",
-      "trend": "flat",
-      "eli5": "What Microsoft, Alphabet, Amazon and Meta spend on data centres and chips, as a share of the cash their businesses make. Near 100% means they spend about all they earn.",
+      "label": "Shiller CAPE",
+      "value": "37.86",
+      "note": "down from 38.63; basket score 76.7",
+      "trend": "down",
+      "eli5": "Share prices divided by ten years of average company profits, so one good or bad year cannot fool it. The higher it is, the more people are paying for each dollar of profit.",
       "sources": [
-        14,
-        15,
-        16,
-        17
+        5
       ]
     },
     {
-      "label": "Nvidia Q3 revenue",
-      "value": "$115.8B",
-      "note": "+103% y/y; reported after close Tue 17 Nov, shares +1.3%",
-      "trend": "up",
-      "eli5": "How much the biggest AI chip maker sold in a quarter. Its sales show whether companies are still buying AI hardware as fast as they were.",
+      "label": "10-year Treasury yield",
+      "value": "5.04%",
+      "note": "down from 5.07%; basket score 69.3",
+      "trend": "down",
+      "eli5": "The interest rate the US government pays to borrow for ten years. When it rises, safe bonds compete with shares, and expensive stocks are the first to look less attractive.",
       "sources": [
-        22,
-        23
+        12
+      ]
+    },
+    {
+      "label": "Chips vs S&P 500 (SOX ÷ S&P)",
+      "value": "1.31",
+      "note": "SOX fell 2.4% on 19 Nov; basket score 58.1",
+      "trend": "up",
+      "eli5": "The main chip-maker index compared with the S&P 500. Chips are the picks and shovels of the AI boom, so this shows how much of the market's bet is riding on it.",
+      "sources": [
+        24,
+        25
       ]
     }
   ],
   "analysis": [
-    "The basket scores 67.8: fragility 78.9, trigger 33.6, confirmation 88.1. Price to sales (3.61), household equities (48.2% of financial assets), subprime auto delinquency (6.23%) and hyperscaler capex at 115% of operating cash flow sit beyond any prior burst; CAPE eased to 38.63. The BIS credit gap (−11.3 points) and a year of Fed cuts are the calmest readings. [4][6][12][14][15][16][17][3][8][9]",
-    "On Tuesday 17 November the S&P 500 fell 1.03% to 7,340.53 and the Nasdaq 0.74% to 24,328.38, a fourth straight loss. Nvidia slipped 0.44% before reporting revenue of $115.8 billion, up 103%; it had closed below a $4 trillion value on 13 November. Shares rose about 1.3% after hours. Chips had fallen 5.3% on Monday 16 November. [1][2][21][22][23]",
-    "The 10-year yield eased to 5.07% on Wednesday 18 November and futures put a December 25bp hike at 95.4%; Anthropic's IPO, filed at $70 to $78 a share, is expected Wednesday. FactSet puts the forward P/E at 17.7 against a 19.1 ten-year average. Why 70: the basket sits at 67.8 and the four-day slide and hike odds add about two points. [10][22][20][19]"
+    "The basket scores 67.6: fragility 78.9, trigger 32.7, confirmation 88.9. Price to sales (3.54), household equities (48.2% of financial assets), subprime auto delinquency (6.23%) and hyperscaler capex at 115% of operating cash flow sit beyond any prior burst; CAPE eased to 37.86. The BIS credit gap (−11.3 points) and a flat Fed funds rate are the calmest readings. [6][8][14][5][10][11][16][17][18][19]",
+    "On Thursday 19 November the S&P 500 fell 2.02% to 7,177, its sixth straight loss, with the Dow down 2.19% and the Nasdaq 2.25%. Nvidia fell 3.30% to $145.98 despite record revenue of $115.8 billion and a $130 billion forecast; AMD fell 7.72%. Anthropic priced at $83, above its range, and closed about 17% higher; CoreWeave fell 6.11%. The VIX rose to 28.29. [1][2][3][4]",
+    "The 10-year yield was 5.04% on Thursday 19 November, and December pricing held at a 100% chance of a Fed hike. FactSet puts the forward P/E at 17.7 against a 19.1 ten-year average. Why 71: the basket sits at 67.6, and the six-day slide, a VIX near 28 and certain hike odds add about three points. [12][4][21]"
   ],
   "sources": [
     {
-      "title": "Wall Street ends sharply lower on AI jitters ahead of Nvidia results, Anthropic IPO",
-      "publisher": "Reuters (via MarketScreener)",
-      "url": "https://www.marketscreener.com/news/wall-street-slumps-on-ai-jitters-ahead-of-nvidia-results-anthropic-ipo-ce785edfdd8ef425",
-      "date": "2026-11-16"
+      "title": "Stock Market Today, Nov. 19: Dow Plunges 1,100 Points as the S&P 500 Suffers Its 6th Straight Day of Losses",
+      "publisher": "The Motley Fool",
+      "url": "https://www.fool.com/coverage/stock-market-today/2026/11/19/stock-market-today-nov-19-dow-plunges-1-100-points-as-the-s-and-p-500-suffers-its-6th-straight-day-of-losses/",
+      "date": "2026-11-19"
     },
     {
-      "title": "Stock Market Today, Nov. 16: Nvidia Sinks as U.S. Tightens AI Chip Restrictions and Analysts Slash Price Targets",
+      "title": "Stock Market Today, Nov. 19: Nvidia Slides as Investors Weigh CEO Transition Fallout Despite Strong Q3 Results",
       "publisher": "The Motley Fool",
-      "url": "https://www.fool.com/coverage/stock-market-today/2026/11/16/stock-market-today-nov-16-nvidia-sinks-as-u-s-tightens-ai-chip-restrictions-and-analysts-slash-price-targets/",
-      "date": "2026-11-16"
+      "url": "https://www.fool.com/coverage/stock-market-today/2026/11/19/stock-market-today-nov-19-nvidia-slides-as-investors-weigh-ceo-transition-fallout-despite-strong-q3-results/",
+      "date": "2026-11-19"
+    },
+    {
+      "title": "Stock Market Today, Nov. 19: CoreWeave Falls as Profit-Taking Follows Anthropic IPO Pricing Above Range",
+      "publisher": "The Motley Fool",
+      "url": "https://www.fool.com/coverage/stock-market-today/2026/11/19/stock-market-today-nov-19-coreweave-falls-as-profit-taking-follows-anthropic-ipo-pricing-above-range/",
+      "date": "2026-11-19"
+    },
+    {
+      "title": "The Close: Thursday, November 19, 2026",
+      "publisher": "The Weekend Spread",
+      "url": "https://theweekendspread.substack.com/p/the-close-thursday-november-19-2026",
+      "date": "2026-11-19"
     },
     {
       "title": "Shiller PE Ratio",
       "publisher": "multpl.com",
       "url": "https://www.multpl.com/shiller-pe",
-      "date": "2026-11-18"
+      "date": "2026-11-19"
     },
     {
       "title": "S&P 500 Price to Sales Ratio",
       "publisher": "multpl.com",
       "url": "https://www.multpl.com/s-p-500-price-to-sales",
-      "date": "2026-11-18"
+      "date": "2026-11-19"
     },
     {
       "title": "Margin Statistics: debit balances in customers' securities margin accounts (xlsx)",
@@ -96,7 +105,7 @@
       "title": "ICE BofA US High Yield Index Option-Adjusted Spread (BAMLH0A0HYM2), series CSV",
       "publisher": "FRED, Federal Reserve Bank of St. Louis",
       "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=BAMLH0A0HYM2",
-      "date": "2026-11-17"
+      "date": "2026-11-18"
     },
     {
       "title": "Credit-to-GDP gap, United States, actual minus trend (WS_CREDIT_GAP Q.US.P.A.C)",
@@ -108,13 +117,13 @@
       "title": "Table Data - Federal Funds Target Range - Upper Limit (DFEDTARU)",
       "publisher": "FRED, Federal Reserve Bank of St. Louis",
       "url": "https://fred.stlouisfed.org/data/DFEDTARU",
-      "date": "2026-10-23"
+      "date": "2026-11-19"
     },
     {
       "title": "Daily Treasury Par Yield Curve Rates, November 2026 (CSV)",
       "publisher": "U.S. Department of the Treasury",
       "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/daily-treasury-rates.csv/all/202611?type=daily_treasury_yield_curve&field_tdr_date_value_month=202611&page&_format=csv",
-      "date": "2026-11-18"
+      "date": "2026-11-19"
     },
     {
       "title": "Unemployment Rate (UNRATE), series CSV",
@@ -132,7 +141,7 @@
       "title": "Chicago Fed National Financial Conditions Index (NFCI), series CSV",
       "publisher": "FRED, Federal Reserve Bank of St. Louis",
       "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=NFCI",
-      "date": "2026-11-06"
+      "date": "2026-11-13"
     },
     {
       "title": "XBRL company concept: Microsoft capex and operating cash flow (CIK 0000789019), 10-Q",
@@ -171,28 +180,28 @@
       "date": "2026-11-06"
     },
     {
-      "title": "Anthropic seeks $70 to $78 a share in new IPO filing, values itself at nearly $1.3 trillion",
-      "publisher": "ABC News",
-      "url": "https://abc7news.com/story/anthropic-seeks-70-78-share-new-ipo-filing-values-13-trillion/20029820/",
-      "date": "2026-11-10"
+      "title": "NASDAQ Composite Index (NASDAQCOM), series CSV",
+      "publisher": "FRED, Federal Reserve Bank of St. Louis",
+      "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=NASDAQCOM",
+      "date": "2026-11-18"
     },
     {
-      "title": "Nvidia closes below $4T market cap for first time since July 2025 in Huang fallout",
-      "publisher": "CNBC",
-      "url": "https://www.cnbc.com/2026/11/13/nvidia-nvda-stock-jensen-huang-transition.html",
-      "date": "2026-11-13"
+      "title": "S&P 500 (SP500), series CSV",
+      "publisher": "FRED, Federal Reserve Bank of St. Louis",
+      "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=SP500",
+      "date": "2026-11-18"
     },
     {
-      "title": "Wall Street ends lower ahead of Nvidia results, focus turns to Anthropic debut",
-      "publisher": "Reuters (via MarketScreener)",
-      "url": "https://www.marketscreener.com/news/wall-street-ends-lower-ahead-of-nvidia-results-focus-turns-to-anthropic-debut-ce785edcdc81fe2d",
-      "date": "2026-11-17"
+      "title": "PHLX Semiconductor Index (^SOX) daily chart data",
+      "publisher": "Yahoo Finance",
+      "url": "https://query1.finance.yahoo.com/v8/finance/chart/^SOX?range=5d&interval=1d",
+      "date": "2026-11-19"
     },
     {
-      "title": "Stock Market Today, Nov. 17: Nvidia Slides Ahead of Earnings but Soars in After Hours Trading",
-      "publisher": "The Motley Fool",
-      "url": "https://www.fool.com/coverage/stock-market-today/2026/11/17/stock-market-today-nov-17-nvidia-slides-ahead-of-earnings-but-soars-in-after-hours-trading/",
-      "date": "2026-11-17"
+      "title": "S&P 500 (^GSPC) daily chart data",
+      "publisher": "Yahoo Finance",
+      "url": "https://query1.finance.yahoo.com/v8/finance/chart/^GSPC?range=5d&interval=1d",
+      "date": "2026-11-19"
     }
   ],
   "generatedBy": "claude-sonnet-5-5",
@@ -201,27 +210,27 @@
       "id": "shillerCape",
       "label": "S&P 500 Shiller CAPE ratio",
       "group": "fragility",
-      "value": 38.63,
+      "value": 37.86,
       "unit": "ratio (10-yr real earnings)",
-      "asOf": "2026-11-18",
-      "score": 79.5,
-      "previousScore": 80.0,
+      "asOf": "2026-11-19",
+      "score": 76.7,
+      "previousScore": 79.5,
       "weight": 1.5,
       "direction": "higher",
       "trend": "down",
-      "detail": "Shiller CAPE, 18 Nov 2026, multpl.com",
+      "detail": "Shiller CAPE, 19 Nov 2026, multpl.com",
       "eli5": "Share prices divided by ten years of average company profits, so one good or bad year cannot fool it. The higher it is, the more people are paying for each dollar of profit.",
       "sources": [
-        3
+        5
       ]
     },
     {
       "id": "sp500PriceToSales",
       "label": "S&P 500 price to sales",
       "group": "fragility",
-      "value": 3.61,
+      "value": 3.54,
       "unit": "ratio (price / 12-mth sales)",
-      "asOf": "2026-11-18",
+      "asOf": "2026-11-19",
       "score": 100,
       "previousScore": 100,
       "weight": 1.0,
@@ -230,25 +239,26 @@
       "detail": "Price to trailing 12-month sales, 16 Nov 2026, multpl.com",
       "eli5": "The value of the 500 biggest US companies divided by their sales. Sales are harder to dress up than profits, so a high ratio says prices have run far ahead of what firms sell.",
       "sources": [
-        4
+        6
       ]
     },
     {
       "id": "nasdaqToSp500Ratio",
       "label": "Nasdaq Composite ÷ S&P 500",
       "group": "fragility",
-      "value": 3.305,
+      "value": 3.336,
       "unit": "index ratio",
-      "asOf": "2026-11-16",
-      "score": 69.1,
+      "asOf": "2026-11-18",
+      "score": 72.2,
       "previousScore": 69.1,
       "weight": 1.0,
       "direction": "higher",
-      "trend": "flat",
-      "detail": "24,509.76 ÷ 7,416.59, closes of 16 Nov 2026 (Reuters)",
+      "trend": "up",
+      "detail": "Nasdaq Composite ÷ S&P 500 close, 18 Nov 2026, FRED",
       "eli5": "How the tech-heavy Nasdaq compares with the broader S&P 500. When this climbs, money is piling into tech faster than into everything else, which is what past bubbles looked like.",
       "sources": [
-        1
+        22,
+        23
       ]
     },
     {
@@ -266,7 +276,7 @@
       "detail": "FINRA margin debit balances, Sep 2026 vs Sep 2025",
       "eli5": "How much more money investors have borrowed from their brokers to buy shares than a year ago. Borrowed bets pile up in a boom and get sold in a hurry when prices fall.",
       "sources": [
-        5
+        7
       ]
     },
     {
@@ -276,7 +286,7 @@
       "value": 48.2301,
       "unit": "% of financial assets",
       "asOf": "2026-06-30",
-      "score": 100.0,
+      "score": 100,
       "previousScore": 100.0,
       "weight": 0.75,
       "direction": "higher",
@@ -284,25 +294,26 @@
       "detail": "Fed Z.1 households, Q2 2026, FRED BOGZ1FL153064486Q",
       "eli5": "The slice of ordinary households' savings that sits in shares. The bigger the slice, the fewer new buyers are left to push prices up, and the harder a fall would hit.",
       "sources": [
-        6
+        8
       ]
     },
     {
       "id": "soxToSp500Ratio",
       "label": "Semiconductor index ÷ S&P 500",
       "group": "fragility",
-      "value": 1.296,
+      "value": 1.313,
       "unit": "index ratio",
-      "asOf": "2026-11-16",
-      "score": 56.9,
+      "asOf": "2026-11-19",
+      "score": 58.1,
       "previousScore": 56.9,
       "weight": 1.0,
       "direction": "higher",
-      "trend": "flat",
-      "detail": "SOX ratio scaled by SOX −5.3% vs S&P −1.92%, 16 Nov (Reuters)",
+      "trend": "up",
+      "detail": "SOX ÷ S&P 500 close, 19 Nov 2026, Yahoo Finance",
       "eli5": "The main chip-maker index compared with the S&P 500. Chips are the picks and shovels of the AI boom, so this shows how much of the market's bet is riding on it.",
       "sources": [
-        1
+        24,
+        25
       ],
       "verified": false
     },
@@ -313,7 +324,7 @@
       "value": 115.0578,
       "unit": "% of OCF",
       "asOf": "2026-09-30",
-      "score": 100.0,
+      "score": 100,
       "previousScore": 100.0,
       "weight": 1.0,
       "direction": "higher",
@@ -321,10 +332,10 @@
       "detail": "MSFT+GOOGL+AMZN+META, Q3 2026, SEC XBRL 10-Q data",
       "eli5": "What Microsoft, Alphabet, Amazon and Meta spend on data centres and chips, as a share of the cash their businesses make. Near 100% means they spend about all they earn.",
       "sources": [
-        14,
-        15,
         16,
-        17
+        17,
+        18,
+        19
       ],
       "verified": false
     },
@@ -335,7 +346,7 @@
       "value": 59.7,
       "unit": "% y/y",
       "asOf": "2026-10-31",
-      "score": 100.0,
+      "score": 100,
       "previousScore": 100.0,
       "weight": 0.75,
       "direction": "higher",
@@ -343,7 +354,7 @@
       "detail": "October 2026 revenue NT$586.89bn, TSMC investor site",
       "eli5": "How fast sales are growing at TSMC, the company that makes nearly every advanced AI chip. Its order book is an early read on whether AI demand is still speeding up.",
       "sources": [
-        18
+        20
       ],
       "verified": false
     },
@@ -351,18 +362,18 @@
       "id": "highYieldSpread",
       "label": "US high-yield spread (ICE BofA OAS)",
       "group": "trigger",
-      "value": 343,
+      "value": 347,
       "unit": "basis points",
-      "asOf": "2026-11-17",
-      "score": 57.3,
-      "previousScore": 61.5,
+      "asOf": "2026-11-18",
+      "score": 55.5,
+      "previousScore": 57.3,
       "weight": 0.5,
       "direction": "lower",
       "trend": "down",
       "detail": "ICE BofA US high-yield option-adjusted spread, FRED",
       "eli5": "The extra interest risky companies pay to borrow compared with the US government. A small gap means lenders are relaxed; a widening gap often comes just before trouble.",
       "sources": [
-        7
+        9
       ]
     },
     {
@@ -372,7 +383,7 @@
       "value": -11.3204,
       "unit": "percentage points",
       "asOf": "2026-03-31",
-      "score": 0.0,
+      "score": 0,
       "previousScore": 0.0,
       "weight": 0.75,
       "direction": "higher",
@@ -380,7 +391,7 @@
       "detail": "Credit-to-GDP gap, Q1 2026, BIS statistics API",
       "eli5": "How far total US borrowing has run ahead of its usual path relative to the size of the economy. Near zero is routine; a big positive gap has come before most credit busts.",
       "sources": [
-        8
+        10
       ]
     },
     {
@@ -389,34 +400,34 @@
       "group": "trigger",
       "value": 0,
       "unit": "bp (cuts clamp at 0)",
-      "asOf": "2026-10-23",
-      "score": 0.0,
+      "asOf": "2026-11-19",
+      "score": 0,
       "previousScore": 0.0,
       "weight": 1.0,
       "direction": "higher",
       "trend": "flat",
-      "detail": "Upper bound 4.00% vs 4.25% a year earlier (−25bp), FRED",
+      "detail": "Fed funds upper bound 4.00%, unchanged vs a year ago; FRED",
       "eli5": "How much the Fed has raised its main interest rate over the past year. Higher rates make borrowing dearer and have pricked past bubbles; a year of cuts counts as zero here.",
       "sources": [
-        9
+        11
       ]
     },
     {
       "id": "treasury10yYield",
       "label": "10-year Treasury yield",
       "group": "trigger",
-      "value": 5.07,
+      "value": 5.04,
       "unit": "%",
-      "asOf": "2026-11-18",
-      "score": 71.3,
-      "previousScore": 73.3,
+      "asOf": "2026-11-19",
+      "score": 69.3,
+      "previousScore": 71.3,
       "weight": 1.25,
       "direction": "higher",
       "trend": "down",
       "detail": "Constant-maturity 10-year, 16 Nov 2026, Treasury CSV",
       "eli5": "The interest rate the US government pays to borrow for ten years. When it rises, safe bonds compete with shares, and expensive stocks are the first to look less attractive.",
       "sources": [
-        10
+        12
       ]
     },
     {
@@ -434,7 +445,7 @@
       "detail": "U-3 unemployment, October 2026, FRED UNRATE",
       "eli5": "The share of people looking for work who cannot find it. Very low unemployment is where booms peak; once it starts rising, the economy is usually already turning.",
       "sources": [
-        11
+        13
       ]
     },
     {
@@ -444,7 +455,7 @@
       "value": 6.23,
       "unit": "% 60+ days",
       "asOf": "2026-09-01",
-      "score": 100.0,
+      "score": 100,
       "previousScore": 100.0,
       "weight": 0.5,
       "direction": "higher",
@@ -452,36 +463,36 @@
       "detail": "Fitch subprime auto 60+ day index, Sep 2026",
       "eli5": "The share of riskier car loans more than two months behind on payments. Car loans go bad early when households are squeezed, so this is an early warning for the economy.",
       "sources": [
-        12
+        14
       ]
     },
     {
       "id": "nfci",
       "label": "Chicago Fed financial conditions (NFCI)",
       "group": "confirmation",
-      "value": -0.462,
+      "value": -0.478,
       "unit": "index",
-      "asOf": "2026-11-06",
-      "score": 71.1,
+      "asOf": "2026-11-13",
+      "score": 73.5,
       "previousScore": 71.1,
       "weight": 0.5,
       "direction": "lower",
-      "trend": "flat",
+      "trend": "up",
       "detail": "NFCI weekly, week to 6 Nov 2026, Chicago Fed via FRED",
       "eli5": "The Chicago Fed's one-number summary of how easy money is: credit, borrowing and market stress. Below zero means easier than usual, the conditions bubbles grow in.",
       "sources": [
-        13
+        15
       ]
     }
   ],
   "composite": {
     "method": "weighted-mean",
-    "indicatorScore": 67.8,
+    "indicatorScore": 67.6,
     "fragilityScore": 78.9,
-    "triggerScore": 33.6,
-    "confirmationScore": 88.1,
-    "newsAdjustment": 2,
-    "reason": "Wall Street fell for a fourth day and December hike odds are 95.4%, partly offset by Nvidia beating estimates after the close.",
+    "triggerScore": 32.7,
+    "confirmationScore": 88.9,
+    "newsAdjustment": 3,
+    "reason": "Six straight S&P 500 losses, a VIX near 28 and a certain December hike outweigh the strong Anthropic IPO and Nvidia results.",
     "indicatorCount": 15,
     "missingCount": 0
   },
@@ -493,7 +504,7 @@
       "trend": "down",
       "eli5": "Share prices divided by the profits analysts expect over the next year. Below its ten-year average, prices are not running ahead of expected earnings.",
       "sources": [
-        19
+        21
       ]
     },
     {
@@ -503,7 +514,7 @@
       "trend": "up",
       "eli5": "How much more profit the 500 biggest US companies made this quarter than a year ago. Fast growth means real earnings, not just hope, back prices.",
       "sources": [
-        19
+        21
       ]
     },
     {
@@ -513,7 +524,7 @@
       "trend": "up",
       "eli5": "How fast sales are growing at TSMC, the company that makes nearly every advanced AI chip. Its order book is an early read on whether AI demand is still speeding up.",
       "sources": [
-        18
+        20
       ]
     }
   ]
