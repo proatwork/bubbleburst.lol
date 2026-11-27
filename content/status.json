@@ -1,15 +1,15 @@
 {
-  "updatedAt": "2026-11-27T00:58:30Z",
-  "pressure": 71,
-  "previousPressure": 73,
-  "headline": "Not yet: stocks rebound after the sell-off, pressure eases to 71",
-  "summary": "The S&P 500 closed at 7,237 on Monday 23 November, up about 4.7% from Friday 20 November, after the AI sell-off. High-yield spreads narrowed to 363 bp. Pressure eases to 71. [2][9]",
+  "updatedAt": "2026-11-27T12:59:00Z",
+  "pressure": 69,
+  "previousPressure": 71,
+  "headline": "Not yet: AI stocks give back the rebound, pressure eases to 69",
+  "summary": "The Nasdaq fell 1.48% to 23,734 on Tuesday 24 November, giving back part of Monday's 6.5% jump, and Anthropic closed below its $83 IPO price. The basket scores 64.7, so pressure eases to 69. [1][2]",
   "signals": [
     {
       "label": "S&P 500 close",
-      "value": "7,237",
-      "note": "Mon 23 Nov: up from 6,910 on Fri 20 Nov",
-      "trend": "up",
+      "value": "7,201",
+      "note": "Tue 24 Nov: down 0.5% after +4.7% on Mon 23 Nov",
+      "trend": "down",
       "eli5": "The level of the index of the 500 biggest US companies. A sharp bounce after a fall means some buyers are returning, though one good day does not end a sell-off.",
       "sources": [
         2
@@ -18,7 +18,7 @@
     {
       "label": "Chips vs S&P 500 (SOX ÷ S&P)",
       "value": "1.22",
-      "note": "SOX -10.73% on 20 Nov, down from 1.31; basket score 51.2",
+      "note": "SOX 8,775 on 25 Nov, down from 9,588; basket score 51.6",
       "trend": "down",
       "eli5": "The main chip-maker index compared with the S&P 500. Chips are the picks and shovels of the AI boom, so this shows how much of the market's bet is riding on it.",
       "sources": [
@@ -28,57 +28,57 @@
       ]
     },
     {
-      "label": "Shiller CAPE",
-      "value": "36.44",
-      "note": "down from 37.86; basket score 71.5",
-      "trend": "down",
-      "eli5": "Share prices divided by ten years of average company profits, so one good or bad year cannot fool it. The higher it is, the more people are paying for each dollar of profit.",
+      "label": "Nasdaq vs S&P 500 ratio",
+      "value": "3.28",
+      "note": "up from 3.273; basket score 67.1",
+      "trend": "up",
+      "eli5": "How the tech-heavy Nasdaq compares with the broader S&P 500. When this climbs, money is piling into tech faster than into everything else, which is what past bubbles looked like.",
       "sources": [
-        5
+        22,
+        25
       ]
     },
     {
       "label": "10-year Treasury yield",
       "value": "4.92%",
-      "note": "4.92% on 23 Nov, unchanged; basket score 61.3",
-      "trend": "down",
+      "note": "4.85% on 25 Nov; basket score 61.3 (23 Nov: 4.92%)",
+      "trend": "flat",
       "eli5": "The interest rate the US government pays to borrow for ten years. When it rises, safe bonds compete with shares, and expensive stocks are the first to look less attractive.",
       "sources": [
         12,
-        2,
         23
       ]
     }
   ],
   "analysis": [
-    "The basket scores 64.6: fragility 76.3, trigger 28.2, confirmation 87.2. Price to sales (3.41), household equities (48.2% of financial assets), subprime auto delinquency (6.23%) and hyperscaler capex at 115% of operating cash flow sit beyond any prior burst. The BIS credit gap (−11.3 points) and a flat Fed funds rate are the calmest readings. [6][8][14][16][17][18][19][10][11]",
-    "On Friday 20 November the Nasdaq fell 5.28% to 22,617.73 and the S&P 500 3.70% to 6,910.39, its seventh straight loss and a drop of about 10% from its peak. The semiconductor index fell 10.73%, AMD 13.26% and Micron 13.86%. Nvidia fell as much as 13% after Reuters reported an SEC review of possible accounting issues; no wrongdoing has been established. The VIX closed at 35.89. [1][2][4]",
-    "The 10-year yield held at 4.92% on 23 Nov (5.04% earlier), and the high-yield spread was 372 bp on 24 Nov (363 on 23 Nov, 376 on 20 Nov); traders still price a quarter-point Fed hike in December. CAPE dropped to 36.44 as prices fell. Why 71: the basket sits at 64.6, but the 20 November crash and the SEC report on Nvidia are a genuine shock, even after a partial rebound, so the score stays above the basket. [5][12][9][2][3]"
+    "The basket scores 64.7: fragility 76.4, trigger 28.2, confirmation 87.2. Price to sales (3.41), household equities (48.2% of financial assets), subprime auto delinquency (6.23%) and hyperscaler capex at 115% of operating cash flow sit beyond any prior burst. The BIS credit gap (−11.3 points) and a flat Fed funds rate are the calmest. CAPE (36.44) is carried forward because multpl.com was down. [6][8][14][16][17][18][19][10][11][5]",
+    "On Monday 23 November the Nasdaq rose 6.5% and the S&P 500 4.7%, their biggest one-day gains since April 2025, as Nvidia jumped 31.5% after Jensen Huang was reinstated as CEO. On Tuesday 24 November the Nasdaq fell 1.48% to 23,733.54 and the S&P 500 0.50% to 7,201.09; Micron fell about 11% and AMD nearly 9%. Anthropic fell 6.5% to $81.91, below its $83 IPO price. [1][2][4]",
+    "The semiconductor index closed at 8,775 on 25 November, 8.5% below its 23 November close. The high-yield spread was 372 bp on 24 November. A Fortune commentary cites Reuters on a nearly 63% five-year default chance for CoreWeave and says global AI funding fell to $103.3 billion in Q3 from $239.1 billion in Q1. Why 69: the basket is 64.7, but the rebound is fading, so the score eases only a few points. [24][9][3]"
   ],
   "sources": [
     {
-      "title": "Nasdaq Plunges 5%, Erasing All Year-to-Date Gains; Nvidia Tumbles 13% as AI Stock Selloff Deepens",
-      "publisher": "TradingKey",
-      "url": "https://www.tradingkey.com/analysis/stocks/us-stocks/262316111-nasdaq-falls-ai-stock-selloff-nvidia-sec-probe-tradingkey",
-      "date": "2026-11-20"
+      "title": "US stocks end mixed as Nvidia, Anthropic losses drag Nasdaq lower",
+      "publisher": "Anadolu Agency",
+      "url": "https://www.aa.com.tr/en/americas/us-stocks-end-mixed-as-nvidia-anthropic-losses-drag-nasdaq-lower/4136533",
+      "date": "2026-11-25"
     },
     {
-      "title": "Stocks Plunge as AI Selloff Pushes S&P 500 and Dow Into Correction",
-      "publisher": "Breitbart",
-      "url": "https://www.breitbart.com/economy/2026/11/20/stocks-plunge-as-ai-selloff-pushes-sp-500-and-dow-into-correction/",
-      "date": "2026-11-20"
+      "title": "Nasdaq slumps about 1.5% as Nvidia comeback reverses course and Anthropic breaks IPO price: Live updates",
+      "publisher": "CNBC",
+      "url": "https://www.cnbc.com/2026/11/23/stock-market-today-live-updates.html",
+      "date": "2026-11-24"
     },
     {
-      "title": "Stock Market Today: S&P 500 Nears Correction as Nasdaq Crashes 3.3% in AI Selloff",
-      "publisher": "Coinpaper",
-      "url": "https://coinpaper.com/39151/stock-market-today-s-and-p-500-nears-correction-as-nasdaq-crashes-3-3-in-ai-selloff",
-      "date": "2026-11-20"
+      "title": "The AI bubble is cracking. Wall Street is nervous",
+      "publisher": "Fortune",
+      "url": "https://fortune.com/2026/11/18/ai-bubble-financing-nvidia-coreweave-circular-deals-credit-mark-minevich/",
+      "date": "2026-11-18"
     },
     {
-      "title": "CBOE Volatility Index (^VIX) daily chart data",
-      "publisher": "Yahoo Finance",
-      "url": "https://query1.finance.yahoo.com/v8/finance/chart/^VIX?range=5d&interval=1d",
-      "date": "2026-11-20"
+      "title": "Nasdaq falls 1.48% as tech sector pulls Wall Street lower",
+      "publisher": "El Fondo",
+      "url": "https://www.el-fondo.com/en/news/nasdaq-falls-148-as-tech-sector-pulls-wall-street-lower",
+      "date": "2026-11-25"
     },
     {
       "title": "Shiller PE Ratio",
@@ -186,7 +186,7 @@
       "title": "NASDAQ Composite (^IXIC) daily chart data",
       "publisher": "Yahoo Finance",
       "url": "https://query1.finance.yahoo.com/v8/finance/chart/^IXIC?range=5d&interval=1d",
-      "date": "2026-11-20"
+      "date": "2026-11-25"
     },
     {
       "title": "Daily Treasury yield 10-year (^TNX) chart data",
@@ -198,13 +198,13 @@
       "title": "PHLX Semiconductor Index (^SOX) daily chart data",
       "publisher": "Yahoo Finance",
       "url": "https://query1.finance.yahoo.com/v8/finance/chart/^SOX?range=5d&interval=1d",
-      "date": "2026-11-20"
+      "date": "2026-11-25"
     },
     {
       "title": "S&P 500 (^GSPC) daily chart data",
       "publisher": "Yahoo Finance",
       "url": "https://query1.finance.yahoo.com/v8/finance/chart/^GSPC?range=5d&interval=1d",
-      "date": "2026-11-20"
+      "date": "2026-11-25"
     }
   ],
   "generatedBy": "claude-sonnet-5-5",
@@ -217,15 +217,16 @@
       "unit": "ratio (10-yr real earnings)",
       "asOf": "2026-11-20",
       "score": 71.5,
-      "previousScore": 76.7,
+      "previousScore": 71.5,
       "weight": 1.5,
       "direction": "higher",
-      "trend": "down",
+      "trend": "flat",
       "detail": "Shiller CAPE, 20 Nov 2026, multpl.com",
       "eli5": "Share prices divided by ten years of average company profits, so one good or bad year cannot fool it. The higher it is, the more people are paying for each dollar of profit.",
       "sources": [
         5
-      ]
+      ],
+      "stale": true
     },
     {
       "id": "sp500PriceToSales",
@@ -249,14 +250,14 @@
       "id": "nasdaqToSp500Ratio",
       "label": "Nasdaq Composite ÷ S&P 500",
       "group": "fragility",
-      "value": 3.273,
+      "value": 3.284,
       "unit": "index ratio",
-      "asOf": "2026-11-20",
-      "score": 66.0,
-      "previousScore": 72.2,
+      "asOf": "2026-11-25",
+      "score": 67.1,
+      "previousScore": 66.0,
       "weight": 1.0,
       "direction": "higher",
-      "trend": "down",
+      "trend": "up",
       "detail": "Nasdaq Composite ÷ S&P 500 close, 20 Nov 2026, Yahoo",
       "eli5": "How the tech-heavy Nasdaq compares with the broader S&P 500. When this climbs, money is piling into tech faster than into everything else, which is what past bubbles looked like.",
       "sources": [
@@ -304,14 +305,14 @@
       "id": "soxToSp500Ratio",
       "label": "Semiconductor index ÷ S&P 500",
       "group": "fragility",
-      "value": 1.217,
+      "value": 1.222,
       "unit": "index ratio",
-      "asOf": "2026-11-20",
-      "score": 51.2,
-      "previousScore": 58.1,
+      "asOf": "2026-11-25",
+      "score": 51.6,
+      "previousScore": 51.2,
       "weight": 1.0,
       "direction": "higher",
-      "trend": "down",
+      "trend": "up",
       "detail": "SOX ÷ S&P 500 close, 20 Nov 2026, Yahoo Finance",
       "eli5": "The main chip-maker index compared with the S&P 500. Chips are the picks and shovels of the AI boom, so this shows how much of the market's bet is riding on it.",
       "sources": [
@@ -369,10 +370,10 @@
       "unit": "basis points",
       "asOf": "2026-11-24",
       "score": 44.0,
-      "previousScore": 48.2,
+      "previousScore": 44.0,
       "weight": 0.5,
       "direction": "lower",
-      "trend": "down",
+      "trend": "flat",
       "detail": "ICE BofA US high-yield option-adjusted spread, FRED",
       "eli5": "The extra interest risky companies pay to borrow compared with the US government. A small gap means lenders are relaxed; a widening gap often comes just before trouble.",
       "sources": [
@@ -477,10 +478,10 @@
       "unit": "index",
       "asOf": "2026-11-20",
       "score": 68.3,
-      "previousScore": 73.5,
+      "previousScore": 68.3,
       "weight": 0.5,
       "direction": "lower",
-      "trend": "down",
+      "trend": "flat",
       "detail": "NFCI weekly, week to 6 Nov 2026, Chicago Fed via FRED",
       "eli5": "The Chicago Fed's one-number summary of how easy money is: credit, borrowing and market stress. Below zero means easier than usual, the conditions bubbles grow in.",
       "sources": [
@@ -490,12 +491,12 @@
   ],
   "composite": {
     "method": "weighted-mean",
-    "indicatorScore": 64.6,
-    "fragilityScore": 76.3,
+    "indicatorScore": 64.7,
+    "fragilityScore": 76.4,
     "triggerScore": 28.2,
     "confirmationScore": 87.2,
     "newsAdjustment": 1,
-    "reason": "The S&P 500 rebounded about 4.7% from 20 to 23 November, easing the shock, but the Nasdaq correction and the Nvidia SEC report remain unresolved.",
+    "reason": "Monday's rebound has partly reversed, with chip stocks and the newly listed Anthropic falling on Tuesday 24 November, but the correction has not deepened.",
     "indicatorCount": 15,
     "missingCount": 0
   },
